@@ -4,10 +4,8 @@ import { CheckoutPage } from './pages/checkout.page';
 import { InventoryPage } from './pages/inventory.page';
 import { LoginPage } from './pages/login.page';
 import { checkoutCustomer } from '../support/checkout-data';
+import { products } from '../support/products';
 import { sauceUsers } from '../support/users';
-
-const backpack = 'Sauce Labs Backpack';
-const bikeLight = 'Sauce Labs Bike Light';
 
 test.describe('SauceDemo shopping workflows', () => {
   test.beforeEach(async ({ page }) => {
@@ -22,13 +20,13 @@ test.describe('SauceDemo shopping workflows', () => {
     const inventoryPage = new InventoryPage(page);
     const cartPage = new CartPage(page);
 
-    await inventoryPage.addItem(backpack);
+    await inventoryPage.addItem(products.backpack);
     await inventoryPage.expectCartCount(1);
     await inventoryPage.openCart();
     await cartPage.expectLoaded();
-    await cartPage.expectItemVisible(backpack);
+    await cartPage.expectItemVisible(products.backpack);
 
-    await cartPage.removeItem(backpack);
+    await cartPage.removeItem(products.backpack);
 
     await cartPage.expectCartEmpty();
   });
@@ -38,8 +36,8 @@ test.describe('SauceDemo shopping workflows', () => {
     const cartPage = new CartPage(page);
     const checkoutPage = new CheckoutPage(page);
 
-    await inventoryPage.addItem(backpack);
-    await inventoryPage.addItem(bikeLight);
+    await inventoryPage.addItem(products.backpack);
+    await inventoryPage.addItem(products.bikeLight);
     await inventoryPage.expectCartCount(2);
     await inventoryPage.openCart();
     await cartPage.checkout();
@@ -49,7 +47,7 @@ test.describe('SauceDemo shopping workflows', () => {
       checkoutCustomer.lastName,
       checkoutCustomer.postalCode
     );
-    await checkoutPage.expectOverviewContains(backpack);
+    await checkoutPage.expectOverviewContains(products.backpack);
     await checkoutPage.finish();
 
     await checkoutPage.expectComplete();
