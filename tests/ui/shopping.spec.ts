@@ -3,6 +3,7 @@ import { CartPage } from './pages/cart.page';
 import { CheckoutPage } from './pages/checkout.page';
 import { InventoryPage } from './pages/inventory.page';
 import { LoginPage } from './pages/login.page';
+import { checkoutCustomer } from '../support/checkout-data';
 import { sauceUsers } from '../support/users';
 
 const backpack = 'Sauce Labs Backpack';
@@ -43,7 +44,11 @@ test.describe('SauceDemo shopping workflows', () => {
     await inventoryPage.openCart();
     await cartPage.checkout();
 
-    await checkoutPage.fillCustomerInformation('Kittituch', 'Roekratchaneekorn', '10110');
+    await checkoutPage.fillCustomerInformation(
+      checkoutCustomer.firstName,
+      checkoutCustomer.lastName,
+      checkoutCustomer.postalCode
+    );
     await checkoutPage.expectOverviewContains(backpack);
     await checkoutPage.finish();
 
