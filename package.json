@@ -7,17 +7,24 @@
     "test": "playwright test",
     "test:ui": "playwright test tests/ui",
     "test:api": "playwright test tests/api",
+    "test:smoke": "playwright test --grep @smoke",
     "test:headed": "playwright test --headed",
     "report": "playwright show-report",
     "report:monocart": "monocart show-report monocart-report/index.html",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "security:audit": "npm audit --audit-level=high"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.56.0",
     "@types/node": "^24.0.0",
     "dotenv": "^16.4.7",
+    "eslint": "^10.5.0",
+    "eslint-plugin-playwright": "^2.10.4",
     "monocart-reporter": "^1.6.36",
     "typescript": "^5.7.3",
+    "typescript-eslint": "^8.62.0",
     "zod": "^4.4.3"
   }
 }

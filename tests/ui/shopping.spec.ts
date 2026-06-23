@@ -3,7 +3,10 @@ import { checkoutCustomer } from '../support/checkout-data';
 import { products } from '../support/products';
 
 test.describe('SauceDemo shopping workflows', () => {
-  test('user can add and remove an item from the cart', async ({ loggedInInventoryPage, cartPage }) => {
+  test('user can add and remove an item from the cart @smoke @ui @cart', async ({
+    loggedInInventoryPage,
+    cartPage
+  }) => {
     const inventoryPage = loggedInInventoryPage;
     await inventoryPage.addItem(products.backpack);
     await inventoryPage.expectCartCount(1);
@@ -16,7 +19,7 @@ test.describe('SauceDemo shopping workflows', () => {
     await cartPage.expectCartEmpty();
   });
 
-  test('user can complete checkout for selected products', async ({
+  test('user can complete checkout for selected products @smoke @ui @checkout', async ({
     loggedInInventoryPage,
     cartPage,
     checkoutPage
@@ -39,7 +42,7 @@ test.describe('SauceDemo shopping workflows', () => {
     await checkoutPage.expectComplete();
   });
 
-  test('user can sort products by price from low to high', async ({ loggedInInventoryPage }) => {
+  test('user can sort products by price from low to high @ui @catalog', async ({ loggedInInventoryPage }) => {
     const inventoryPage = loggedInInventoryPage;
     await inventoryPage.sortBy('lohi');
 

@@ -1,5 +1,7 @@
 # Playwright Assessment
 
+[![Playwright Tests](https://github.com/kittiuchgolf/playwright-assessment/actions/workflows/playwright.yml/badge.svg)](https://github.com/kittiuchgolf/playwright-assessment/actions/workflows/playwright.yml)
+
 TypeScript Playwright test suite covering UI and API automation for the provided e-commerce assessment.
 
 ## Setup
@@ -29,10 +31,26 @@ npm run test:ui
 npm run test:api
 ```
 
+Run tagged subsets:
+
+```bash
+npm run test:smoke
+npx playwright test --grep @auth
+npx playwright test --grep @crud
+npx playwright test --grep-invert @crud
+```
+
 Run static TypeScript validation:
 
 ```bash
 npm run typecheck
+```
+
+Run lint and dependency audit:
+
+```bash
+npm run lint
+npm run security:audit
 ```
 
 Open reports after a run:
@@ -44,7 +62,15 @@ npm run report:monocart
 
 ## CI
 
-GitHub Actions runs typecheck and the full Playwright suite on pushes to `main`, pushes to `feat/**`, and pull requests into `main`.
+GitHub Actions runs on pushes to `main`, pushes to `feat/**`, and pull requests into `main`.
+
+The workflow is split into focused jobs:
+
+- `typecheck`
+- `lint`
+- `security`
+- `ui-tests`
+- `api-tests`
 
 Add this repository secret before relying on CI:
 
@@ -69,6 +95,8 @@ The project separates UI automation from API automation while sharing Playwright
 I chose Page Object Model for UI tests because SauceDemo has stable screens with repeated interactions: login, inventory, cart, and checkout. The tests read as business scenarios while locators remain centralized. For API tests, a small typed client keeps authentication, request creation, and response checks out of the spec body.
 
 The suite uses Zod to validate API response contracts at runtime before tests make business assertions. It also generates both the default Playwright HTML report and a Monocart report for a cleaner test-result view.
+
+Tests are tagged in their titles so reviewers can run focused subsets with Playwright `--grep`.
 
 ## UI Scenarios
 
