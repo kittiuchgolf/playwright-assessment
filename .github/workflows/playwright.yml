@@ -172,19 +172,12 @@ jobs:
 
       - name: Add UI test summary
         if: always()
-        run: |
-          cat <<'SUMMARY' >> "$GITHUB_STEP_SUMMARY"
-          ## UI Tests
-
-          | Signal | Value |
-          | --- | --- |
-          | Command | `npm run test:ui` |
-          | Outcome | `${{ steps.ui_tests.outcome }}` |
-          | Browser | Chromium |
-          | Playwright report artifact | `playwright-report-ui` |
-          | Monocart report artifact | `monocart-report-ui` |
-          | Failure artifacts | `test-results-ui` |
-          SUMMARY
+        run: >
+          node scripts/write-test-summary.mjs
+          test-results/playwright-results.json
+          "UI Tests"
+          "npm run test:ui"
+          '{"Browser":"Chromium","Playwright report artifact":"playwright-report-ui","Monocart report artifact":"monocart-report-ui","Failure artifacts":"test-results-ui"}'
 
   api-tests:
     name: API Tests
@@ -260,16 +253,9 @@ jobs:
 
       - name: Add API test summary
         if: always()
-        run: |
-          cat <<'SUMMARY' >> "$GITHUB_STEP_SUMMARY"
-          ## API Tests
-
-          | Signal | Value |
-          | --- | --- |
-          | Token available | `${{ steps.token.outputs.available }}` |
-          | Full API suite outcome | `${{ steps.full_api_suite.outcome || 'skipped' }}` |
-          | Token-free API suite outcome | `${{ steps.token_free_api_suite.outcome || 'skipped' }}` |
-          | Playwright report artifact | `playwright-report-api` |
-          | Monocart report artifact | `monocart-report-api` |
-          | Failure artifacts | `test-results-api` |
-          SUMMARY
+        run: >
+          node scripts/write-test-summary.mjs
+          test-results/playwright-results.json
+          "API Tests"
+          "npm run test:api"
+          '{"Token available":"${{ steps.token.outputs.available }}","Full API suite outcome":"${{ steps.full_api_suite.outcome }}","Token-free API suite outcome":"${{ steps.token_free_api_suite.outcome }}","Playwright report artifact":"playwright-report-api","Monocart report artifact":"monocart-report-api","Failure artifacts":"test-results-api"}'

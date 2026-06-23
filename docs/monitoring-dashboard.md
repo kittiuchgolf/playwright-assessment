@@ -11,7 +11,7 @@ This dashboard explains how project health is monitored through GitHub Actions, 
 | Dependency risk | High-severity audit findings absent | `Security Audit` CI job | Passing |
 | UI behavior | SauceDemo scenarios pass | `UI Tests` CI job | Passing |
 | API behavior | GoREST scenarios pass | `API Tests` CI job | Passing |
-| Run summary | Job summaries are written | GitHub Actions summary panel | Available inside each job |
+| Run summary | Job summaries include test counts | GitHub Actions summary panel | Available inside each job |
 | Reports | HTML and Monocart artifacts uploaded | GitHub Actions artifacts | Available after each test job |
 
 ## CI Quality Gates
@@ -37,10 +37,12 @@ Each workflow job writes a Markdown summary to `$GITHUB_STEP_SUMMARY`.
 | `Typecheck` | Command, outcome, and purpose. |
 | `Lint` | Command, outcome, and linting purpose. |
 | `Security Audit` | Command, outcome, and security purpose. |
-| `UI Tests` | Command, outcome, browser, and UI artifact names. |
-| `API Tests` | Token availability, selected API suite outcome, and API artifact names. |
+| `UI Tests` | Command, total, passed, failed, flaky, skipped, duration, browser, and UI artifact names. |
+| `API Tests` | Command, total, passed, failed, flaky, skipped, duration, token availability, selected API suite outcome, and API artifact names. |
 
 Use the job summary for a quick health check. Use Playwright and Monocart artifacts when a failure needs trace, screenshot, video, or detailed step inspection.
+
+Flaky means Playwright had to retry a test and the final retry passed. It does not include request-level retries inside helper code.
 
 ## Test Layers
 
@@ -60,6 +62,8 @@ Use the job summary for a quick health check. Use Playwright and Monocart artifa
 | `monocart-report-api` | `API Tests` | Monocart API test report | 7 days |
 | `test-results-ui` | `UI Tests` | Traces, screenshots, and videos when retained | 7 days |
 | `test-results-api` | `API Tests` | API test traces and failure artifacts when retained | 7 days |
+
+The CI summary counts are generated from `test-results/playwright-results.json`, not from terminal output.
 
 Local report commands:
 

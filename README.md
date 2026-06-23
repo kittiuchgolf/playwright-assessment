@@ -113,12 +113,13 @@ See [Monitoring Dashboard](docs/monitoring-dashboard.md) for CI health, artifact
 
 ## Reports and Artifacts
 
-Each GitHub Actions job writes a Markdown job summary with the command, outcome, and report artifact names. This gives a quick monitoring view directly inside the workflow run before opening downloaded reports.
+Each GitHub Actions job writes a Markdown job summary. Static jobs show command and outcome. UI/API jobs parse the Playwright JSON report and show total, passed, failed, flaky, skipped, duration, and report artifact names. This gives a quick monitoring view directly inside the workflow run before opening downloaded reports.
 
 Local test runs generate:
 
 - `playwright-report/`: Playwright HTML report
 - `monocart-report/`: Monocart report
+- `test-results/playwright-results.json`: Playwright JSON report used for CI summaries
 - `test-results/`: traces, screenshots, and videos when retained
 
 CI uploads separate artifacts for UI and API jobs:

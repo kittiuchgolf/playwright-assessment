@@ -137,3 +137,50 @@ npm run lint
 ```
 
 Expected: no whitespace errors, typecheck passes, and lint passes.
+
+### Task 5: Add Parsed UI/API Test Counts
+
+**Files:**
+- Create: `scripts/write-test-summary.mjs`
+- Create: `scripts/write-test-summary.test.mjs`
+- Modify: `package.json`
+- Modify: `playwright.config.ts`
+- Modify: `.github/workflows/playwright.yml`
+- Modify: `README.md`
+- Modify: `docs/monitoring-dashboard.md`
+
+**Interfaces:**
+- Consumes: `test-results/playwright-results.json`
+- Produces: GitHub Actions summary tables with total, passed, failed, flaky, skipped, and duration
+
+- [x] **Step 1: Add a failing parser test**
+
+The test defines expected behavior for passed, failed, skipped, and flaky Playwright JSON outcomes.
+
+- [x] **Step 2: Implement `scripts/write-test-summary.mjs`**
+
+The script reads Playwright JSON, summarizes test outcomes, and appends Markdown to `$GITHUB_STEP_SUMMARY`.
+
+- [x] **Step 3: Enable Playwright JSON output**
+
+Add the JSON reporter output file:
+
+```text
+test-results/playwright-results.json
+```
+
+- [x] **Step 4: Wire UI/API jobs to parsed summaries**
+
+UI and API jobs call the summary script after report artifacts are uploaded.
+
+- [x] **Step 5: Verify**
+
+Run:
+
+```bash
+npm run test:summary
+npm run typecheck
+npm run lint
+```
+
+Expected: all commands pass.
