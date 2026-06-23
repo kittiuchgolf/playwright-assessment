@@ -35,17 +35,40 @@ Run static TypeScript validation:
 npm run typecheck
 ```
 
+Open reports after a run:
+
+```bash
+npm run report
+npm run report:monocart
+```
+
+## CI
+
+GitHub Actions runs typecheck and the full Playwright suite on pushes to `main`, pushes to `feat/**`, and pull requests into `main`.
+
+Add this repository secret before relying on CI:
+
+```text
+GOREST_API_TOKEN
+```
+
+If the secret is not configured, CI still runs typecheck plus token-free UI/API tests and skips only the authenticated GoREST CRUD scenario.
+
 ## Architecture
 
 The project separates UI automation from API automation while sharing Playwright's runner, reporting, retries, traces, and configuration.
 
 - `tests/ui/pages`: Page Object Model classes for SauceDemo screens.
+- `tests/fixtures`: Playwright fixtures for reusable page object and API client setup.
 - `tests/ui/*.spec.ts`: user-facing UI journeys and edge cases.
 - `tests/api/clients`: reusable GoREST API client with typed request/response helpers.
+- `tests/api/schemas`: runtime response schemas for API contract validation.
 - `tests/api/types`: API domain types used by the client and tests.
 - `tests/support`: shared constants and environment helpers.
 
 I chose Page Object Model for UI tests because SauceDemo has stable screens with repeated interactions: login, inventory, cart, and checkout. The tests read as business scenarios while locators remain centralized. For API tests, a small typed client keeps authentication, request creation, and response checks out of the spec body.
+
+The suite uses Zod to validate API response contracts at runtime before tests make business assertions. It also generates both the default Playwright HTML report and a Monocart report for a cleaner test-result view.
 
 ## UI Scenarios
 
