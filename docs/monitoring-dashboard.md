@@ -1,6 +1,6 @@
 # Monitoring Dashboard
 
-This dashboard explains how project health is monitored through GitHub Actions, Playwright reports, Monocart reports, and local verification commands.
+This dashboard explains how project health is monitored through GitHub Actions, GitHub Pages, Playwright reports, Monocart reports, and local verification commands.
 
 ## Health Overview
 
@@ -11,7 +11,7 @@ This dashboard explains how project health is monitored through GitHub Actions, 
 | Dependency risk | High-severity audit findings absent | `Security Audit` CI job | Passing |
 | UI behavior | SauceDemo scenarios pass | `UI Tests` CI job | Passing |
 | API behavior | GoREST scenarios pass | `API Tests` CI job | Passing |
-| Run summary | Job summaries include test counts | GitHub Actions summary panel | Available inside each job |
+| Report history | Latest and historical reports are published | GitHub Pages `gh-pages` branch | Available after successful `main` runs |
 | Reports | HTML and Monocart artifacts uploaded | GitHub Actions artifacts | Available after each test job |
 
 ## CI Quality Gates
@@ -28,21 +28,35 @@ GitHub Actions runs on pull requests targeting `main` and pushes to `main`.
 
 The UI and API jobs wait for static checks first. This saves runtime because browser/API tests do not run when the code already fails typecheck, lint, or audit.
 
-## GitHub Actions Job Summaries
+## GitHub Pages Dashboard
 
-Each workflow job writes a Markdown summary to `$GITHUB_STEP_SUMMARY`.
+The `Deploy Dashboard` job runs only on pushes to `main` after UI and API tests pass.
 
-| Job | Summary Includes |
-| --- | --- |
-| `Typecheck` | Command, outcome, and purpose. |
-| `Lint` | Command, outcome, and linting purpose. |
-| `Security Audit` | Command, outcome, and security purpose. |
-| `UI Tests` | Command, total, passed, failed, flaky, skipped, duration, browser, and UI artifact names. |
-| `API Tests` | Command, total, passed, failed, flaky, skipped, duration, token availability, selected API suite outcome, and API artifact names. |
+It publishes a static dashboard to the `gh-pages` branch with this structure:
 
-Use the job summary for a quick health check. Use Playwright and Monocart artifacts when a failure needs trace, screenshot, video, or detailed step inspection.
+```text
+index.html
+runs.json
+runs/
+  <github-run-id>/
+    monocart/
+      index.html
+      ui/
+      api/
+    playwright/
+      index.html
+      ui/
+      api/
+```
 
-Flaky means Playwright had to retry a test and the final retry passed. It does not include request-level retries inside helper code.
+The dashboard home page has two primary buttons for the latest run:
+
+- **Open Monocart report**
+- **Open Playwright report**
+
+It also keeps a run history list, so older reports remain available as the project runs over time.
+
+To make the dashboard public, configure GitHub Pages to deploy from the `gh-pages` branch at the repository root. For private repositories, confirm the repository plan and visibility settings before publishing reports.
 
 ## Test Layers
 
@@ -63,7 +77,7 @@ Flaky means Playwright had to retry a test and the final retry passed. It does n
 | `test-results-ui` | `UI Tests` | Traces, screenshots, and videos when retained | 7 days |
 | `test-results-api` | `API Tests` | API test traces and failure artifacts when retained | 7 days |
 
-The CI summary counts are generated from `test-results/playwright-results.json`, not from terminal output.
+The Pages dashboard stores Playwright and Monocart HTML reports by workflow run. The downloadable artifacts remain useful for traces, screenshots, videos, and short-term debugging.
 
 Local report commands:
 
@@ -106,13 +120,14 @@ npx playwright test --grep @crud
 ## Current Limitations
 
 - Branch protection is documented in `docs/branch-protection.md`, but it is not enabled because the private repository plan does not support it.
-- Reports are stored as workflow artifacts, not published as a permanent static site.
+- GitHub Pages must be enabled from the `gh-pages` branch before the dashboard is visible.
+- Published reports may be public depending on repository and Pages settings, so report content should not include secrets.
 - The UI suite currently targets Chromium only.
 - GoREST and SauceDemo are public external services, so availability can affect test runs.
 
 ## Improvement Ideas
 
-- Publish the Monocart report to GitHub Pages if the repository visibility and workflow permissions allow it.
+- Add a retention policy if the `gh-pages` branch grows too large over time.
 - Add CodeQL for deeper static analysis.
 - Add cross-browser smoke coverage for Firefox and WebKit.
 - Add richer report annotations for requirement IDs, severity, and test ownership.

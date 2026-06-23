@@ -2,16 +2,16 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Improve project reviewability by turning the README into a practical runbook and adding a documentation-based monitoring dashboard.
+**Goal:** Improve project reviewability by turning the README into a practical runbook and adding a GitHub Pages monitoring dashboard with historical reports.
 
-**Architecture:** Keep monitoring lightweight and GitHub-native. The README explains how to run, understand, and maintain the project; `docs/monitoring-dashboard.md` explains what CI monitors, where reports live, and how to triage failures.
+**Architecture:** Keep monitoring GitHub-native. The README explains how to run, understand, and maintain the project; `docs/monitoring-dashboard.md` explains what CI monitors, where reports live, and how to triage failures; `scripts/build-pages-dashboard.mjs` publishes historical report pages to `gh-pages`.
 
 **Tech Stack:** Markdown, GitHub Actions, Playwright, Monocart Reporter, npm scripts.
 
 ## Global Constraints
 
 - Do not add runtime dependencies.
-- Keep the dashboard documentation-based, not a separate app.
+- Keep the dashboard static and dependency-free.
 - Keep secrets out of documentation examples except for variable names.
 - Match the existing CI workflow and npm scripts.
 
@@ -107,26 +107,31 @@ git diff --check
 
 Expected: only documentation files changed and no whitespace errors.
 
-### Task 4: Add GitHub Actions Job Summaries
+### Task 4: Add GitHub Pages Historical Dashboard
 
 **Files:**
 - Modify: `.github/workflows/playwright.yml`
+- Create: `scripts/build-pages-dashboard.mjs`
 - Modify: `README.md`
 - Modify: `docs/monitoring-dashboard.md`
 
 **Interfaces:**
-- Consumes: GitHub Actions `$GITHUB_STEP_SUMMARY`
-- Produces: Per-job Markdown summaries inside each workflow run
+- Consumes: Playwright and Monocart report artifacts
+- Produces: Static dashboard under the `gh-pages` branch
 
-- [x] **Step 1: Add summary steps to CI jobs**
+- [x] **Step 1: Add dashboard generator**
 
-Each job writes a compact Markdown table to `$GITHUB_STEP_SUMMARY` with the command, outcome, and artifact names where relevant.
+The generator copies UI/API Monocart and Playwright reports into `runs/<github-run-id>/`, updates `runs.json`, and rebuilds `index.html`.
 
-- [x] **Step 2: Document summaries in README and monitoring dashboard**
+- [x] **Step 2: Add Pages deploy job**
 
-The README and dashboard now explain that GitHub Actions provides quick in-run summaries in addition to downloadable reports and artifacts.
+The deploy job runs only on pushes to `main` after UI and API jobs pass. It preserves report history by committing updates to the `gh-pages` branch.
 
-- [x] **Step 3: Verify workflow syntax and docs**
+- [x] **Step 3: Document Pages setup**
+
+The README and monitoring dashboard explain the two main dashboard buttons, run history, and the GitHub Pages branch-source requirement.
+
+- [x] **Step 4: Verify workflow syntax and docs**
 
 Run:
 
@@ -137,50 +142,3 @@ npm run lint
 ```
 
 Expected: no whitespace errors, typecheck passes, and lint passes.
-
-### Task 5: Add Parsed UI/API Test Counts
-
-**Files:**
-- Create: `scripts/write-test-summary.mjs`
-- Create: `scripts/write-test-summary.test.mjs`
-- Modify: `package.json`
-- Modify: `playwright.config.ts`
-- Modify: `.github/workflows/playwright.yml`
-- Modify: `README.md`
-- Modify: `docs/monitoring-dashboard.md`
-
-**Interfaces:**
-- Consumes: `test-results/playwright-results.json`
-- Produces: GitHub Actions summary tables with total, passed, failed, flaky, skipped, and duration
-
-- [x] **Step 1: Add a failing parser test**
-
-The test defines expected behavior for passed, failed, skipped, and flaky Playwright JSON outcomes.
-
-- [x] **Step 2: Implement `scripts/write-test-summary.mjs`**
-
-The script reads Playwright JSON, summarizes test outcomes, and appends Markdown to `$GITHUB_STEP_SUMMARY`.
-
-- [x] **Step 3: Enable Playwright JSON output**
-
-Add the JSON reporter output file:
-
-```text
-test-results/playwright-results.json
-```
-
-- [x] **Step 4: Wire UI/API jobs to parsed summaries**
-
-UI and API jobs call the summary script after report artifacts are uploaded.
-
-- [x] **Step 5: Verify**
-
-Run:
-
-```bash
-npm run test:summary
-npm run typecheck
-npm run lint
-```
-
-Expected: all commands pass.

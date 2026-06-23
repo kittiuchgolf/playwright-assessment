@@ -109,17 +109,19 @@ The workflow is split into focused jobs:
 | `UI Tests` | Runs SauceDemo Chromium tests after static checks pass. |
 | `API Tests` | Runs GoREST API tests after static checks pass. |
 
-See [Monitoring Dashboard](docs/monitoring-dashboard.md) for CI health, artifact locations, and failure triage.
+See [Monitoring Dashboard](docs/monitoring-dashboard.md) for CI health, GitHub Pages report history, artifact locations, and failure triage.
 
 ## Reports and Artifacts
 
-Each GitHub Actions job writes a Markdown job summary. Static jobs show command and outcome. UI/API jobs parse the Playwright JSON report and show total, passed, failed, flaky, skipped, duration, and report artifact names. This gives a quick monitoring view directly inside the workflow run before opening downloaded reports.
+On pull requests, CI uploads Playwright and Monocart reports as workflow artifacts. On pushes to `main`, CI also publishes a static historical dashboard to the `gh-pages` branch. The dashboard keeps reports by workflow run and opens with two primary choices:
+
+- **Open Monocart report**
+- **Open Playwright report**
 
 Local test runs generate:
 
 - `playwright-report/`: Playwright HTML report
 - `monocart-report/`: Monocart report
-- `test-results/playwright-results.json`: Playwright JSON report used for CI summaries
 - `test-results/`: traces, screenshots, and videos when retained
 
 CI uploads separate artifacts for UI and API jobs:
@@ -130,6 +132,8 @@ CI uploads separate artifacts for UI and API jobs:
 - `monocart-report-api`
 - `test-results-ui`
 - `test-results-api`
+
+To publish the dashboard, configure GitHub Pages to deploy from the `gh-pages` branch at the repository root.
 
 ## Test Coverage
 

@@ -15,7 +15,6 @@ export default defineConfig({
   workers: process.env.CI ? 2 : undefined,
   reporter: [
     ['list'],
-    ['json', { outputFile: 'test-results/playwright-results.json' }],
     ['html', { outputFolder: 'playwright-report', open: 'never' }],
     [
       'monocart-reporter',

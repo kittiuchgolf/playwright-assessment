@@ -28,21 +28,7 @@ jobs:
         run: npm ci
 
       - name: Typecheck
-        id: typecheck
         run: npm run typecheck
-
-      - name: Add typecheck summary
-        if: always()
-        run: |
-          cat <<'SUMMARY' >> "$GITHUB_STEP_SUMMARY"
-          ## Typecheck
-
-          | Signal | Value |
-          | --- | --- |
-          | Command | `npm run typecheck` |
-          | Outcome | `${{ steps.typecheck.outcome }}` |
-          | Purpose | Validate TypeScript without emitting build output. |
-          SUMMARY
 
   lint:
     name: Lint
@@ -63,21 +49,7 @@ jobs:
         run: npm ci
 
       - name: Lint
-        id: lint
         run: npm run lint
-
-      - name: Add lint summary
-        if: always()
-        run: |
-          cat <<'SUMMARY' >> "$GITHUB_STEP_SUMMARY"
-          ## Lint
-
-          | Signal | Value |
-          | --- | --- |
-          | Command | `npm run lint` |
-          | Outcome | `${{ steps.lint.outcome }}` |
-          | Purpose | Enforce ESLint and Playwright test-quality rules. |
-          SUMMARY
 
   security:
     name: Security Audit
@@ -98,21 +70,7 @@ jobs:
         run: npm ci
 
       - name: Audit production and dev dependencies
-        id: audit
         run: npm run security:audit
-
-      - name: Add security audit summary
-        if: always()
-        run: |
-          cat <<'SUMMARY' >> "$GITHUB_STEP_SUMMARY"
-          ## Security Audit
-
-          | Signal | Value |
-          | --- | --- |
-          | Command | `npm run security:audit` |
-          | Outcome | `${{ steps.audit.outcome }}` |
-          | Purpose | Block high-severity npm dependency findings. |
-          SUMMARY
 
   ui-tests:
     name: UI Tests
@@ -140,7 +98,6 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Run UI tests
-        id: ui_tests
         run: npm run test:ui
 
       - name: Upload Playwright HTML report
@@ -169,15 +126,6 @@ jobs:
           path: test-results/
           retention-days: 7
           if-no-files-found: ignore
-
-      - name: Add UI test summary
-        if: always()
-        run: >
-          node scripts/write-test-summary.mjs
-          test-results/playwright-results.json
-          "UI Tests"
-          "npm run test:ui"
-          '{"Browser":"Chromium","Playwright report artifact":"playwright-report-ui","Monocart report artifact":"monocart-report-ui","Failure artifacts":"test-results-ui"}'
 
   api-tests:
     name: API Tests
@@ -215,12 +163,10 @@ jobs:
           fi
 
       - name: Run full API suite
-        id: full_api_suite
         if: steps.token.outputs.available == 'true'
         run: npm run test:api
 
       - name: Run token-free API suite
-        id: token_free_api_suite
         if: steps.token.outputs.available != 'true'
         run: npx playwright test tests/api --grep-invert @crud
 
@@ -251,11 +197,59 @@ jobs:
           retention-days: 7
           if-no-files-found: ignore
 
-      - name: Add API test summary
-        if: always()
-        run: >
-          node scripts/write-test-summary.mjs
-          test-results/playwright-results.json
-          "API Tests"
-          "npm run test:api"
-          '{"Token available":"${{ steps.token.outputs.available }}","Full API suite outcome":"${{ steps.full_api_suite.outcome }}","Token-free API suite outcome":"${{ steps.token_free_api_suite.outcome }}","Playwright report artifact":"playwright-report-api","Monocart report artifact":"monocart-report-api","Failure artifacts":"test-results-api"}'
+  deploy-dashboard:
+    name: Deploy Dashboard
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    needs:
+      - ui-tests
+      - api-tests
+    permissions:
+      contents: write
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Download report artifacts
+        uses: actions/download-artifact@v7
+        with:
+          path: dashboard-artifacts
+          pattern: '*-report-*'
+
+      - name: Prepare dashboard branch
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          remote_url="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+
+          if git ls-remote --exit-code --heads origin gh-pages >/dev/null 2>&1; then
+            git fetch origin gh-pages
+            git worktree add pages gh-pages
+          else
+            mkdir pages
+            git -C pages init
+            git -C pages checkout -b gh-pages
+            git -C pages remote add origin "$remote_url"
+          fi
+
+          git -C pages remote set-url origin "$remote_url"
+
+      - name: Build historical dashboard
+        run: npm run dashboard:build
+
+      - name: Publish dashboard
+        run: |
+          git -C pages add .
+
+          if git -C pages diff --cached --quiet; then
+            echo "No dashboard changes to publish."
+          else
+            git -C pages commit -m "Update dashboard for run ${GITHUB_RUN_NUMBER}"
+            git -C pages push origin HEAD:gh-pages
+          fi
