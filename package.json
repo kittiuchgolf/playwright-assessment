@@ -9,12 +9,15 @@
     "test:api": "playwright test tests/api",
     "test:headed": "playwright test --headed",
     "report": "playwright show-report",
+    "report:monocart": "monocart show-report monocart-report/index.html",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.0",
     "@types/node": "^24.0.0",
     "dotenv": "^16.4.7",
-    "typescript": "^5.7.3"
+    "monocart-reporter": "^1.6.36",
+    "typescript": "^5.7.3",
+    "zod": "^4.4.3"
   }
 }

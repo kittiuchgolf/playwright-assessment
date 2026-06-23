@@ -15,7 +15,14 @@ export default defineConfig({
   workers: process.env.CI ? 2 : undefined,
   reporter: [
     ['list'],
-    ['html', { open: 'never' }]
+    ['html', { outputFolder: 'playwright-report', open: 'never' }],
+    [
+      'monocart-reporter',
+      {
+        name: 'Playwright Assessment Report',
+        outputFile: 'monocart-report/index.html'
+      }
+    ]
   ],
   use: {
     trace: 'retain-on-failure',

@@ -1,4 +1,5 @@
 import { expect, type APIRequestContext, type APIResponse } from '@playwright/test';
+import { GoRestErrorListSchema, GoRestUserListSchema, GoRestUserSchema } from '../schemas/user.schema';
 import type { CreateUserPayload, GoRestError, GoRestUser, UpdateUserPayload } from '../types/user';
 
 export class GoRestClient {
@@ -37,24 +38,25 @@ export class GoRestClient {
 
   async expectUserResponse(response: APIResponse, expectedStatus: number): Promise<GoRestUser> {
     expect(response.status()).toBe(expectedStatus);
-    const body = (await response.json()) as GoRestUser;
+    const body = GoRestUserSchema.parse(await response.json());
 
-    expect(body.id).toEqual(expect.any(Number));
-    expect(body.name).toEqual(expect.any(String));
-    expect(body.email).toEqual(expect.stringContaining('@'));
-    expect(['male', 'female']).toContain(body.gender);
-    expect(['active', 'inactive']).toContain(body.status);
+    expect(body.email).toContain('@');
 
     return body;
+  }
+
+  async expectUserListResponse(response: APIResponse, expectedStatus: number): Promise<GoRestUser[]> {
+    expect(response.status()).toBe(expectedStatus);
+
+    return GoRestUserListSchema.parse(await response.json());
   }
 
   async expectErrorResponse(response: APIResponse, expectedStatus: number): Promise<GoRestError[]> {
     expect(response.status()).toBe(expectedStatus);
     const body = (await response.json()) as GoRestError[] | GoRestError;
-    const errors = Array.isArray(body) ? body : [body];
+    const errors = GoRestErrorListSchema.parse(Array.isArray(body) ? body : [body]);
 
     expect(errors.length).toBeGreaterThan(0);
-    expect(errors[0].message).toEqual(expect.any(String));
 
     return errors;
   }
