@@ -46,6 +46,13 @@ Run static TypeScript validation:
 npm run typecheck
 ```
 
+Run lint and dependency audit:
+
+```bash
+npm run lint
+npm run security:audit
+```
+
 Open reports after a run:
 
 ```bash
@@ -60,6 +67,8 @@ GitHub Actions runs on pushes to `main`, pushes to `feat/**`, and pull requests 
 The workflow is split into focused jobs:
 
 - `typecheck`
+- `lint`
+- `security`
 - `ui-tests`
 - `api-tests`
 

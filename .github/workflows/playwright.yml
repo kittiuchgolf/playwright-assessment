@@ -31,10 +31,55 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+  security:
+    name: Security Audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Audit production and dev dependencies
+        run: npm run security:audit
+
   ui-tests:
     name: UI Tests
     runs-on: ubuntu-latest
-    needs: typecheck
+    needs:
+      - typecheck
+      - lint
+      - security
     timeout-minutes: 15
 
     steps:
@@ -86,7 +131,10 @@ jobs:
   api-tests:
     name: API Tests
     runs-on: ubuntu-latest
-    needs: typecheck
+    needs:
+      - typecheck
+      - lint
+      - security
     timeout-minutes: 15
 
     env:
