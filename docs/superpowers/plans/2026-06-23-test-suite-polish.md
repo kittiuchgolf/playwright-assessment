@@ -63,4 +63,4 @@
 - [x] Run `npm run test:ui`.
 - [x] Run `npm run test:api`.
 - [x] Run `npm run test:smoke`.
-- [ ] Push and verify GitHub Actions.
+- [x] Push and verify GitHub Actions.
