@@ -28,7 +28,21 @@ jobs:
         run: npm ci
 
       - name: Typecheck
+        id: typecheck
         run: npm run typecheck
+
+      - name: Add typecheck summary
+        if: always()
+        run: |
+          cat <<'SUMMARY' >> "$GITHUB_STEP_SUMMARY"
+          ## Typecheck
+
+          | Signal | Value |
+          | --- | --- |
+          | Command | `npm run typecheck` |
+          | Outcome | `${{ steps.typecheck.outcome }}` |
+          | Purpose | Validate TypeScript without emitting build output. |
+          SUMMARY
 
   lint:
     name: Lint
@@ -49,7 +63,21 @@ jobs:
         run: npm ci
 
       - name: Lint
+        id: lint
         run: npm run lint
+
+      - name: Add lint summary
+        if: always()
+        run: |
+          cat <<'SUMMARY' >> "$GITHUB_STEP_SUMMARY"
+          ## Lint
+
+          | Signal | Value |
+          | --- | --- |
+          | Command | `npm run lint` |
+          | Outcome | `${{ steps.lint.outcome }}` |
+          | Purpose | Enforce ESLint and Playwright test-quality rules. |
+          SUMMARY
 
   security:
     name: Security Audit
@@ -70,7 +98,21 @@ jobs:
         run: npm ci
 
       - name: Audit production and dev dependencies
+        id: audit
         run: npm run security:audit
+
+      - name: Add security audit summary
+        if: always()
+        run: |
+          cat <<'SUMMARY' >> "$GITHUB_STEP_SUMMARY"
+          ## Security Audit
+
+          | Signal | Value |
+          | --- | --- |
+          | Command | `npm run security:audit` |
+          | Outcome | `${{ steps.audit.outcome }}` |
+          | Purpose | Block high-severity npm dependency findings. |
+          SUMMARY
 
   ui-tests:
     name: UI Tests
@@ -98,6 +140,7 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Run UI tests
+        id: ui_tests
         run: npm run test:ui
 
       - name: Upload Playwright HTML report
@@ -126,6 +169,22 @@ jobs:
           path: test-results/
           retention-days: 7
           if-no-files-found: ignore
+
+      - name: Add UI test summary
+        if: always()
+        run: |
+          cat <<'SUMMARY' >> "$GITHUB_STEP_SUMMARY"
+          ## UI Tests
+
+          | Signal | Value |
+          | --- | --- |
+          | Command | `npm run test:ui` |
+          | Outcome | `${{ steps.ui_tests.outcome }}` |
+          | Browser | Chromium |
+          | Playwright report artifact | `playwright-report-ui` |
+          | Monocart report artifact | `monocart-report-ui` |
+          | Failure artifacts | `test-results-ui` |
+          SUMMARY
 
   api-tests:
     name: API Tests
@@ -163,10 +222,12 @@ jobs:
           fi
 
       - name: Run full API suite
+        id: full_api_suite
         if: steps.token.outputs.available == 'true'
         run: npm run test:api
 
       - name: Run token-free API suite
+        id: token_free_api_suite
         if: steps.token.outputs.available != 'true'
         run: npx playwright test tests/api --grep-invert @crud
 
@@ -196,3 +257,19 @@ jobs:
           path: test-results/
           retention-days: 7
           if-no-files-found: ignore
+
+      - name: Add API test summary
+        if: always()
+        run: |
+          cat <<'SUMMARY' >> "$GITHUB_STEP_SUMMARY"
+          ## API Tests
+
+          | Signal | Value |
+          | --- | --- |
+          | Token available | `${{ steps.token.outputs.available }}` |
+          | Full API suite outcome | `${{ steps.full_api_suite.outcome || 'skipped' }}` |
+          | Token-free API suite outcome | `${{ steps.token_free_api_suite.outcome || 'skipped' }}` |
+          | Playwright report artifact | `playwright-report-api` |
+          | Monocart report artifact | `monocart-report-api` |
+          | Failure artifacts | `test-results-api` |
+          SUMMARY

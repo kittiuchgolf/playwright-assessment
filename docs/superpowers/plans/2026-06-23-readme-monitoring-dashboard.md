@@ -106,3 +106,34 @@ git diff --check
 ```
 
 Expected: only documentation files changed and no whitespace errors.
+
+### Task 4: Add GitHub Actions Job Summaries
+
+**Files:**
+- Modify: `.github/workflows/playwright.yml`
+- Modify: `README.md`
+- Modify: `docs/monitoring-dashboard.md`
+
+**Interfaces:**
+- Consumes: GitHub Actions `$GITHUB_STEP_SUMMARY`
+- Produces: Per-job Markdown summaries inside each workflow run
+
+- [x] **Step 1: Add summary steps to CI jobs**
+
+Each job writes a compact Markdown table to `$GITHUB_STEP_SUMMARY` with the command, outcome, and artifact names where relevant.
+
+- [x] **Step 2: Document summaries in README and monitoring dashboard**
+
+The README and dashboard now explain that GitHub Actions provides quick in-run summaries in addition to downloadable reports and artifacts.
+
+- [x] **Step 3: Verify workflow syntax and docs**
+
+Run:
+
+```bash
+git diff --check
+npm run typecheck
+npm run lint
+```
+
+Expected: no whitespace errors, typecheck passes, and lint passes.

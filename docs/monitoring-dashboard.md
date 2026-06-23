@@ -11,6 +11,7 @@ This dashboard explains how project health is monitored through GitHub Actions, 
 | Dependency risk | High-severity audit findings absent | `Security Audit` CI job | Passing |
 | UI behavior | SauceDemo scenarios pass | `UI Tests` CI job | Passing |
 | API behavior | GoREST scenarios pass | `API Tests` CI job | Passing |
+| Run summary | Job summaries are written | GitHub Actions summary panel | Available inside each job |
 | Reports | HTML and Monocart artifacts uploaded | GitHub Actions artifacts | Available after each test job |
 
 ## CI Quality Gates
@@ -26,6 +27,20 @@ GitHub Actions runs on pull requests targeting `main` and pushes to `main`.
 | `API Tests` | `npm run test:api` or token-free fallback | No | Validates GoREST API behavior and schemas. |
 
 The UI and API jobs wait for static checks first. This saves runtime because browser/API tests do not run when the code already fails typecheck, lint, or audit.
+
+## GitHub Actions Job Summaries
+
+Each workflow job writes a Markdown summary to `$GITHUB_STEP_SUMMARY`.
+
+| Job | Summary Includes |
+| --- | --- |
+| `Typecheck` | Command, outcome, and purpose. |
+| `Lint` | Command, outcome, and linting purpose. |
+| `Security Audit` | Command, outcome, and security purpose. |
+| `UI Tests` | Command, outcome, browser, and UI artifact names. |
+| `API Tests` | Token availability, selected API suite outcome, and API artifact names. |
+
+Use the job summary for a quick health check. Use Playwright and Monocart artifacts when a failure needs trace, screenshot, video, or detailed step inspection.
 
 ## Test Layers
 
