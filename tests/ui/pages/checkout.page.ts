@@ -3,11 +3,20 @@ import { expect, type Page } from '@playwright/test';
 export class CheckoutPage {
   constructor(private readonly page: Page) {}
 
+  async expectInformationStep(): Promise<void> {
+    await expect(this.page).toHaveURL(/checkout-step-one\.html/);
+    await expect(this.page.locator('[data-test="title"]')).toHaveText('Checkout: Your Information');
+  }
+
   async fillCustomerInformation(firstName: string, lastName: string, postalCode: string): Promise<void> {
     await this.page.locator('[data-test="firstName"]').fill(firstName);
     await this.page.locator('[data-test="lastName"]').fill(lastName);
     await this.page.locator('[data-test="postalCode"]').fill(postalCode);
     await this.page.locator('[data-test="continue"]').click();
+  }
+
+  async expectValidationError(message: string): Promise<void> {
+    await expect(this.page.locator('[data-test="error"]')).toHaveText(message);
   }
 
   async expectOverviewContains(itemName: string): Promise<void> {
