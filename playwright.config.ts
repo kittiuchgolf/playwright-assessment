@@ -42,6 +42,7 @@ export default defineConfig({
     {
       name: 'api',
       testDir: './tests/api',
+      retries: 0,
       use: {
         baseURL: 'https://gorest.co.in/public/v2/'
       }
