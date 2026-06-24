@@ -9,8 +9,7 @@ export function buildRootPage(runs) {
         ${buildRunMetrics(run)}
       </div>
       <div class="run-links">
-        <a class="pill" href="${escapeHtml(run.monocart)}">Monocart</a>
-        <a class="pill" href="${escapeHtml(run.playwright)}">Playwright</a>
+        ${buildReportLinks(run)}
         <a class="pill" href="${escapeHtml(run.actionUrl)}">Actions</a>
       </div>
     </article>
@@ -187,6 +186,15 @@ function buildRunMetrics(run) {
     ${ui ? `<span>UI ${escapeHtml(formatPassed(ui))}${ui.duration ? ` · ${escapeHtml(ui.duration)}` : ''}</span>` : ''}
     ${api ? `<span>API ${escapeHtml(formatPassed(api))}${api.duration ? ` · ${escapeHtml(api.duration)}` : ''}</span>` : ''}
   </div>`;
+}
+
+function buildReportLinks(run) {
+  if (run.reportsRetained === false) {
+    return '<span class="pill muted">Reports expired</span>';
+  }
+
+  return `<a class="pill" href="${escapeHtml(run.monocart)}">Monocart</a>
+        <a class="pill" href="${escapeHtml(run.playwright)}">Playwright</a>`;
 }
 
 function formatPassed(summary) {

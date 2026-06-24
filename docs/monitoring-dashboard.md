@@ -54,7 +54,7 @@ The dashboard home page shows a monitoring summary with latest result, runs trac
 - **Open Monocart report**
 - **Open Playwright report**
 
-It also keeps a run history list with pass/fail totals, UI/API durations, and links to each historical report, so older results remain visible as the project runs over time.
+It also keeps a run history list with pass/fail totals, UI/API durations, and links to retained historical reports, so older results remain visible as the project runs over time.
 
 To make the dashboard public, configure GitHub Pages to deploy from the `gh-pages` branch at the repository root. For private repositories, confirm the repository plan and visibility settings before publishing reports.
 
@@ -79,7 +79,7 @@ To make the dashboard public, configure GitHub Pages to deploy from the `gh-page
 
 The Pages dashboard stores Playwright and Monocart HTML reports by workflow run. The downloadable artifacts remain useful for traces, screenshots, videos, and short-term debugging.
 
-The dashboard builder reads Monocart `index.json` files for each published run and stores summarized UI/API metrics in `runs.json`. When a new run publishes, it also backfills metrics for older runs that already have Monocart JSON files on `gh-pages`.
+The dashboard builder reads Monocart `index.json` files for each published run and stores summarized UI/API metrics in `runs.json`. When a new run publishes, it also backfills metrics for older runs that already have Monocart JSON files on `gh-pages`. To keep Pages deploys fast, the builder keeps detailed report folders for the latest 20 runs and removes older `runs/<id>/` report folders while preserving their summary rows in `runs.json`.
 
 Local report commands:
 
@@ -123,6 +123,7 @@ npx playwright test --grep @crud
 
 - Branch protection is documented in `docs/branch-protection.md`, but it is not enabled because the private repository plan does not support it.
 - GitHub Pages must be enabled from the `gh-pages` branch before the dashboard is visible.
+- Detailed historical report HTML is retained for the latest 20 published runs; older runs keep summary metrics only.
 - Published reports may be public depending on repository and Pages settings, so report content should not include secrets.
 - The UI suite currently targets Chromium only.
 - GoREST and SauceDemo are public external services, so availability can affect test runs.

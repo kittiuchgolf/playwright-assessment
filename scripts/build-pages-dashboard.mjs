@@ -16,6 +16,7 @@ const sha = process.env.GITHUB_SHA ?? 'local';
 const refName = process.env.GITHUB_REF_NAME ?? 'local';
 const createdAt = process.env.DASHBOARD_CREATED_AT ?? new Date().toISOString();
 const actionUrl = `${serverUrl}/${repository}/actions/runs/${runId}`;
+const reportRetentionLimit = Number.parseInt(process.env.REPORT_RETENTION_LIMIT ?? '20', 10);
 
 const reportSources = [
   {
@@ -107,6 +108,23 @@ function totalReports(reports) {
   });
 }
 
+function applyReportRetention(runs) {
+  const retainedCount = Number.isFinite(reportRetentionLimit) && reportRetentionLimit > 0
+    ? reportRetentionLimit
+    : 20;
+
+  return runs.map((run, index) => ({
+    ...run,
+    reportsRetained: index < retainedCount
+  }));
+}
+
+async function pruneExpiredReportFolders(runs) {
+  await Promise.all(runs
+    .filter((run) => !run.reportsRetained)
+    .map((run) => rm(path.join(pagesDir, 'runs', run.id), { recursive: true, force: true })));
+}
+
 async function enrichRun(run) {
   const runDir = path.join(pagesDir, 'runs', run.id);
   const reports = {
@@ -178,10 +196,11 @@ async function main() {
     monocart: `${runPath}/monocart/`,
     playwright: `${runPath}/playwright/`
   };
-  const runs = await Promise.all([
+  const enrichedRuns = await Promise.all([
     run,
     ...(await readRuns(runsPath)).filter((item) => item.id !== runId)
   ].map(enrichRun));
+  const runs = applyReportRetention(enrichedRuns);
 
   await mkdir(path.join(runDir, 'monocart'), { recursive: true });
   await mkdir(path.join(runDir, 'playwright'), { recursive: true });
@@ -197,6 +216,7 @@ async function main() {
     run,
     reportType: 'Playwright'
   }));
+  await pruneExpiredReportFolders(runs);
   await writeFile(runsPath, `${JSON.stringify(runs, null, 2)}\n`);
   await writeFile(path.join(pagesDir, 'index.html'), buildRootPage(runs));
   await writeFile(path.join(pagesDir, '.nojekyll'), '');

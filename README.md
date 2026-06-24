@@ -114,7 +114,7 @@ See [Monitoring Dashboard](docs/monitoring-dashboard.md) for CI health, GitHub P
 
 ## Reports and Artifacts
 
-On pull requests, CI uploads Playwright and Monocart reports as workflow artifacts. On pushes to `main`, CI also publishes a static historical dashboard to the `gh-pages` branch. After the workflow file is on the default branch, manual runs from the GitHub Actions **Run workflow** button also publish the dashboard for that run. The dashboard summarizes historical pass/fail totals across runs and opens with two primary choices:
+On pull requests, CI uploads Playwright and Monocart reports as workflow artifacts. On pushes to `main`, CI also publishes a static historical dashboard to the `gh-pages` branch. After the workflow file is on the default branch, manual runs from the GitHub Actions **Run workflow** button also publish the dashboard for that run. The dashboard summarizes historical pass/fail totals across runs, keeps detailed report folders for the latest 20 runs, and opens with two primary choices:
 
 - **Open Monocart report**
 - **Open Playwright report**
