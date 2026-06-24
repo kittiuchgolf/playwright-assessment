@@ -1,0 +1,1066 @@
+{
+    "name": "Playwright Assessment Report",
+    "date": 1782309307924,
+    "dateH": "6/24/2026, 1:55:07 PM",
+    "duration": 4648,
+    "durationH": "4.6s",
+    "cwd": "/home/runner/work/playwright-assessment/playwright-assessment",
+    "outputFile": "monocart-report/index.html",
+    "outputDir": "monocart-report",
+    "metadata": {
+        "ci": {
+            "commitHref": "https://github.com/kittiuchgolf/playwright-assessment/commit/b684a865cd110a9bb327234faf3c7f1c785eb445",
+            "commitHash": "b684a865cd110a9bb327234faf3c7f1c785eb445",
+            "buildHref": "https://github.com/kittiuchgolf/playwright-assessment/actions/runs/28103703646"
+        },
+        "gitCommit": {
+            "shortHash": "b684a86",
+            "hash": "b684a865cd110a9bb327234faf3c7f1c785eb445",
+            "subject": "ci: add manual dashboard deploy (#13)",
+            "body": "ci: add manual dashboard deploy (#13)",
+            "author": {
+                "name": "Kittituch R.",
+                "email": "54532101+kittiuchgolf@users.noreply.github.com",
+                "time": 1782309274000
+            },
+            "committer": {
+                "name": "GitHub",
+                "email": "noreply@github.com",
+                "time": 1782309274000
+            },
+            "branch": "main"
+        },
+        "actualWorkers": 2
+    },
+    "system": {
+        "cpu": {
+            "color": "#117DBB",
+            "count": 4,
+            "model": "AMD EPYC 9V74 80-Core Processor",
+            "speed": 0
+        },
+        "mem": {
+            "color": "#8B12AE",
+            "total": 16766423040
+        },
+        "arch": "x64",
+        "platform": "linux",
+        "release": "6.17.0-1018-azure",
+        "type": "Linux",
+        "version": "#18~24.04.1-Ubuntu SMP Thu May 28 16:39:11 UTC 2026",
+        "uptime": 39.89,
+        "hostname": "runnervm7b5n9",
+        "pid": 2360,
+        "node": "22.22.3",
+        "v8": "12.4.254.21-node.56",
+        "timestampStart": 1782309307924,
+        "ticks": [
+            {
+                "cpu": {
+                    "percent": 0.25
+                },
+                "mem": {
+                    "free": 15221903360
+                },
+                "timestamp": 1782309309927
+            },
+            {
+                "cpu": {
+                    "percent": 3.78
+                },
+                "mem": {
+                    "free": 15328980992
+                },
+                "timestamp": 1782309311927
+            },
+            {
+                "cpu": {
+                    "percent": 2.78
+                },
+                "mem": {
+                    "free": 15340191744
+                },
+                "timestamp": 1782309312567
+            }
+        ],
+        "workers": 2,
+        "jobs": [
+            {
+                "caseId": "13d38c345b128110a218",
+                "parallelIndex": 0,
+                "workerIndex": 0,
+                "timestamp": 1782309308696,
+                "duration": 1314
+            },
+            {
+                "caseId": "22365603ea6b1cdb6359",
+                "parallelIndex": 1,
+                "workerIndex": 1,
+                "timestamp": 1782309308668,
+                "duration": 1690
+            },
+            {
+                "caseId": "0874bb07e7a745f98939",
+                "parallelIndex": 0,
+                "workerIndex": 0,
+                "timestamp": 1782309310012,
+                "duration": 1495
+            },
+            {
+                "caseId": "f9c6859af95badb00083",
+                "parallelIndex": 1,
+                "workerIndex": 1,
+                "timestamp": 1782309310363,
+                "duration": 349
+            },
+            {
+                "caseId": "ce3782c29dec064827b8",
+                "parallelIndex": 1,
+                "workerIndex": 1,
+                "timestamp": 1782309310713,
+                "duration": 352
+            }
+        ],
+        "cwd": "/home/runner/work/playwright-assessment/playwright-assessment",
+        "configFile": "playwright.config.ts",
+        "playwright": "1.61.0",
+        "monocart": "1.6.36",
+        "testDir": "tests",
+        "outputFile": "monocart-report/index.html",
+        "outputDir": "monocart-report",
+        "timestampEnd": 1782309312572
+    },
+    "artifacts": [],
+    "trends": [],
+    "columns": [
+        {
+            "id": "caseType",
+            "name": "",
+            "width": 36,
+            "sortable": false,
+            "align": "center",
+            "formatter": "iconCaseType",
+            "detailed": false
+        },
+        {
+            "id": "title",
+            "name": "Title",
+            "searchable": true,
+            "width": 350,
+            "maxWidth": 1230,
+            "detailed": false
+        },
+        {
+            "id": "type",
+            "name": "Type",
+            "width": 50,
+            "sortable": false,
+            "align": "center",
+            "formatter": "iconType",
+            "detailed": false
+        },
+        {
+            "id": "duration",
+            "name": "Duration",
+            "align": "right",
+            "sortAsc": false,
+            "formatter": "duration",
+            "detailed": false
+        },
+        {
+            "id": "errors",
+            "name": "Errors",
+            "width": 60,
+            "align": "center",
+            "comparer": "errors",
+            "formatter": "errors",
+            "detailed": false
+        },
+        {
+            "id": "logs",
+            "name": "Logs",
+            "width": 60,
+            "align": "center",
+            "comparer": "logs",
+            "formatter": "logs",
+            "detailed": false
+        },
+        {
+            "id": "annotations",
+            "name": "Annotations",
+            "width": 100,
+            "markdown": true,
+            "searchable": true,
+            "comparer": "annotations",
+            "formatter": "annotations",
+            "detailed": false
+        },
+        {
+            "id": "attachments",
+            "name": "Attachments",
+            "width": 100,
+            "align": "center",
+            "formatter": "attachments",
+            "detailed": false
+        },
+        {
+            "id": "status",
+            "name": "Status",
+            "align": "center",
+            "detailed": false
+        },
+        {
+            "id": "expectedStatus",
+            "name": "Expected",
+            "align": "center",
+            "detailed": false
+        },
+        {
+            "id": "outcome",
+            "name": "Outcome",
+            "align": "center",
+            "width": 85,
+            "detailed": false
+        },
+        {
+            "id": "retry",
+            "name": "Retry",
+            "align": "center",
+            "width": 50,
+            "detailed": false
+        },
+        {
+            "id": "location",
+            "name": "Location",
+            "classMap": "mcr-location",
+            "width": 200,
+            "maxWidth": 1981,
+            "detailed": false
+        }
+    ],
+    "rows": [
+        {
+            "id": "ax745tg3ergj68ybxuir",
+            "title": "api",
+            "type": "suite",
+            "suiteType": "project",
+            "caseNum": 5,
+            "subs": [
+                {
+                    "id": "7d08affc2ce055c80dfd",
+                    "title": "api/users.spec.ts",
+                    "type": "suite",
+                    "suiteType": "file",
+                    "caseNum": 5,
+                    "subs": [
+                        {
+                            "id": "7d08affc2ce055c80dfd",
+                            "title": "GoREST users API",
+                            "type": "suite",
+                            "suiteType": "describe",
+                            "caseNum": 5,
+                            "subs": [
+                                {
+                                    "id": "13d38c345b128110a218",
+                                    "title": "lists users with expected response shape @smoke @api",
+                                    "type": "case",
+                                    "caseType": "passed",
+                                    "ok": true,
+                                    "outcome": "expected",
+                                    "expectedStatus": "passed",
+                                    "location": "tests/api/users.spec.ts:5:7",
+                                    "timestamps": [
+                                        1782309308696,
+                                        1782309310010
+                                    ],
+                                    "duration": 1314,
+                                    "timeout": 45000,
+                                    "retry": 0,
+                                    "status": "passed",
+                                    "stepNum": 10,
+                                    "stepFailed": 0,
+                                    "stepSubs": true,
+                                    "subs": [
+                                        {
+                                            "id": "5ide2uz2q5yvflaedoeo",
+                                            "title": "Before Hooks",
+                                            "type": "step",
+                                            "stepType": "hook",
+                                            "duration": 29,
+                                            "location": "",
+                                            "subs": [
+                                                {
+                                                    "id": "gqne8usyx5p93huo7sld",
+                                                    "title": "Fixture \"request\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 12,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "t27a9bco2g6jmqaoycmf",
+                                                            "title": "Create request context",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 3,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "mksqqbia7cyoptk53449",
+                                                    "title": "Fixture \"goRestClient\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 1,
+                                                    "location": "tests/fixtures/test.ts:20:26"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "wnolhwtsccdh3ztvtnmb",
+                                            "title": "GET \"users\"",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 1244,
+                                            "location": "tests/api/clients/gorest-client.ts:12:25"
+                                        },
+                                        {
+                                            "id": "wdmkyx6hupcvrvszet7m",
+                                            "title": "Expect \"toBe\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 1,
+                                            "location": "tests/api/clients/gorest-client.ts:49:31"
+                                        },
+                                        {
+                                            "id": "x37x73uxgj1cr871sqn0",
+                                            "title": "Expect \"toBeGreaterThan\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 0,
+                                            "location": "tests/api/users.spec.ts:9:26"
+                                        },
+                                        {
+                                            "id": "xane5h9pff4z3u6kx125",
+                                            "title": "After Hooks",
+                                            "type": "step",
+                                            "stepType": "hook",
+                                            "duration": 14,
+                                            "location": "",
+                                            "subs": [
+                                                {
+                                                    "id": "4xv5hifmwi0njdjz330t",
+                                                    "title": "Fixture \"goRestClient\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:20:26"
+                                                },
+                                                {
+                                                    "id": "ocx0v231rhr6zte912rx",
+                                                    "title": "Fixture \"request\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 5,
+                                                    "location": ""
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "22365603ea6b1cdb6359",
+                                    "title": "gets user details for an existing user @api",
+                                    "type": "case",
+                                    "caseType": "passed",
+                                    "ok": true,
+                                    "outcome": "expected",
+                                    "expectedStatus": "passed",
+                                    "location": "tests/api/users.spec.ts:12:7",
+                                    "timestamps": [
+                                        1782309308668,
+                                        1782309310358
+                                    ],
+                                    "duration": 1690,
+                                    "timeout": 45000,
+                                    "retry": 0,
+                                    "status": "passed",
+                                    "stepNum": 14,
+                                    "stepFailed": 0,
+                                    "stepSubs": true,
+                                    "subs": [
+                                        {
+                                            "id": "n7r04w34b80zhw9ukemz",
+                                            "title": "Before Hooks",
+                                            "type": "step",
+                                            "stepType": "hook",
+                                            "duration": 26,
+                                            "location": "",
+                                            "subs": [
+                                                {
+                                                    "id": "lcaq11kq172yw11vc7ca",
+                                                    "title": "Fixture \"request\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 10,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "50afia1y50wjq03rpohh",
+                                                            "title": "Create request context",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 3,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "gs7bzk7z0hbrlfxh24nh",
+                                                    "title": "Fixture \"goRestClient\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:20:26"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "37t0079gb3ekhy7urc42",
+                                            "title": "GET \"users\"",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 1286,
+                                            "location": "tests/api/clients/gorest-client.ts:12:25"
+                                        },
+                                        {
+                                            "id": "8akh3stjsorwd7sexami",
+                                            "title": "Expect \"toBe\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 0,
+                                            "location": "tests/api/clients/gorest-client.ts:49:31"
+                                        },
+                                        {
+                                            "id": "wkjqgq3kqwtwvu3l2119",
+                                            "title": "Expect \"toBeGreaterThan\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 0,
+                                            "location": "tests/api/users.spec.ts:15:26"
+                                        },
+                                        {
+                                            "id": "e5a0g0brl1tcf1q8j7br",
+                                            "title": "GET \"users/8517645\"",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 335,
+                                            "location": "tests/api/clients/gorest-client.ts:16:25"
+                                        },
+                                        {
+                                            "id": "tzx5z36yibfenirte4ze",
+                                            "title": "Expect \"toBe\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 0,
+                                            "location": "tests/api/clients/gorest-client.ts:40:31"
+                                        },
+                                        {
+                                            "id": "9m1cli46b2sl3fdyksit",
+                                            "title": "Expect \"toContain\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 0,
+                                            "location": "tests/api/clients/gorest-client.ts:43:24"
+                                        },
+                                        {
+                                            "id": "cjcdqyc597ppkr7ujrka",
+                                            "title": "Expect \"toBe\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 0,
+                                            "location": "tests/api/users.spec.ts:20:21"
+                                        },
+                                        {
+                                            "id": "eeawow8cxd2oujfu0ui0",
+                                            "title": "After Hooks",
+                                            "type": "step",
+                                            "stepType": "hook",
+                                            "duration": 11,
+                                            "location": "",
+                                            "subs": [
+                                                {
+                                                    "id": "gdren9i7qkvf00q7j33m",
+                                                    "title": "Fixture \"goRestClient\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 1,
+                                                    "location": "tests/fixtures/test.ts:20:26"
+                                                },
+                                                {
+                                                    "id": "m3x3nq2uge5ikekhbmtw",
+                                                    "title": "Fixture \"request\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 4,
+                                                    "location": ""
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "0874bb07e7a745f98939",
+                                    "title": "creates, updates, and deletes a user with bearer token auth @smoke @api @crud",
+                                    "type": "case",
+                                    "caseType": "passed",
+                                    "ok": true,
+                                    "outcome": "expected",
+                                    "expectedStatus": "passed",
+                                    "location": "tests/api/users.spec.ts:23:7",
+                                    "timestamps": [
+                                        1782309310012,
+                                        1782309311507
+                                    ],
+                                    "duration": 1495,
+                                    "timeout": 45000,
+                                    "retry": 0,
+                                    "status": "passed",
+                                    "stepNum": 21,
+                                    "stepFailed": 0,
+                                    "stepSubs": true,
+                                    "subs": [
+                                        {
+                                            "id": "cd0uotdmxtqujmqhmc28",
+                                            "title": "Before Hooks",
+                                            "type": "step",
+                                            "stepType": "hook",
+                                            "duration": 15,
+                                            "location": "",
+                                            "subs": [
+                                                {
+                                                    "id": "k0civzta9igzfz7u4rrt",
+                                                    "title": "Fixture \"request\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 7,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "l6xpww3b7gzmzieen522",
+                                                            "title": "Create request context",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 5,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "ijd0d2gbajj1g41kjhed",
+                                                    "title": "Fixture \"authenticatedGoRestClient\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 1,
+                                                    "location": "tests/fixtures/test.ts:20:26"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "t3lixqkhyj7ezhh57cx3",
+                                            "title": "POST \"users\"",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 374,
+                                            "location": "tests/api/clients/gorest-client.ts:20:25"
+                                        },
+                                        {
+                                            "id": "iz77vr22jzu26fts8a8t",
+                                            "title": "Expect \"toBe\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 0,
+                                            "location": "tests/api/clients/gorest-client.ts:40:31"
+                                        },
+                                        {
+                                            "id": "8if93u9ami06wtyqxoo8",
+                                            "title": "Expect \"toContain\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 1,
+                                            "location": "tests/api/clients/gorest-client.ts:43:24"
+                                        },
+                                        {
+                                            "id": "ifrthsozdd5ngqwxsoy8",
+                                            "title": "Expect \"toMatchObject\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 1,
+                                            "location": "tests/api/users.spec.ts:34:27"
+                                        },
+                                        {
+                                            "id": "dzawz7x1j604dntlv7bk",
+                                            "title": "PUT \"users/8518893\"",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 368,
+                                            "location": "tests/api/clients/gorest-client.ts:27:25"
+                                        },
+                                        {
+                                            "id": "95cyvopm0pkxx36zqc3s",
+                                            "title": "Expect \"toBe\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 0,
+                                            "location": "tests/api/clients/gorest-client.ts:40:31"
+                                        },
+                                        {
+                                            "id": "d0fqwaktja3u4e9sviqx",
+                                            "title": "Expect \"toContain\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 1,
+                                            "location": "tests/api/clients/gorest-client.ts:43:24"
+                                        },
+                                        {
+                                            "id": "akxe1jtuauomtk1xc87g",
+                                            "title": "Expect \"toBe\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 0,
+                                            "location": "tests/api/users.spec.ts:41:32"
+                                        },
+                                        {
+                                            "id": "tp8g70e7zbubrz4jt8px",
+                                            "title": "Expect \"toBe\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 0,
+                                            "location": "tests/api/users.spec.ts:42:34"
+                                        },
+                                        {
+                                            "id": "ecwi1idqkg8ess0khwwh",
+                                            "title": "DELETE \"users/8518893\"",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 388,
+                                            "location": "tests/api/clients/gorest-client.ts:34:31"
+                                        },
+                                        {
+                                            "id": "52piemyu093f2ferdvgl",
+                                            "title": "Expect \"toBe\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 0,
+                                            "location": "tests/api/users.spec.ts:45:39"
+                                        },
+                                        {
+                                            "id": "tpteh4up4a8goaxwfrzf",
+                                            "title": "GET \"users/8518893\"",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 325,
+                                            "location": "tests/api/clients/gorest-client.ts:16:25"
+                                        },
+                                        {
+                                            "id": "cedrc3f0fltxbakqxgqo",
+                                            "title": "Expect \"toBe\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 0,
+                                            "location": "tests/api/clients/gorest-client.ts:55:31"
+                                        },
+                                        {
+                                            "id": "2j7q7niuh91mwq23g5vt",
+                                            "title": "Expect \"toBeGreaterThan\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 0,
+                                            "location": "tests/api/clients/gorest-client.ts:59:27"
+                                        },
+                                        {
+                                            "id": "v85z8xde1qbqjzq1k6lw",
+                                            "title": "After Hooks",
+                                            "type": "step",
+                                            "stepType": "hook",
+                                            "duration": 9,
+                                            "location": "",
+                                            "subs": [
+                                                {
+                                                    "id": "r4hmvorjp84tuf6ra04l",
+                                                    "title": "Fixture \"authenticatedGoRestClient\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:20:26"
+                                                },
+                                                {
+                                                    "id": "nvwomzc1qhdi0wuedu45",
+                                                    "title": "Fixture \"request\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 2,
+                                                    "location": ""
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "f9c6859af95badb00083",
+                                    "title": "rejects unauthenticated user creation @api @negative",
+                                    "type": "case",
+                                    "caseType": "passed",
+                                    "ok": true,
+                                    "outcome": "expected",
+                                    "expectedStatus": "passed",
+                                    "location": "tests/api/users.spec.ts:64:7",
+                                    "timestamps": [
+                                        1782309310363,
+                                        1782309310712
+                                    ],
+                                    "duration": 349,
+                                    "timeout": 45000,
+                                    "retry": 0,
+                                    "status": "passed",
+                                    "stepNum": 10,
+                                    "stepFailed": 0,
+                                    "stepSubs": true,
+                                    "subs": [
+                                        {
+                                            "id": "8apdliebad0xp1zhpfqm",
+                                            "title": "Before Hooks",
+                                            "type": "step",
+                                            "stepType": "hook",
+                                            "duration": 8,
+                                            "location": "",
+                                            "subs": [
+                                                {
+                                                    "id": "3zmyyer47srxl3we6xv7",
+                                                    "title": "Fixture \"request\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 3,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "iz5qraxtva9v54g8gqsh",
+                                                            "title": "Create request context",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 1,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "lu8zcyid2dkrq4qp60ac",
+                                                    "title": "Fixture \"goRestClient\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:20:26"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "gn4zs238k16rq9nkru1q",
+                                            "title": "POST \"users\"",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 329,
+                                            "location": "tests/api/clients/gorest-client.ts:20:25"
+                                        },
+                                        {
+                                            "id": "2gqlnbtp481yhl2ukzxq",
+                                            "title": "Expect \"toBe\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 0,
+                                            "location": "tests/api/clients/gorest-client.ts:55:31"
+                                        },
+                                        {
+                                            "id": "4qw4v7pamjc070y0ofzi",
+                                            "title": "Expect \"toBeGreaterThan\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 0,
+                                            "location": "tests/api/clients/gorest-client.ts:59:27"
+                                        },
+                                        {
+                                            "id": "u5xjzemrwm8dsr5yjyj5",
+                                            "title": "After Hooks",
+                                            "type": "step",
+                                            "stepType": "hook",
+                                            "duration": 6,
+                                            "location": "",
+                                            "subs": [
+                                                {
+                                                    "id": "cfv1cjrkkllgfxeuwgab",
+                                                    "title": "Fixture \"goRestClient\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:20:26"
+                                                },
+                                                {
+                                                    "id": "kn99liegq2u1ixqnec2p",
+                                                    "title": "Fixture \"request\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 2,
+                                                    "location": ""
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "ce3782c29dec064827b8",
+                                    "title": "returns not found for an unknown user id @api @negative",
+                                    "type": "case",
+                                    "caseType": "passed",
+                                    "ok": true,
+                                    "outcome": "expected",
+                                    "expectedStatus": "passed",
+                                    "location": "tests/api/users.spec.ts:70:7",
+                                    "timestamps": [
+                                        1782309310713,
+                                        1782309311065
+                                    ],
+                                    "duration": 352,
+                                    "timeout": 45000,
+                                    "retry": 0,
+                                    "status": "passed",
+                                    "stepNum": 10,
+                                    "stepFailed": 0,
+                                    "stepSubs": true,
+                                    "subs": [
+                                        {
+                                            "id": "9ew021f62cavd7642jqa",
+                                            "title": "Before Hooks",
+                                            "type": "step",
+                                            "stepType": "hook",
+                                            "duration": 12,
+                                            "location": "",
+                                            "subs": [
+                                                {
+                                                    "id": "5iscbp6c3k1ie25x6a8k",
+                                                    "title": "Fixture \"request\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 6,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "7ywcihhrw7cj97jidpge",
+                                                            "title": "Create request context",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 5,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "hdyelvvktsrg9raevwcj",
+                                                    "title": "Fixture \"goRestClient\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:20:26"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "d1f7s6xlqn9u70t4acup",
+                                            "title": "GET \"users/0\"",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 329,
+                                            "location": "tests/api/clients/gorest-client.ts:16:25"
+                                        },
+                                        {
+                                            "id": "mr1fkw2l3zetwgtfhe6k",
+                                            "title": "Expect \"toBe\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 0,
+                                            "location": "tests/api/clients/gorest-client.ts:55:31"
+                                        },
+                                        {
+                                            "id": "ktg6uq4lf0k8pjlpgpbs",
+                                            "title": "Expect \"toBeGreaterThan\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 0,
+                                            "location": "tests/api/clients/gorest-client.ts:59:27"
+                                        },
+                                        {
+                                            "id": "l9yczdtncu5e8pyxqryh",
+                                            "title": "After Hooks",
+                                            "type": "step",
+                                            "stepType": "hook",
+                                            "duration": 8,
+                                            "location": "",
+                                            "subs": [
+                                                {
+                                                    "id": "oyr8o5b6hf0m7fgpuceq",
+                                                    "title": "Fixture \"goRestClient\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:20:26"
+                                                },
+                                                {
+                                                    "id": "huxdoq27zacwfhxu6prh",
+                                                    "title": "Fixture \"request\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 2,
+                                                    "location": ""
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "location": "tests/api/users.spec.ts:4:6"
+                        }
+                    ],
+                    "location": "tests/api/users.spec.ts:0:0"
+                }
+            ]
+        }
+    ],
+    "formatters": {},
+    "suiteTypes": [
+        "project",
+        "file",
+        "describe",
+        "shard"
+    ],
+    "caseTypes": [
+        "passed",
+        "flaky",
+        "skipped",
+        "failed"
+    ],
+    "traceViewerUrl": "https://trace.playwright.dev/?trace={traceUrl}",
+    "tags": {
+        "smoke": {
+            "value": 2
+        },
+        "api": {
+            "value": 5
+        },
+        "crud": {
+            "value": 1
+        },
+        "negative": {
+            "value": 2
+        }
+    },
+    "summary": {
+        "tests": {
+            "name": "Tests",
+            "value": 5,
+            "nav": true,
+            "id": "tests"
+        },
+        "passed": {
+            "name": "Passed",
+            "value": 5,
+            "color": "green",
+            "nav": true,
+            "id": "passed",
+            "percent": "100.0%"
+        },
+        "flaky": {
+            "name": "Flaky",
+            "value": 0,
+            "color": "orange",
+            "nav": true,
+            "id": "flaky",
+            "percent": "0.0%"
+        },
+        "skipped": {
+            "name": "Skipped",
+            "value": 0,
+            "color": "gray",
+            "nav": true,
+            "id": "skipped",
+            "percent": "0.0%"
+        },
+        "failed": {
+            "name": "Failed",
+            "value": 0,
+            "color": "#d00",
+            "nav": true,
+            "id": "failed",
+            "percent": "0.0%"
+        },
+        "steps": {
+            "name": "Steps",
+            "value": 65,
+            "id": "steps"
+        },
+        "suites": {
+            "name": "Suites",
+            "value": 1,
+            "id": "suites"
+        },
+        "projects": {
+            "name": "Projects",
+            "description": "Suite type is project",
+            "value": 1,
+            "id": "projects"
+        },
+        "files": {
+            "name": "Files",
+            "description": "Suite type is file",
+            "value": 1,
+            "id": "files"
+        },
+        "describes": {
+            "name": "Describes",
+            "description": "Suite type is describe",
+            "value": 1,
+            "id": "describes"
+        },
+        "shards": {
+            "name": "Shards",
+            "description": "Suite type is shard (only in shading mode)",
+            "value": 0,
+            "id": "shards"
+        },
+        "retries": {
+            "name": "Retries",
+            "value": 0,
+            "id": "retries"
+        },
+        "errors": {
+            "name": "Errors",
+            "value": 0,
+            "id": "errors"
+        },
+        "logs": {
+            "name": "Logs",
+            "value": 0,
+            "id": "logs"
+        },
+        "attachments": {
+            "name": "Attachments",
+            "value": 0,
+            "id": "attachments"
+        }
+    },
+    "pieChart": {
+        "ns": "mcr-pie",
+        "width": 360,
+        "height": 150,
+        "margin": 10,
+        "svg": "<svg viewBox=\"0 0 360 150\" width=\"100%\" height=\"100%\" xmlns=\"http://www.w3.org/2000/svg\"><g class=\"mcr-pie-path-passed\"><path d=\"M75,75 L75,10 A65,65 0 1 1 75,140 A65,65 0 1 1 75,10 z\" fill=\"green\" opacity=\"0.8\" /><animateTransform from=\"0,0\" to=\"0,0\" pos=\"0,10\" attributeName=\"transform\" type=\"translate\" dur=\"0.2s\" fill=\"freeze\" repeatCount=\"1\" restart=\"always\" /></g><g class=\"mcr-pie-path-flaky\"><path d=\"\" fill=\"orange\" opacity=\"0.8\" /><animateTransform from=\"0,0\" to=\"0,0\" pos=\"0,-10\" attributeName=\"transform\" type=\"translate\" dur=\"0.2s\" fill=\"freeze\" repeatCount=\"1\" restart=\"always\" /></g><g class=\"mcr-pie-path-skipped\"><path d=\"\" fill=\"gray\" opacity=\"0.8\" /><animateTransform from=\"0,0\" to=\"0,0\" pos=\"0,-10\" attributeName=\"transform\" type=\"translate\" dur=\"0.2s\" fill=\"freeze\" repeatCount=\"1\" restart=\"always\" /></g><g class=\"mcr-pie-path-failed\"><path d=\"\" fill=\"#d00\" opacity=\"0.8\" /><animateTransform from=\"0,0\" to=\"0,0\" pos=\"0,-10\" attributeName=\"transform\" type=\"translate\" dur=\"0.2s\" fill=\"freeze\" repeatCount=\"1\" restart=\"always\" /></g><g transform=\"translate(160 10)\"><g class=\"mcr-pie-legend-passed\" transform=\"translate(0 0)\"><circle cx=\"10\" cy=\"16\" r=\"10\" fill=\"green\" opacity=\"0.8\" /><text x=\"30\" y=\"16\" alignment-baseline=\"middle\">Passed</text><text x=\"115\" y=\"16\" alignment-baseline=\"middle\" text-anchor=\"middle\">5</text><text x=\"190\" y=\"16\" alignment-baseline=\"middle\" text-anchor=\"end\">100.0%</text></g><g class=\"mcr-pie-legend-flaky\" transform=\"translate(0 32)\"><circle cx=\"10\" cy=\"16\" r=\"10\" fill=\"orange\" opacity=\"0.8\" /><text x=\"30\" y=\"16\" alignment-baseline=\"middle\">Flaky</text><text x=\"115\" y=\"16\" alignment-baseline=\"middle\" text-anchor=\"middle\">0</text><text x=\"190\" y=\"16\" alignment-baseline=\"middle\" text-anchor=\"end\">0.0%</text></g><g class=\"mcr-pie-legend-skipped\" transform=\"translate(0 64)\"><circle cx=\"10\" cy=\"16\" r=\"10\" fill=\"gray\" opacity=\"0.8\" /><text x=\"30\" y=\"16\" alignment-baseline=\"middle\">Skipped</text><text x=\"115\" y=\"16\" alignment-baseline=\"middle\" text-anchor=\"middle\">0</text><text x=\"190\" y=\"16\" alignment-baseline=\"middle\" text-anchor=\"end\">0.0%</text></g><g class=\"mcr-pie-legend-failed\" transform=\"translate(0 96)\"><circle cx=\"10\" cy=\"16\" r=\"10\" fill=\"#d00\" opacity=\"0.8\" /><text x=\"30\" y=\"16\" alignment-baseline=\"middle\">Failed</text><text x=\"115\" y=\"16\" alignment-baseline=\"middle\" text-anchor=\"middle\">0</text><text x=\"190\" y=\"16\" alignment-baseline=\"middle\" text-anchor=\"end\">0.0%</text></g></g></svg>"
+    }
+}
