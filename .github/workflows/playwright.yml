@@ -196,3 +196,60 @@ jobs:
           path: test-results/
           retention-days: 7
           if-no-files-found: ignore
+
+  deploy-dashboard:
+    name: Deploy Dashboard
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    needs:
+      - ui-tests
+      - api-tests
+    permissions:
+      contents: write
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Download report artifacts
+        uses: actions/download-artifact@v7
+        with:
+          path: dashboard-artifacts
+          pattern: '*-report-*'
+
+      - name: Prepare dashboard branch
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          remote_url="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+
+          if git ls-remote --exit-code --heads origin gh-pages >/dev/null 2>&1; then
+            git fetch origin gh-pages
+            git worktree add pages gh-pages
+          else
+            mkdir pages
+            git -C pages init
+            git -C pages checkout -b gh-pages
+            git -C pages remote add origin "$remote_url"
+          fi
+
+          git -C pages remote set-url origin "$remote_url"
+
+      - name: Build historical dashboard
+        run: npm run dashboard:build
+
+      - name: Publish dashboard
+        run: |
+          git -C pages add .
+
+          if git -C pages diff --cached --quiet; then
+            echo "No dashboard changes to publish."
+          else
+            git -C pages commit -m "Update dashboard for run ${GITHUB_RUN_NUMBER}"
+            git -C pages push origin HEAD:gh-pages
+          fi

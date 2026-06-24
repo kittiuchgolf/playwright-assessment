@@ -11,6 +11,7 @@
     "test:headed": "playwright test --headed",
     "report": "playwright show-report",
     "report:monocart": "monocart show-report monocart-report/index.html",
+    "dashboard:build": "node scripts/build-pages-dashboard.mjs",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "security:audit": "npm audit --audit-level=high"
