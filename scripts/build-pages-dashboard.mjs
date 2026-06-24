@@ -48,6 +48,92 @@ async function readRuns(runsPath) {
   return JSON.parse(await readFile(runsPath, 'utf8'));
 }
 
+async function readJsonIfExists(filePath) {
+  if (!existsSync(filePath)) {
+    return null;
+  }
+
+  return JSON.parse(await readFile(filePath, 'utf8'));
+}
+
+function summaryValue(summary, key) {
+  const value = summary?.[key];
+
+  if (typeof value === 'number') {
+    return value;
+  }
+
+  return Number(value?.value ?? 0);
+}
+
+async function readReportMetrics(filePath) {
+  const report = await readJsonIfExists(filePath);
+
+  if (!report) {
+    return null;
+  }
+
+  const summary = report.summary ?? {};
+
+  return {
+    tests: summaryValue(summary, 'tests'),
+    passed: summaryValue(summary, 'passed'),
+    failed: summaryValue(summary, 'failed'),
+    skipped: summaryValue(summary, 'skipped'),
+    flaky: summaryValue(summary, 'flaky'),
+    duration: report.durationH ?? ''
+  };
+}
+
+function totalReports(reports) {
+  const reportList = Object.values(reports).filter(Boolean);
+
+  if (reportList.length === 0) {
+    return null;
+  }
+
+  return reportList.reduce((totals, report) => ({
+    tests: totals.tests + report.tests,
+    passed: totals.passed + report.passed,
+    failed: totals.failed + report.failed,
+    skipped: totals.skipped + report.skipped,
+    flaky: totals.flaky + report.flaky
+  }), {
+    tests: 0,
+    passed: 0,
+    failed: 0,
+    skipped: 0,
+    flaky: 0
+  });
+}
+
+async function enrichRun(run) {
+  const runDir = path.join(pagesDir, 'runs', run.id);
+  const reports = {
+    ...(run.reports ?? {})
+  };
+  const reportPaths = {
+    ui: path.join(runDir, 'monocart', 'ui', 'index.json'),
+    api: path.join(runDir, 'monocart', 'api', 'index.json')
+  };
+
+  for (const [name, reportPath] of Object.entries(reportPaths)) {
+    const metrics = await readReportMetrics(reportPath);
+
+    if (metrics) {
+      reports[name] = metrics;
+    }
+  }
+
+  const totals = totalReports(reports);
+
+  return {
+    ...run,
+    reports,
+    ...(totals ? { totals } : {})
+  };
+}
+
 async function copyReportArtifacts(runDir) {
   const copied = [];
 
@@ -92,7 +178,10 @@ async function main() {
     monocart: `${runPath}/monocart/`,
     playwright: `${runPath}/playwright/`
   };
-  const runs = [run, ...(await readRuns(runsPath)).filter((item) => item.id !== runId)];
+  const runs = await Promise.all([
+    run,
+    ...(await readRuns(runsPath)).filter((item) => item.id !== runId)
+  ].map(enrichRun));
 
   await mkdir(path.join(runDir, 'monocart'), { recursive: true });
   await mkdir(path.join(runDir, 'playwright'), { recursive: true });
