@@ -98,6 +98,7 @@ GitHub Actions runs on:
 
 - Pull requests targeting `main`
 - Pushes to `main`
+- Manual runs from the GitHub Actions **Run workflow** button
 
 The workflow is split into focused jobs:
 
@@ -113,7 +114,7 @@ See [Monitoring Dashboard](docs/monitoring-dashboard.md) for CI health, GitHub P
 
 ## Reports and Artifacts
 
-On pull requests, CI uploads Playwright and Monocart reports as workflow artifacts. On pushes to `main`, CI also publishes a static historical dashboard to the `gh-pages` branch. The dashboard keeps reports by workflow run and opens with two primary choices:
+On pull requests, CI uploads Playwright and Monocart reports as workflow artifacts. On pushes to `main`, CI also publishes a static historical dashboard to the `gh-pages` branch. After the workflow file is on the default branch, manual runs from the GitHub Actions **Run workflow** button also publish the dashboard for that run. The dashboard keeps reports by workflow run and opens with two primary choices:
 
 - **Open Monocart report**
 - **Open Playwright report**
