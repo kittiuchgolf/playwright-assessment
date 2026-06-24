@@ -1,0 +1,2668 @@
+{
+    "name": "Playwright Assessment Report",
+    "date": 1782324810753,
+    "dateH": "6/24/2026, 6:13:30 PM",
+    "duration": 7556,
+    "durationH": "7.6s",
+    "cwd": "/home/runner/work/playwright-assessment/playwright-assessment",
+    "outputFile": "monocart-report/index.html",
+    "outputDir": "monocart-report",
+    "metadata": {
+        "ci": {
+            "commitHref": "https://github.com/kittiuchgolf/playwright-assessment/commit/e6433a8998e2c08efdf3e6ba7c13429e89a52c14",
+            "commitHash": "e6433a8998e2c08efdf3e6ba7c13429e89a52c14",
+            "buildHref": "https://github.com/kittiuchgolf/playwright-assessment/actions/runs/28119744951"
+        },
+        "gitCommit": {
+            "shortHash": "e6433a8",
+            "hash": "e6433a8998e2c08efdf3e6ba7c13429e89a52c14",
+            "subject": "chore: pin Node version to 22 via .nvmrc",
+            "body": "chore: pin Node version to 22 via .nvmrc\n\nDocument the supported runtime so local environments match the Node 22 CI runner and the aligned @types/node version.\n",
+            "author": {
+                "name": "Golf",
+                "email": "kittituchgolf@gmail.com",
+                "time": 1782324746000
+            },
+            "committer": {
+                "name": "Golf",
+                "email": "kittituchgolf@gmail.com",
+                "time": 1782324746000
+            },
+            "branch": "main"
+        },
+        "actualWorkers": 2
+    },
+    "system": {
+        "cpu": {
+            "color": "#117DBB",
+            "count": 4,
+            "model": "AMD EPYC 7763 64-Core Processor",
+            "speed": 0
+        },
+        "mem": {
+            "color": "#8B12AE",
+            "total": 16766423040
+        },
+        "arch": "x64",
+        "platform": "linux",
+        "release": "6.17.0-1018-azure",
+        "type": "Linux",
+        "version": "#18~24.04.1-Ubuntu SMP Thu May 28 16:39:11 UTC 2026",
+        "uptime": 124.72,
+        "hostname": "runnervm7b5n9",
+        "pid": 3024,
+        "node": "22.22.3",
+        "v8": "12.4.254.21-node.56",
+        "timestampStart": 1782324810753,
+        "ticks": [
+            {
+                "cpu": {
+                    "percent": 63.51
+                },
+                "mem": {
+                    "free": 14963765248
+                },
+                "timestamp": 1782324812755
+            },
+            {
+                "cpu": {
+                    "percent": 86.96
+                },
+                "mem": {
+                    "free": 14853005312
+                },
+                "timestamp": 1782324814756
+            },
+            {
+                "cpu": {
+                    "percent": 90.08
+                },
+                "mem": {
+                    "free": 14781079552
+                },
+                "timestamp": 1782324816758
+            },
+            {
+                "cpu": {
+                    "percent": 26.07
+                },
+                "mem": {
+                    "free": 15124639744
+                },
+                "timestamp": 1782324818303
+            }
+        ],
+        "workers": 2,
+        "jobs": [
+            {
+                "caseId": "6677e81c5eaa1dd40613",
+                "parallelIndex": 0,
+                "workerIndex": 0,
+                "timestamp": 1782324811586,
+                "duration": 1660
+            },
+            {
+                "caseId": "98184edb6950714a9f13",
+                "parallelIndex": 1,
+                "workerIndex": 1,
+                "timestamp": 1782324811607,
+                "duration": 1496
+            },
+            {
+                "caseId": "264d553f140f1bef84cf",
+                "parallelIndex": 1,
+                "workerIndex": 1,
+                "timestamp": 1782324813108,
+                "duration": 1229
+            },
+            {
+                "caseId": "56a1f51d972645e8a32c",
+                "parallelIndex": 0,
+                "workerIndex": 0,
+                "timestamp": 1782324813250,
+                "duration": 1568
+            },
+            {
+                "caseId": "81164197ee762a435701",
+                "parallelIndex": 1,
+                "workerIndex": 1,
+                "timestamp": 1782324814339,
+                "duration": 1272
+            },
+            {
+                "caseId": "6a815f4a9f1a6f0e7592",
+                "parallelIndex": 0,
+                "workerIndex": 0,
+                "timestamp": 1782324814822,
+                "duration": 1219
+            },
+            {
+                "caseId": "5ed40bc161a9b42c51be",
+                "parallelIndex": 1,
+                "workerIndex": 1,
+                "timestamp": 1782324815613,
+                "duration": 1433
+            },
+            {
+                "caseId": "0c65f563dd96b7448e94",
+                "parallelIndex": 0,
+                "workerIndex": 0,
+                "timestamp": 1782324816042,
+                "duration": 1164
+            }
+        ],
+        "cwd": "/home/runner/work/playwright-assessment/playwright-assessment",
+        "configFile": "playwright.config.ts",
+        "playwright": "1.61.0",
+        "monocart": "1.6.36",
+        "testDir": "tests",
+        "outputFile": "monocart-report/index.html",
+        "outputDir": "monocart-report",
+        "timestampEnd": 1782324818309
+    },
+    "artifacts": [],
+    "trends": [],
+    "columns": [
+        {
+            "id": "caseType",
+            "name": "",
+            "width": 36,
+            "sortable": false,
+            "align": "center",
+            "formatter": "iconCaseType",
+            "detailed": false
+        },
+        {
+            "id": "title",
+            "name": "Title",
+            "searchable": true,
+            "width": 350,
+            "maxWidth": 1230,
+            "detailed": false
+        },
+        {
+            "id": "type",
+            "name": "Type",
+            "width": 50,
+            "sortable": false,
+            "align": "center",
+            "formatter": "iconType",
+            "detailed": false
+        },
+        {
+            "id": "duration",
+            "name": "Duration",
+            "align": "right",
+            "sortAsc": false,
+            "formatter": "duration",
+            "detailed": false
+        },
+        {
+            "id": "errors",
+            "name": "Errors",
+            "width": 60,
+            "align": "center",
+            "comparer": "errors",
+            "formatter": "errors",
+            "detailed": false
+        },
+        {
+            "id": "logs",
+            "name": "Logs",
+            "width": 60,
+            "align": "center",
+            "comparer": "logs",
+            "formatter": "logs",
+            "detailed": false
+        },
+        {
+            "id": "annotations",
+            "name": "Annotations",
+            "width": 100,
+            "markdown": true,
+            "searchable": true,
+            "comparer": "annotations",
+            "formatter": "annotations",
+            "detailed": false
+        },
+        {
+            "id": "attachments",
+            "name": "Attachments",
+            "width": 100,
+            "align": "center",
+            "formatter": "attachments",
+            "detailed": false
+        },
+        {
+            "id": "status",
+            "name": "Status",
+            "align": "center",
+            "detailed": false
+        },
+        {
+            "id": "expectedStatus",
+            "name": "Expected",
+            "align": "center",
+            "detailed": false
+        },
+        {
+            "id": "outcome",
+            "name": "Outcome",
+            "align": "center",
+            "width": 85,
+            "detailed": false
+        },
+        {
+            "id": "retry",
+            "name": "Retry",
+            "align": "center",
+            "width": 50,
+            "detailed": false
+        },
+        {
+            "id": "location",
+            "name": "Location",
+            "classMap": "mcr-location",
+            "width": 200,
+            "maxWidth": 1981,
+            "detailed": false
+        }
+    ],
+    "rows": [
+        {
+            "id": "cxdwdldnz96ol3gleosh",
+            "title": "ui-chromium",
+            "type": "suite",
+            "suiteType": "project",
+            "caseNum": 8,
+            "subs": [
+                {
+                    "id": "d748ac400d08b85935ef",
+                    "title": "ui/auth.spec.ts",
+                    "type": "suite",
+                    "suiteType": "file",
+                    "caseNum": 2,
+                    "subs": [
+                        {
+                            "id": "d748ac400d08b85935ef",
+                            "title": "SauceDemo authentication",
+                            "type": "suite",
+                            "suiteType": "describe",
+                            "caseNum": 2,
+                            "subs": [
+                                {
+                                    "id": "6677e81c5eaa1dd40613",
+                                    "title": "standard user can log in and land on inventory @smoke @ui @auth",
+                                    "type": "case",
+                                    "caseType": "passed",
+                                    "ok": true,
+                                    "outcome": "expected",
+                                    "expectedStatus": "passed",
+                                    "location": "tests/ui/auth.spec.ts:5:7",
+                                    "timestamps": [
+                                        1782324811586,
+                                        1782324813246
+                                    ],
+                                    "duration": 1660,
+                                    "timeout": 45000,
+                                    "retry": 0,
+                                    "status": "passed",
+                                    "stepNum": 21,
+                                    "stepFailed": 0,
+                                    "stepSubs": true,
+                                    "subs": [
+                                        {
+                                            "id": "s0o1gxbacpsew5tr84z1",
+                                            "title": "Before Hooks",
+                                            "type": "step",
+                                            "stepType": "hook",
+                                            "duration": 479,
+                                            "location": "",
+                                            "subs": [
+                                                {
+                                                    "id": "flga4hdu4xy7ggw0mafg",
+                                                    "title": "Fixture \"browser\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 364,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "msdu8euxfytwzt03ep2g",
+                                                            "title": "Launch browser",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 357,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "omc83vfb5scaj54jei5o",
+                                                    "title": "Fixture \"context\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 32,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "01uscoxgopwe5r0nrjs4",
+                                                            "title": "Create context",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 20,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "cgyvxvhl06voqv3kd63y",
+                                                    "title": "Fixture \"page\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 62,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "ccy9ximnzrz7f24b7nb7",
+                                                            "title": "Create page",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 60,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "jw84e6yr992vk3fiocqd",
+                                                    "title": "Fixture \"loginPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 1,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "223b88mpt1dbz868o080",
+                                                    "title": "Fixture \"inventoryPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "21ae8vh9jqayvwn65ut0",
+                                            "title": "Navigate to \"/\"",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 428,
+                                            "location": "tests/ui/pages/login.page.ts:17:21"
+                                        },
+                                        {
+                                            "id": "3wbbu2uz8t90r9f31crn",
+                                            "title": "Fill \"standard_user\" getByPlaceholder('Username')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 110,
+                                            "location": "tests/ui/pages/login.page.ts:21:30"
+                                        },
+                                        {
+                                            "id": "m9yfzvafx8qi6dhguvye",
+                                            "title": "Fill \"secret_sauce\" getByPlaceholder('Password')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 88,
+                                            "location": "tests/ui/pages/login.page.ts:22:30"
+                                        },
+                                        {
+                                            "id": "6rhkl1zev8d2s2jjtju4",
+                                            "title": "Click getByRole('button', { name: 'Login' })",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 171,
+                                            "location": "tests/ui/pages/login.page.ts:23:28"
+                                        },
+                                        {
+                                            "id": "5h999k84kg2r7wx89oiu",
+                                            "title": "Expect \"toHaveURL\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 33,
+                                            "location": "tests/ui/pages/inventory.page.ts:15:29"
+                                        },
+                                        {
+                                            "id": "xzloxcjznstoc6zu2aa3",
+                                            "title": "Expect \"toHaveText\" locator('[data-test=\"title\"]')",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 27,
+                                            "location": "tests/ui/pages/inventory.page.ts:16:30"
+                                        },
+                                        {
+                                            "id": "s1vycblqipztatjcytwm",
+                                            "title": "After Hooks",
+                                            "type": "step",
+                                            "stepType": "hook",
+                                            "duration": 256,
+                                            "location": "",
+                                            "subs": [
+                                                {
+                                                    "id": "h361vmh6gvvsz00it0sz",
+                                                    "title": "Fixture \"inventoryPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 1,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "4kfv94nyam59py8zihl9",
+                                                    "title": "Fixture \"loginPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "kmwn2kff54ujbo3e0g5h",
+                                                    "title": "Fixture \"page\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": ""
+                                                },
+                                                {
+                                                    "id": "zjv4sj92x8gk6mun5o4y",
+                                                    "title": "Fixture \"context\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 242,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "c8yftk3cq4t1ptyyyx7q",
+                                                            "title": "Close context",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 134,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "98184edb6950714a9f13",
+                                    "title": "locked out user sees a clear login error @ui @auth @negative",
+                                    "type": "case",
+                                    "caseType": "passed",
+                                    "ok": true,
+                                    "outcome": "expected",
+                                    "expectedStatus": "passed",
+                                    "location": "tests/ui/auth.spec.ts:12:7",
+                                    "timestamps": [
+                                        1782324811607,
+                                        1782324813103
+                                    ],
+                                    "duration": 1496,
+                                    "timeout": 45000,
+                                    "retry": 0,
+                                    "status": "passed",
+                                    "stepNum": 18,
+                                    "stepFailed": 0,
+                                    "stepSubs": true,
+                                    "subs": [
+                                        {
+                                            "id": "m1udp4wtf4i8elqnmh45",
+                                            "title": "Before Hooks",
+                                            "type": "step",
+                                            "stepType": "hook",
+                                            "duration": 451,
+                                            "location": "",
+                                            "subs": [
+                                                {
+                                                    "id": "4xuyo56r2qbtcv6ivlfs",
+                                                    "title": "Fixture \"browser\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 339,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "fl9m9u7nlpj2696fus8h",
+                                                            "title": "Launch browser",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 335,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "aijwqs8glpg223pzd1gf",
+                                                    "title": "Fixture \"context\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 39,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "6oqy318eb4u8l0n8hgb7",
+                                                            "title": "Create context",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 18,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "0cf52124yhjyn2pvj355",
+                                                    "title": "Fixture \"page\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 56,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "5ng7d4vr46705upg3h62",
+                                                            "title": "Create page",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 54,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "760hx1n02jgt2ffwjjgm",
+                                                    "title": "Fixture \"loginPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 1,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "72b15ezgr540hj63w8h8",
+                                            "title": "Navigate to \"/\"",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 432,
+                                            "location": "tests/ui/pages/login.page.ts:17:21"
+                                        },
+                                        {
+                                            "id": "xcrjsnqej59d40k6dpu4",
+                                            "title": "Fill \"locked_out_user\" getByPlaceholder('Username')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 153,
+                                            "location": "tests/ui/pages/login.page.ts:21:30"
+                                        },
+                                        {
+                                            "id": "kqdnt8cizxwzfzcvikfg",
+                                            "title": "Fill \"secret_sauce\" getByPlaceholder('Password')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 48,
+                                            "location": "tests/ui/pages/login.page.ts:22:30"
+                                        },
+                                        {
+                                            "id": "u0r8e4rg3bnk1h2dyd15",
+                                            "title": "Click getByRole('button', { name: 'Login' })",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 87,
+                                            "location": "tests/ui/pages/login.page.ts:23:28"
+                                        },
+                                        {
+                                            "id": "9frjkfomkxk2196filgt",
+                                            "title": "Expect \"toContainText\" locator('[data-test=\"error\"]')",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 20,
+                                            "location": "tests/ui/pages/login.page.ts:27:37"
+                                        },
+                                        {
+                                            "id": "23oiov52vdgikb190nad",
+                                            "title": "After Hooks",
+                                            "type": "step",
+                                            "stepType": "hook",
+                                            "duration": 238,
+                                            "location": "",
+                                            "subs": [
+                                                {
+                                                    "id": "7nfwo2e2ulotv0lehjl6",
+                                                    "title": "Fixture \"loginPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 1,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "rrbxr1dktfk9i18x65bz",
+                                                    "title": "Fixture \"page\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 1,
+                                                    "location": ""
+                                                },
+                                                {
+                                                    "id": "4iyaxbc8uftkq6xdq9gz",
+                                                    "title": "Fixture \"context\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 219,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "hrk02emkxgi2lff11511",
+                                                            "title": "Close context",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 123,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "location": "tests/ui/auth.spec.ts:4:6"
+                        }
+                    ],
+                    "location": "tests/ui/auth.spec.ts:0:0"
+                },
+                {
+                    "id": "f177f4eaa9abb9f5894f",
+                    "title": "ui/shopping.spec.ts",
+                    "type": "suite",
+                    "suiteType": "file",
+                    "caseNum": 6,
+                    "subs": [
+                        {
+                            "id": "f177f4eaa9abb9f5894f",
+                            "title": "SauceDemo shopping workflows",
+                            "type": "suite",
+                            "suiteType": "describe",
+                            "caseNum": 6,
+                            "subs": [
+                                {
+                                    "id": "264d553f140f1bef84cf",
+                                    "title": "user can add and remove an item from the cart @smoke @ui @cart",
+                                    "type": "case",
+                                    "caseType": "passed",
+                                    "ok": true,
+                                    "outcome": "expected",
+                                    "expectedStatus": "passed",
+                                    "location": "tests/ui/shopping.spec.ts:21:7",
+                                    "timestamps": [
+                                        1782324813108,
+                                        1782324814337
+                                    ],
+                                    "duration": 1229,
+                                    "timeout": 45000,
+                                    "retry": 0,
+                                    "status": "passed",
+                                    "stepNum": 31,
+                                    "stepFailed": 0,
+                                    "stepSubs": true,
+                                    "subs": [
+                                        {
+                                            "id": "h2qa57g1s2njczz3bz9u",
+                                            "title": "Before Hooks",
+                                            "type": "step",
+                                            "stepType": "hook",
+                                            "duration": 698,
+                                            "location": "",
+                                            "subs": [
+                                                {
+                                                    "id": "yd1sk7f22fbec0pef9y7",
+                                                    "title": "Fixture \"context\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 5,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "1k2flrhyy4yzpugj6ccw",
+                                                            "title": "Create context",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 3,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "2h7nwer7rvq2hhykh0mj",
+                                                    "title": "Fixture \"page\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 44,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "5og41blklektn43tueof",
+                                                            "title": "Create page",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 43,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "z7ld7tavuxmcig545jlg",
+                                                    "title": "Fixture \"loginPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "m6mvc5o0hifuayebsnwm",
+                                                    "title": "Fixture \"inventoryPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "zk50fgi5rvhyf7ea007i",
+                                                    "title": "Fixture \"loggedInInventoryPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 639,
+                                                    "location": "tests/fixtures/test.ts:19:26",
+                                                    "subs": [
+                                                        {
+                                                            "id": "5k4ss2gdmb3g517ojz2l",
+                                                            "title": "Navigate to \"/\"",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 264,
+                                                            "location": "tests/ui/pages/login.page.ts:17:21"
+                                                        },
+                                                        {
+                                                            "id": "18mka9afhcrc6yojv8ke",
+                                                            "title": "Fill \"standard_user\" getByPlaceholder('Username')",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 59,
+                                                            "location": "tests/ui/pages/login.page.ts:21:30"
+                                                        },
+                                                        {
+                                                            "id": "r2r9tirx73b1zlr3c0bi",
+                                                            "title": "Fill \"secret_sauce\" getByPlaceholder('Password')",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 44,
+                                                            "location": "tests/ui/pages/login.page.ts:22:30"
+                                                        },
+                                                        {
+                                                            "id": "g9d32nittegm5hiedof9",
+                                                            "title": "Click getByRole('button', { name: 'Login' })",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 176,
+                                                            "location": "tests/ui/pages/login.page.ts:23:28"
+                                                        },
+                                                        {
+                                                            "id": "h3kkmpl9d2tzy08yhokb",
+                                                            "title": "Expect \"toHaveURL\"",
+                                                            "type": "step",
+                                                            "stepType": "expect",
+                                                            "duration": 36,
+                                                            "location": "tests/ui/pages/inventory.page.ts:15:29"
+                                                        },
+                                                        {
+                                                            "id": "u54hvqknoaoxvsjv95tj",
+                                                            "title": "Expect \"toHaveText\" locator('[data-test=\"title\"]')",
+                                                            "type": "step",
+                                                            "stepType": "expect",
+                                                            "duration": 48,
+                                                            "location": "tests/ui/pages/inventory.page.ts:16:30"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "mcga09t17iprxxk0xtah",
+                                                    "title": "Fixture \"cartPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "nhulhsv39k60gj678sxb",
+                                            "title": "Click locator('[data-test=\"inventory-item\"]').filter({ hasText: 'Sauce Labs Backpack' }).getByRole('button', { name: 'Add to cart' })",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 65,
+                                            "location": "tests/ui/pages/inventory.page.ts:24:78"
+                                        },
+                                        {
+                                            "id": "rvxt0bln8xko76v4u4oe",
+                                            "title": "Expect \"toHaveText\" locator('[data-test=\"shopping-cart-badge\"]')",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 18,
+                                            "location": "tests/ui/pages/inventory.page.ts:37:34"
+                                        },
+                                        {
+                                            "id": "p8ul7zfx35ngs179xuie",
+                                            "title": "Click locator('[data-test=\"shopping-cart-link\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 126,
+                                            "location": "tests/ui/pages/inventory.page.ts:41:65"
+                                        },
+                                        {
+                                            "id": "5kwajhfwe14d0f8xub7f",
+                                            "title": "Expect \"toHaveURL\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 21,
+                                            "location": "tests/ui/pages/cart.page.ts:11:29"
+                                        },
+                                        {
+                                            "id": "ye7wlk8cczycpu3n1qnk",
+                                            "title": "Expect \"toHaveText\" locator('[data-test=\"title\"]')",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 8,
+                                            "location": "tests/ui/pages/cart.page.ts:12:30"
+                                        },
+                                        {
+                                            "id": "8x5s34uvj22q64fty5rm",
+                                            "title": "Expect \"toBeVisible\" locator('[data-test=\"inventory-item-name\"]').filter({ hasText: 'Sauce Labs Backpack' })",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 8,
+                                            "location": "tests/ui/pages/cart.page.ts:16:93"
+                                        },
+                                        {
+                                            "id": "opu651v3mdakjrdth8lw",
+                                            "title": "Click locator('[data-test=\"cart-list\"] [data-test=\"inventory-item\"]').filter({ hasText: 'Sauce Labs Backpack' }).getByRole('button', { name: 'Remove' })",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 38,
+                                            "location": "tests/ui/pages/cart.page.ts:21:56"
+                                        },
+                                        {
+                                            "id": "hem06xj14tzpglcvhvva",
+                                            "title": "Expect \"toHaveCount\" locator('[data-test=\"cart-list\"] [data-test=\"inventory-item\"]')",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 12,
+                                            "location": "tests/ui/pages/cart.page.ts:25:93"
+                                        },
+                                        {
+                                            "id": "1lhmji1jttkf0q1ovpc9",
+                                            "title": "After Hooks",
+                                            "type": "step",
+                                            "stepType": "hook",
+                                            "duration": 213,
+                                            "location": "",
+                                            "subs": [
+                                                {
+                                                    "id": "qllqwvo2xvv2ged4w3xs",
+                                                    "title": "Fixture \"cartPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "yd4fppsgkcaf64jjyoo3",
+                                                    "title": "Fixture \"loggedInInventoryPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "u5yl1qfabsd9yyx4afqh",
+                                                    "title": "Fixture \"inventoryPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "uor59kxx1e8hg2gdv6op",
+                                                    "title": "Fixture \"loginPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "326c6f4f7x9fzb4jxvb3",
+                                                    "title": "Fixture \"page\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": ""
+                                                },
+                                                {
+                                                    "id": "k095o6uptuh8v0xvkvoi",
+                                                    "title": "Fixture \"context\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 199,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "y6mn32sqeccvulzh3jq1",
+                                                            "title": "Close context",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 143,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "56a1f51d972645e8a32c",
+                                    "title": "user can complete checkout for selected products @smoke @ui @checkout",
+                                    "type": "case",
+                                    "caseType": "passed",
+                                    "ok": true,
+                                    "outcome": "expected",
+                                    "expectedStatus": "passed",
+                                    "location": "tests/ui/shopping.spec.ts:37:7",
+                                    "timestamps": [
+                                        1782324813250,
+                                        1782324814818
+                                    ],
+                                    "duration": 1568,
+                                    "timeout": 45000,
+                                    "retry": 0,
+                                    "status": "passed",
+                                    "stepNum": 42,
+                                    "stepFailed": 0,
+                                    "stepSubs": true,
+                                    "subs": [
+                                        {
+                                            "id": "q854w9vvwmobf7p4ncnc",
+                                            "title": "Before Hooks",
+                                            "type": "step",
+                                            "stepType": "hook",
+                                            "duration": 771,
+                                            "location": "",
+                                            "subs": [
+                                                {
+                                                    "id": "0uismchpf03ss40wxxbs",
+                                                    "title": "Fixture \"context\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 11,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "r3venkx322j05vkxzp26",
+                                                            "title": "Create context",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 3,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "o85pi1f6sp09k7pdboon",
+                                                    "title": "Fixture \"page\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 35,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "iaffwjjp846bg1qz8sv9",
+                                                            "title": "Create page",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 34,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "rm5yg1lv5ai42chfiy8o",
+                                                    "title": "Fixture \"loginPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "rixp1y7r5jtqpoxtura6",
+                                                    "title": "Fixture \"inventoryPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "39a2g4kugm9skhf3qzkb",
+                                                    "title": "Fixture \"loggedInInventoryPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 716,
+                                                    "location": "tests/fixtures/test.ts:19:26",
+                                                    "subs": [
+                                                        {
+                                                            "id": "v5ri2nj03fde5kzarmtt",
+                                                            "title": "Navigate to \"/\"",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 303,
+                                                            "location": "tests/ui/pages/login.page.ts:17:21"
+                                                        },
+                                                        {
+                                                            "id": "n7uc3yv7ve2rc2cgd3a8",
+                                                            "title": "Fill \"standard_user\" getByPlaceholder('Username')",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 92,
+                                                            "location": "tests/ui/pages/login.page.ts:21:30"
+                                                        },
+                                                        {
+                                                            "id": "zdleody7kte7gxttbj8l",
+                                                            "title": "Fill \"secret_sauce\" getByPlaceholder('Password')",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 94,
+                                                            "location": "tests/ui/pages/login.page.ts:22:30"
+                                                        },
+                                                        {
+                                                            "id": "ftlhc73w8imegwfwlrsr",
+                                                            "title": "Click getByRole('button', { name: 'Login' })",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 182,
+                                                            "location": "tests/ui/pages/login.page.ts:23:28"
+                                                        },
+                                                        {
+                                                            "id": "83sm8eb8uneeo35er859",
+                                                            "title": "Expect \"toHaveURL\"",
+                                                            "type": "step",
+                                                            "stepType": "expect",
+                                                            "duration": 18,
+                                                            "location": "tests/ui/pages/inventory.page.ts:15:29"
+                                                        },
+                                                        {
+                                                            "id": "leuje55ymppv1dlyubsj",
+                                                            "title": "Expect \"toHaveText\" locator('[data-test=\"title\"]')",
+                                                            "type": "step",
+                                                            "stepType": "expect",
+                                                            "duration": 17,
+                                                            "location": "tests/ui/pages/inventory.page.ts:16:30"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "ox78r7fe0so3eeb30ecr",
+                                                    "title": "Fixture \"cartPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "wupvngwfq7f56w05q2i6",
+                                                    "title": "Fixture \"checkoutPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "areeh0r9zjjahm4us8mm",
+                                            "title": "Click locator('[data-test=\"inventory-item\"]').filter({ hasText: 'Sauce Labs Backpack' }).getByRole('button', { name: 'Add to cart' })",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 81,
+                                            "location": "tests/ui/pages/inventory.page.ts:24:78"
+                                        },
+                                        {
+                                            "id": "tt2p9naqd5nreetx4uiu",
+                                            "title": "Click locator('[data-test=\"inventory-item\"]').filter({ hasText: 'Sauce Labs Bike Light' }).getByRole('button', { name: 'Add to cart' })",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 54,
+                                            "location": "tests/ui/pages/inventory.page.ts:24:78"
+                                        },
+                                        {
+                                            "id": "q05dkhwji27qaoag19s5",
+                                            "title": "Expect \"toHaveText\" locator('[data-test=\"shopping-cart-badge\"]')",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 9,
+                                            "location": "tests/ui/pages/inventory.page.ts:37:34"
+                                        },
+                                        {
+                                            "id": "itfebhm2clet3zsl2v6g",
+                                            "title": "Click locator('[data-test=\"shopping-cart-link\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 60,
+                                            "location": "tests/ui/pages/inventory.page.ts:41:65"
+                                        },
+                                        {
+                                            "id": "5rtrwh64xj7qvh3nrq4t",
+                                            "title": "Click locator('[data-test=\"checkout\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 45,
+                                            "location": "tests/ui/pages/cart.page.ts:29:55"
+                                        },
+                                        {
+                                            "id": "80x25elddhgfh0ehfl7z",
+                                            "title": "Fill \"Test\" locator('[data-test=\"firstName\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 41,
+                                            "location": "tests/ui/pages/checkout.page.ts:12:56"
+                                        },
+                                        {
+                                            "id": "p5ni4q5d0znay8q73dxv",
+                                            "title": "Fill \"Customer\" locator('[data-test=\"lastName\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 26,
+                                            "location": "tests/ui/pages/checkout.page.ts:13:55"
+                                        },
+                                        {
+                                            "id": "fxmdo3m7h18az22xpo1z",
+                                            "title": "Fill \"10001\" locator('[data-test=\"postalCode\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 32,
+                                            "location": "tests/ui/pages/checkout.page.ts:14:57"
+                                        },
+                                        {
+                                            "id": "8jxag1r7mxn74zpuadon",
+                                            "title": "Click locator('[data-test=\"continue\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 70,
+                                            "location": "tests/ui/pages/checkout.page.ts:15:55"
+                                        },
+                                        {
+                                            "id": "g20hzhcofeiiivchajli",
+                                            "title": "Expect \"toHaveURL\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 8,
+                                            "location": "tests/ui/pages/checkout.page.ts:23:29"
+                                        },
+                                        {
+                                            "id": "lwjjn0dpj087p1s9hp4u",
+                                            "title": "Expect \"toBeVisible\" locator('[data-test=\"inventory-item-name\"]').filter({ hasText: 'Sauce Labs Backpack' })",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 18,
+                                            "location": "tests/ui/pages/checkout.page.ts:24:104"
+                                        },
+                                        {
+                                            "id": "jjt55r3i4a8guw0t8oc0",
+                                            "title": "Expect \"toBeVisible\" locator('[data-test=\"subtotal-label\"]')",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 12,
+                                            "location": "tests/ui/pages/checkout.page.ts:25:69"
+                                        },
+                                        {
+                                            "id": "l07j21lolypdaoxom7wb",
+                                            "title": "Expect \"toBeVisible\" locator('[data-test=\"tax-label\"]')",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 13,
+                                            "location": "tests/ui/pages/checkout.page.ts:26:64"
+                                        },
+                                        {
+                                            "id": "4r7e5ycolkei23kzs99x",
+                                            "title": "Expect \"toBeVisible\" locator('[data-test=\"total-label\"]')",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 10,
+                                            "location": "tests/ui/pages/checkout.page.ts:27:66"
+                                        },
+                                        {
+                                            "id": "6dje42l4qh9q7k35qv7j",
+                                            "title": "Click locator('[data-test=\"finish\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 42,
+                                            "location": "tests/ui/pages/checkout.page.ts:31:53"
+                                        },
+                                        {
+                                            "id": "rid5iayjplj33cao9d6q",
+                                            "title": "Expect \"toHaveURL\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 10,
+                                            "location": "tests/ui/pages/checkout.page.ts:35:29"
+                                        },
+                                        {
+                                            "id": "706orlj50t4g61h71xl6",
+                                            "title": "Expect \"toHaveText\" locator('[data-test=\"complete-header\"]')",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 10,
+                                            "location": "tests/ui/pages/checkout.page.ts:36:70"
+                                        },
+                                        {
+                                            "id": "anzhywocuwlld9bh2yme",
+                                            "title": "After Hooks",
+                                            "type": "step",
+                                            "stepType": "hook",
+                                            "duration": 223,
+                                            "location": "",
+                                            "subs": [
+                                                {
+                                                    "id": "u53e35hdhwljsqylnf0w",
+                                                    "title": "Fixture \"checkoutPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "xk1eq8asg7ey62ycc5ne",
+                                                    "title": "Fixture \"cartPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "ehc64dxzevfmyf6gmn3p",
+                                                    "title": "Fixture \"loggedInInventoryPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "v57cl68sd3pib2wlfkia",
+                                                    "title": "Fixture \"inventoryPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "ch9oca8qzh19zkcdwkqr",
+                                                    "title": "Fixture \"loginPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "dx7qw95etvsarzp2a76q",
+                                                    "title": "Fixture \"page\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": ""
+                                                },
+                                                {
+                                                    "id": "uxoj63pqnbbdi9jf7mfe",
+                                                    "title": "Fixture \"context\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 210,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "843zr80zsdwkw6dkdsuw",
+                                                            "title": "Close context",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 153,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "81164197ee762a435701",
+                                    "title": "checkout requires first name @ui @checkout @negative",
+                                    "type": "case",
+                                    "caseType": "passed",
+                                    "ok": true,
+                                    "outcome": "expected",
+                                    "expectedStatus": "passed",
+                                    "location": "tests/ui/shopping.spec.ts:60:7",
+                                    "timestamps": [
+                                        1782324814339,
+                                        1782324815611
+                                    ],
+                                    "duration": 1272,
+                                    "timeout": 45000,
+                                    "retry": 0,
+                                    "status": "passed",
+                                    "stepNum": 35,
+                                    "stepFailed": 0,
+                                    "stepSubs": true,
+                                    "subs": [
+                                        {
+                                            "id": "2a8k5bs40nfg8h66v3u4",
+                                            "title": "Before Hooks",
+                                            "type": "step",
+                                            "stepType": "hook",
+                                            "duration": 681,
+                                            "location": "",
+                                            "subs": [
+                                                {
+                                                    "id": "5xo1frmgxfzw0vppa891",
+                                                    "title": "Fixture \"context\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 10,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "j8klez452hwg6tkv0d63",
+                                                            "title": "Create context",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 5,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "ba9gq9ruwkk6o3qgcwvu",
+                                                    "title": "Fixture \"page\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 48,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "wa4s18ay41f5834jx3td",
+                                                            "title": "Create page",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 46,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "lq54wcvtb1ktpitqrnsl",
+                                                    "title": "Fixture \"loginPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 1,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "48kkexvqgp21x09pm6h6",
+                                                    "title": "Fixture \"inventoryPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 1,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "6tme66x1irudgwi2o8hg",
+                                                    "title": "Fixture \"loggedInInventoryPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 611,
+                                                    "location": "tests/fixtures/test.ts:19:26",
+                                                    "subs": [
+                                                        {
+                                                            "id": "xh112cx27bb5uvvop0w5",
+                                                            "title": "Navigate to \"/\"",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 297,
+                                                            "location": "tests/ui/pages/login.page.ts:17:21"
+                                                        },
+                                                        {
+                                                            "id": "3n0bz7uo4m4d1trga5ja",
+                                                            "title": "Fill \"standard_user\" getByPlaceholder('Username')",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 66,
+                                                            "location": "tests/ui/pages/login.page.ts:21:30"
+                                                        },
+                                                        {
+                                                            "id": "m9ykoguwpdpor5ntscq5",
+                                                            "title": "Fill \"secret_sauce\" getByPlaceholder('Password')",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 53,
+                                                            "location": "tests/ui/pages/login.page.ts:22:30"
+                                                        },
+                                                        {
+                                                            "id": "27b41faecuyanxiiwua6",
+                                                            "title": "Click getByRole('button', { name: 'Login' })",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 153,
+                                                            "location": "tests/ui/pages/login.page.ts:23:28"
+                                                        },
+                                                        {
+                                                            "id": "krec2oizdo5ons8phkme",
+                                                            "title": "Expect \"toHaveURL\"",
+                                                            "type": "step",
+                                                            "stepType": "expect",
+                                                            "duration": 16,
+                                                            "location": "tests/ui/pages/inventory.page.ts:15:29"
+                                                        },
+                                                        {
+                                                            "id": "mebslypdzecxe63bcc1r",
+                                                            "title": "Expect \"toHaveText\" locator('[data-test=\"title\"]')",
+                                                            "type": "step",
+                                                            "stepType": "expect",
+                                                            "duration": 18,
+                                                            "location": "tests/ui/pages/inventory.page.ts:16:30"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "vjjzq6pgyp4g90vsc4yh",
+                                                    "title": "Fixture \"cartPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "i8ccawytbudqmidkjded",
+                                                    "title": "Fixture \"checkoutPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 1,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "cmnvl1txohastj2m5er4",
+                                            "title": "Click locator('[data-test=\"inventory-item\"]').filter({ hasText: 'Sauce Labs Backpack' }).getByRole('button', { name: 'Add to cart' })",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 42,
+                                            "location": "tests/ui/pages/inventory.page.ts:24:78"
+                                        },
+                                        {
+                                            "id": "szjkfdzvr0ii2iguz0xa",
+                                            "title": "Click locator('[data-test=\"shopping-cart-link\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 54,
+                                            "location": "tests/ui/pages/inventory.page.ts:41:65"
+                                        },
+                                        {
+                                            "id": "7xhuhsityiagqfrqsvy8",
+                                            "title": "Click locator('[data-test=\"checkout\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 72,
+                                            "location": "tests/ui/pages/cart.page.ts:29:55"
+                                        },
+                                        {
+                                            "id": "uo7823qy2ojjkyc3542y",
+                                            "title": "Expect \"toHaveURL\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 7,
+                                            "location": "tests/ui/pages/checkout.page.ts:7:29"
+                                        },
+                                        {
+                                            "id": "jr7gtijln8cv0giwv23x",
+                                            "title": "Expect \"toHaveText\" locator('[data-test=\"title\"]')",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 18,
+                                            "location": "tests/ui/pages/checkout.page.ts:8:60"
+                                        },
+                                        {
+                                            "id": "cj94j124h65tw1gxdwjw",
+                                            "title": "Fill \"\" locator('[data-test=\"firstName\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 29,
+                                            "location": "tests/ui/pages/checkout.page.ts:12:56"
+                                        },
+                                        {
+                                            "id": "r8iin5s3mlano5dp3smk",
+                                            "title": "Fill \"Customer\" locator('[data-test=\"lastName\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 28,
+                                            "location": "tests/ui/pages/checkout.page.ts:13:55"
+                                        },
+                                        {
+                                            "id": "65wpzn23aina7ziauv3e",
+                                            "title": "Fill \"10001\" locator('[data-test=\"postalCode\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 41,
+                                            "location": "tests/ui/pages/checkout.page.ts:14:57"
+                                        },
+                                        {
+                                            "id": "mshpun8rj61n5k5g88mo",
+                                            "title": "Click locator('[data-test=\"continue\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 49,
+                                            "location": "tests/ui/pages/checkout.page.ts:15:55"
+                                        },
+                                        {
+                                            "id": "jx4g8jaa9jb37db9f2uu",
+                                            "title": "Expect \"toHaveText\" locator('[data-test=\"error\"]')",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 11,
+                                            "location": "tests/ui/pages/checkout.page.ts:19:60"
+                                        },
+                                        {
+                                            "id": "3lihpddty2nije5dw1ib",
+                                            "title": "After Hooks",
+                                            "type": "step",
+                                            "stepType": "hook",
+                                            "duration": 224,
+                                            "location": "",
+                                            "subs": [
+                                                {
+                                                    "id": "vl1sl18ox1f8f3fxcmii",
+                                                    "title": "Fixture \"checkoutPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "r81xfzu00rkohcd17utr",
+                                                    "title": "Fixture \"cartPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "eudziyun0ii0ta74axiu",
+                                                    "title": "Fixture \"loggedInInventoryPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "rpkcfdtcnzfjtm1xppyj",
+                                                    "title": "Fixture \"inventoryPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "i08lgdqitkd7mqxwfgsx",
+                                                    "title": "Fixture \"loginPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "ijq3lvaeiv9c4tijix5m",
+                                                    "title": "Fixture \"page\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": ""
+                                                },
+                                                {
+                                                    "id": "mtor2nd7zlhm6066jz85",
+                                                    "title": "Fixture \"context\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 214,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "mnsl3rzufmxr8d6yb47t",
+                                                            "title": "Close context",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 146,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "6a815f4a9f1a6f0e7592",
+                                    "title": "checkout requires last name @ui @checkout @negative",
+                                    "type": "case",
+                                    "caseType": "passed",
+                                    "ok": true,
+                                    "outcome": "expected",
+                                    "expectedStatus": "passed",
+                                    "location": "tests/ui/shopping.spec.ts:72:7",
+                                    "timestamps": [
+                                        1782324814822,
+                                        1782324816041
+                                    ],
+                                    "duration": 1219,
+                                    "timeout": 45000,
+                                    "retry": 0,
+                                    "status": "passed",
+                                    "stepNum": 35,
+                                    "stepFailed": 0,
+                                    "stepSubs": true,
+                                    "subs": [
+                                        {
+                                            "id": "6d04isrjvbpgs0cqm55d",
+                                            "title": "Before Hooks",
+                                            "type": "step",
+                                            "stepType": "hook",
+                                            "duration": 690,
+                                            "location": "",
+                                            "subs": [
+                                                {
+                                                    "id": "w83m7r7v78fqim0so3ik",
+                                                    "title": "Fixture \"context\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 11,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "oc5bood5m8pkfurcewcd",
+                                                            "title": "Create context",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 5,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "mk9zho8d6i4uvyl9l88q",
+                                                    "title": "Fixture \"page\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 47,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "umqwmih74gnou8a3i19r",
+                                                            "title": "Create page",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 46,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "64v1jd5mfg01uaw7q3x3",
+                                                    "title": "Fixture \"loginPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 1,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "3cfuo4eooioxo2vnyq8q",
+                                                    "title": "Fixture \"inventoryPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "zi86p66l6vimyl48eql4",
+                                                    "title": "Fixture \"loggedInInventoryPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 617,
+                                                    "location": "tests/fixtures/test.ts:19:26",
+                                                    "subs": [
+                                                        {
+                                                            "id": "8oxq7qhmn5ipja25e3rj",
+                                                            "title": "Navigate to \"/\"",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 311,
+                                                            "location": "tests/ui/pages/login.page.ts:17:21"
+                                                        },
+                                                        {
+                                                            "id": "kg08u5if4tjjii3bwmm9",
+                                                            "title": "Fill \"standard_user\" getByPlaceholder('Username')",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 73,
+                                                            "location": "tests/ui/pages/login.page.ts:21:30"
+                                                        },
+                                                        {
+                                                            "id": "4n4c66b1cqomzuzbquej",
+                                                            "title": "Fill \"secret_sauce\" getByPlaceholder('Password')",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 43,
+                                                            "location": "tests/ui/pages/login.page.ts:22:30"
+                                                        },
+                                                        {
+                                                            "id": "h521sgfmoxidebtg7xdi",
+                                                            "title": "Click getByRole('button', { name: 'Login' })",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 145,
+                                                            "location": "tests/ui/pages/login.page.ts:23:28"
+                                                        },
+                                                        {
+                                                            "id": "4yndqj0hgj9abguk0n70",
+                                                            "title": "Expect \"toHaveURL\"",
+                                                            "type": "step",
+                                                            "stepType": "expect",
+                                                            "duration": 24,
+                                                            "location": "tests/ui/pages/inventory.page.ts:15:29"
+                                                        },
+                                                        {
+                                                            "id": "46cgx45ahtxfl85mlpus",
+                                                            "title": "Expect \"toHaveText\" locator('[data-test=\"title\"]')",
+                                                            "type": "step",
+                                                            "stepType": "expect",
+                                                            "duration": 10,
+                                                            "location": "tests/ui/pages/inventory.page.ts:16:30"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "74t1uz4ldqy82tef06mu",
+                                                    "title": "Fixture \"cartPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "6nivw026mcu1gbjwze2b",
+                                                    "title": "Fixture \"checkoutPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "j8ie771pwp6fy7hm5ihc",
+                                            "title": "Click locator('[data-test=\"inventory-item\"]').filter({ hasText: 'Sauce Labs Backpack' }).getByRole('button', { name: 'Add to cart' })",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 48,
+                                            "location": "tests/ui/pages/inventory.page.ts:24:78"
+                                        },
+                                        {
+                                            "id": "7lkfyklmktm5nnof0mro",
+                                            "title": "Click locator('[data-test=\"shopping-cart-link\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 68,
+                                            "location": "tests/ui/pages/inventory.page.ts:41:65"
+                                        },
+                                        {
+                                            "id": "ennhgrj0ms877epmdoiy",
+                                            "title": "Click locator('[data-test=\"checkout\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 59,
+                                            "location": "tests/ui/pages/cart.page.ts:29:55"
+                                        },
+                                        {
+                                            "id": "3i9rc8wfieoxfgoo5isc",
+                                            "title": "Expect \"toHaveURL\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 13,
+                                            "location": "tests/ui/pages/checkout.page.ts:7:29"
+                                        },
+                                        {
+                                            "id": "qqzneemf9sz4d5l6xrlq",
+                                            "title": "Expect \"toHaveText\" locator('[data-test=\"title\"]')",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 10,
+                                            "location": "tests/ui/pages/checkout.page.ts:8:60"
+                                        },
+                                        {
+                                            "id": "95sq8eimgimms9wafv32",
+                                            "title": "Fill \"Test\" locator('[data-test=\"firstName\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 14,
+                                            "location": "tests/ui/pages/checkout.page.ts:12:56"
+                                        },
+                                        {
+                                            "id": "ekkizaoul7v5wmdc82hv",
+                                            "title": "Fill \"\" locator('[data-test=\"lastName\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 11,
+                                            "location": "tests/ui/pages/checkout.page.ts:13:55"
+                                        },
+                                        {
+                                            "id": "r9eruxo6lr0tes32js0o",
+                                            "title": "Fill \"10001\" locator('[data-test=\"postalCode\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 14,
+                                            "location": "tests/ui/pages/checkout.page.ts:14:57"
+                                        },
+                                        {
+                                            "id": "d4lj20t3ikbee5u0hn7c",
+                                            "title": "Click locator('[data-test=\"continue\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 57,
+                                            "location": "tests/ui/pages/checkout.page.ts:15:55"
+                                        },
+                                        {
+                                            "id": "tb0s2fzhyh87ats45b0a",
+                                            "title": "Expect \"toHaveText\" locator('[data-test=\"error\"]')",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 7,
+                                            "location": "tests/ui/pages/checkout.page.ts:19:60"
+                                        },
+                                        {
+                                            "id": "s13ft9n63cqebyn6ui3r",
+                                            "title": "After Hooks",
+                                            "type": "step",
+                                            "stepType": "hook",
+                                            "duration": 211,
+                                            "location": "",
+                                            "subs": [
+                                                {
+                                                    "id": "wcene6cm6ber361hh051",
+                                                    "title": "Fixture \"checkoutPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "k812jbi0rhy8bhogt52f",
+                                                    "title": "Fixture \"cartPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "mu5ihbvk11zy3m30g5y0",
+                                                    "title": "Fixture \"loggedInInventoryPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "m7yvvxc7wipqeet5dbti",
+                                                    "title": "Fixture \"inventoryPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "of13cs5mcqgoouu5gxge",
+                                                    "title": "Fixture \"loginPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "nl9k1sacg421d5hzwyj7",
+                                                    "title": "Fixture \"page\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": ""
+                                                },
+                                                {
+                                                    "id": "yshdigzy2kypd7s1hodz",
+                                                    "title": "Fixture \"context\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 189,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "e1h6s0ecbpr7jpgtmdus",
+                                                            "title": "Close context",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 143,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "5ed40bc161a9b42c51be",
+                                    "title": "checkout requires postal code @ui @checkout @negative",
+                                    "type": "case",
+                                    "caseType": "passed",
+                                    "ok": true,
+                                    "outcome": "expected",
+                                    "expectedStatus": "passed",
+                                    "location": "tests/ui/shopping.spec.ts:84:7",
+                                    "timestamps": [
+                                        1782324815613,
+                                        1782324817046
+                                    ],
+                                    "duration": 1433,
+                                    "timeout": 45000,
+                                    "retry": 0,
+                                    "status": "passed",
+                                    "stepNum": 35,
+                                    "stepFailed": 0,
+                                    "stepSubs": true,
+                                    "subs": [
+                                        {
+                                            "id": "zpq5lplt3wzk9femj0fv",
+                                            "title": "Before Hooks",
+                                            "type": "step",
+                                            "stepType": "hook",
+                                            "duration": 655,
+                                            "location": "",
+                                            "subs": [
+                                                {
+                                                    "id": "tcxv940sfbtnu1vq5ac2",
+                                                    "title": "Fixture \"context\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 8,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "t8f92vdb0ur9hq6dvaj8",
+                                                            "title": "Create context",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 4,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "j208vae0l12nvaz9rdro",
+                                                    "title": "Fixture \"page\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 43,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "zo355nv5pho2546o44wp",
+                                                            "title": "Create page",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 41,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "530drzc0ylyn8x4cyw5p",
+                                                    "title": "Fixture \"loginPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "d9c79w2vnm3xjhjh8dmr",
+                                                    "title": "Fixture \"inventoryPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "bh5rz4rcytryg2wcghf3",
+                                                    "title": "Fixture \"loggedInInventoryPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 596,
+                                                    "location": "tests/fixtures/test.ts:19:26",
+                                                    "subs": [
+                                                        {
+                                                            "id": "zsv976j9wrfim2725lc8",
+                                                            "title": "Navigate to \"/\"",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 278,
+                                                            "location": "tests/ui/pages/login.page.ts:17:21"
+                                                        },
+                                                        {
+                                                            "id": "dlzjv68pdlek6uqrapwt",
+                                                            "title": "Fill \"standard_user\" getByPlaceholder('Username')",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 75,
+                                                            "location": "tests/ui/pages/login.page.ts:21:30"
+                                                        },
+                                                        {
+                                                            "id": "3bf86kznxtswaz33s5wy",
+                                                            "title": "Fill \"secret_sauce\" getByPlaceholder('Password')",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 43,
+                                                            "location": "tests/ui/pages/login.page.ts:22:30"
+                                                        },
+                                                        {
+                                                            "id": "ffp3369g6jgjssua8qjp",
+                                                            "title": "Click getByRole('button', { name: 'Login' })",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 164,
+                                                            "location": "tests/ui/pages/login.page.ts:23:28"
+                                                        },
+                                                        {
+                                                            "id": "3r4cc9o4lqd8hn9jjrxk",
+                                                            "title": "Expect \"toHaveURL\"",
+                                                            "type": "step",
+                                                            "stepType": "expect",
+                                                            "duration": 16,
+                                                            "location": "tests/ui/pages/inventory.page.ts:15:29"
+                                                        },
+                                                        {
+                                                            "id": "17a3dbo4h0x4e93xuc11",
+                                                            "title": "Expect \"toHaveText\" locator('[data-test=\"title\"]')",
+                                                            "type": "step",
+                                                            "stepType": "expect",
+                                                            "duration": 14,
+                                                            "location": "tests/ui/pages/inventory.page.ts:16:30"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "zdhqztdlrh4jynjnwsyr",
+                                                    "title": "Fixture \"cartPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "zuxv4uqh3jy83y2l3pjp",
+                                                    "title": "Fixture \"checkoutPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "z6r42x48pfdla5t9gav9",
+                                            "title": "Click locator('[data-test=\"inventory-item\"]').filter({ hasText: 'Sauce Labs Backpack' }).getByRole('button', { name: 'Add to cart' })",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 40,
+                                            "location": "tests/ui/pages/inventory.page.ts:24:78"
+                                        },
+                                        {
+                                            "id": "36gbtjmpblds19il7fpu",
+                                            "title": "Click locator('[data-test=\"shopping-cart-link\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 70,
+                                            "location": "tests/ui/pages/inventory.page.ts:41:65"
+                                        },
+                                        {
+                                            "id": "nt0bpir2tz2i3v6dbw1m",
+                                            "title": "Click locator('[data-test=\"checkout\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 113,
+                                            "location": "tests/ui/pages/cart.page.ts:29:55"
+                                        },
+                                        {
+                                            "id": "me4of9mygijrimght29o",
+                                            "title": "Expect \"toHaveURL\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 12,
+                                            "location": "tests/ui/pages/checkout.page.ts:7:29"
+                                        },
+                                        {
+                                            "id": "m8f5h6o66xizh9py6r31",
+                                            "title": "Expect \"toHaveText\" locator('[data-test=\"title\"]')",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 10,
+                                            "location": "tests/ui/pages/checkout.page.ts:8:60"
+                                        },
+                                        {
+                                            "id": "v4v2zwfyfowoxeonflcy",
+                                            "title": "Fill \"Test\" locator('[data-test=\"firstName\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 34,
+                                            "location": "tests/ui/pages/checkout.page.ts:12:56"
+                                        },
+                                        {
+                                            "id": "r2j31wxgf665hyvy2ius",
+                                            "title": "Fill \"Customer\" locator('[data-test=\"lastName\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 71,
+                                            "location": "tests/ui/pages/checkout.page.ts:13:55"
+                                        },
+                                        {
+                                            "id": "zi9iotsvps43qhm7qrxu",
+                                            "title": "Fill \"\" locator('[data-test=\"postalCode\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 39,
+                                            "location": "tests/ui/pages/checkout.page.ts:14:57"
+                                        },
+                                        {
+                                            "id": "f3w3sx1e82lkma58ikvm",
+                                            "title": "Click locator('[data-test=\"continue\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 69,
+                                            "location": "tests/ui/pages/checkout.page.ts:15:55"
+                                        },
+                                        {
+                                            "id": "2uha6046vtflljx4mvnj",
+                                            "title": "Expect \"toHaveText\" locator('[data-test=\"error\"]')",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 23,
+                                            "location": "tests/ui/pages/checkout.page.ts:19:60"
+                                        },
+                                        {
+                                            "id": "uddicjrbi42zpusqxici",
+                                            "title": "After Hooks",
+                                            "type": "step",
+                                            "stepType": "hook",
+                                            "duration": 264,
+                                            "location": "",
+                                            "subs": [
+                                                {
+                                                    "id": "qe4tst69booytpo4o4li",
+                                                    "title": "Fixture \"checkoutPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "wbdnxdj91vdf5sq69pwo",
+                                                    "title": "Fixture \"cartPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "n0vcob8k732fgephyjlb",
+                                                    "title": "Fixture \"loggedInInventoryPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "gva8s4icp0yeon6m0vdn",
+                                                    "title": "Fixture \"inventoryPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 2,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "jpf3kkuxcbbv2edjog7l",
+                                                    "title": "Fixture \"loginPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "250wq78i7ka7ih62e5kz",
+                                                    "title": "Fixture \"page\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": ""
+                                                },
+                                                {
+                                                    "id": "iyuop83cvjh7elcz4pc3",
+                                                    "title": "Fixture \"context\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 250,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "wes286ve039fp12wtnpv",
+                                                            "title": "Close context",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 172,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "0c65f563dd96b7448e94",
+                                    "title": "user can sort products by price from low to high @ui @catalog",
+                                    "type": "case",
+                                    "caseType": "passed",
+                                    "ok": true,
+                                    "outcome": "expected",
+                                    "expectedStatus": "passed",
+                                    "location": "tests/ui/shopping.spec.ts:96:7",
+                                    "timestamps": [
+                                        1782324816042,
+                                        1782324817206
+                                    ],
+                                    "duration": 1164,
+                                    "timeout": 45000,
+                                    "retry": 0,
+                                    "status": "passed",
+                                    "stepNum": 24,
+                                    "stepFailed": 0,
+                                    "stepSubs": true,
+                                    "subs": [
+                                        {
+                                            "id": "0e5s9ytzowug8an47ad4",
+                                            "title": "Before Hooks",
+                                            "type": "step",
+                                            "stepType": "hook",
+                                            "duration": 838,
+                                            "location": "",
+                                            "subs": [
+                                                {
+                                                    "id": "64m9mxf3y61r2u2rop6z",
+                                                    "title": "Fixture \"context\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 6,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "b4kkp7eb9uadfbv4j5u1",
+                                                            "title": "Create context",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 2,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "xkoodelq57lhf3vehg7c",
+                                                    "title": "Fixture \"page\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 51,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "p1v2yzilt4n2tu087owa",
+                                                            "title": "Create page",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 49,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "t3mybzt1oh4as255m0ei",
+                                                    "title": "Fixture \"loginPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "qwew3mgxeu7unyqvi5om",
+                                                    "title": "Fixture \"inventoryPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 1,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "isukla2k9x3tkf6kznh6",
+                                                    "title": "Fixture \"loggedInInventoryPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 771,
+                                                    "location": "tests/fixtures/test.ts:19:26",
+                                                    "subs": [
+                                                        {
+                                                            "id": "vq8i2vbfm9mbsrp1l5k9",
+                                                            "title": "Navigate to \"/\"",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 355,
+                                                            "location": "tests/ui/pages/login.page.ts:17:21"
+                                                        },
+                                                        {
+                                                            "id": "xveqx1yvldbyxs8p474m",
+                                                            "title": "Fill \"standard_user\" getByPlaceholder('Username')",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 119,
+                                                            "location": "tests/ui/pages/login.page.ts:21:30"
+                                                        },
+                                                        {
+                                                            "id": "g769a29qmsc167wjo4rg",
+                                                            "title": "Fill \"secret_sauce\" getByPlaceholder('Password')",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 70,
+                                                            "location": "tests/ui/pages/login.page.ts:22:30"
+                                                        },
+                                                        {
+                                                            "id": "hljjtdlfrsfhyro7svqi",
+                                                            "title": "Click getByRole('button', { name: 'Login' })",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 152,
+                                                            "location": "tests/ui/pages/login.page.ts:23:28"
+                                                        },
+                                                        {
+                                                            "id": "8fq208tbpsdvnxm5pbgb",
+                                                            "title": "Expect \"toHaveURL\"",
+                                                            "type": "step",
+                                                            "stepType": "expect",
+                                                            "duration": 28,
+                                                            "location": "tests/ui/pages/inventory.page.ts:15:29"
+                                                        },
+                                                        {
+                                                            "id": "5p8257hmoasq57cz6iip",
+                                                            "title": "Expect \"toHaveText\" locator('[data-test=\"title\"]')",
+                                                            "type": "step",
+                                                            "stepType": "expect",
+                                                            "duration": 36,
+                                                            "location": "tests/ui/pages/inventory.page.ts:16:30"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "agwfn1olcf5zebu2tqup",
+                                            "title": "Select option locator('[data-test=\"product-sort-container\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 51,
+                                            "location": "tests/ui/pages/inventory.page.ts:45:27"
+                                        },
+                                        {
+                                            "id": "7vjvuigvexmyic5s9z5w",
+                                            "title": "Evaluate locator('[data-test=\"inventory-item-price\"]')",
+                                            "type": "step",
+                                            "stepType": "pw:api",
+                                            "duration": 53,
+                                            "location": "tests/ui/pages/inventory.page.ts:49:82"
+                                        },
+                                        {
+                                            "id": "xd9e95vdha89qrhi0cyi",
+                                            "title": "Expect \"toEqual\"",
+                                            "type": "step",
+                                            "stepType": "expect",
+                                            "duration": 1,
+                                            "location": "tests/ui/shopping.spec.ts:102:20"
+                                        },
+                                        {
+                                            "id": "jxa7tlfkyce6bbhp5td0",
+                                            "title": "After Hooks",
+                                            "type": "step",
+                                            "stepType": "hook",
+                                            "duration": 215,
+                                            "location": "",
+                                            "subs": [
+                                                {
+                                                    "id": "bqvfz1ye87r32zocmn84",
+                                                    "title": "Fixture \"loggedInInventoryPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "3vp3gvso13deh2pct2no",
+                                                    "title": "Fixture \"inventoryPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "52fd39xsum8zj3gu2s83",
+                                                    "title": "Fixture \"loginPage\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": "tests/fixtures/test.ts:19:26"
+                                                },
+                                                {
+                                                    "id": "wh6e3budf88gnemnfjxy",
+                                                    "title": "Fixture \"page\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 0,
+                                                    "location": ""
+                                                },
+                                                {
+                                                    "id": "3rdebe8t5ekli8i1l0uu",
+                                                    "title": "Fixture \"context\"",
+                                                    "type": "step",
+                                                    "stepType": "fixture",
+                                                    "duration": 204,
+                                                    "location": "",
+                                                    "subs": [
+                                                        {
+                                                            "id": "01x8s4oeaml7zt2ae883",
+                                                            "title": "Close context",
+                                                            "type": "step",
+                                                            "stepType": "pw:api",
+                                                            "duration": 104,
+                                                            "location": ""
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "location": "tests/ui/shopping.spec.ts:8:6"
+                        }
+                    ],
+                    "location": "tests/ui/shopping.spec.ts:0:0"
+                }
+            ]
+        }
+    ],
+    "formatters": {},
+    "suiteTypes": [
+        "project",
+        "file",
+        "describe",
+        "shard"
+    ],
+    "caseTypes": [
+        "passed",
+        "flaky",
+        "skipped",
+        "failed"
+    ],
+    "traceViewerUrl": "https://trace.playwright.dev/?trace={traceUrl}",
+    "tags": {
+        "smoke": {
+            "value": 3
+        },
+        "ui": {
+            "value": 8
+        },
+        "auth": {
+            "value": 2
+        },
+        "negative": {
+            "value": 4
+        },
+        "cart": {
+            "value": 1
+        },
+        "checkout": {
+            "value": 4
+        },
+        "catalog": {
+            "value": 1
+        }
+    },
+    "summary": {
+        "tests": {
+            "name": "Tests",
+            "value": 8,
+            "nav": true,
+            "id": "tests"
+        },
+        "passed": {
+            "name": "Passed",
+            "value": 8,
+            "color": "green",
+            "nav": true,
+            "id": "passed",
+            "percent": "100.0%"
+        },
+        "flaky": {
+            "name": "Flaky",
+            "value": 0,
+            "color": "orange",
+            "nav": true,
+            "id": "flaky",
+            "percent": "0.0%"
+        },
+        "skipped": {
+            "name": "Skipped",
+            "value": 0,
+            "color": "gray",
+            "nav": true,
+            "id": "skipped",
+            "percent": "0.0%"
+        },
+        "failed": {
+            "name": "Failed",
+            "value": 0,
+            "color": "#d00",
+            "nav": true,
+            "id": "failed",
+            "percent": "0.0%"
+        },
+        "steps": {
+            "name": "Steps",
+            "value": 241,
+            "id": "steps"
+        },
+        "suites": {
+            "name": "Suites",
+            "value": 2,
+            "id": "suites"
+        },
+        "projects": {
+            "name": "Projects",
+            "description": "Suite type is project",
+            "value": 1,
+            "id": "projects"
+        },
+        "files": {
+            "name": "Files",
+            "description": "Suite type is file",
+            "value": 2,
+            "id": "files"
+        },
+        "describes": {
+            "name": "Describes",
+            "description": "Suite type is describe",
+            "value": 2,
+            "id": "describes"
+        },
+        "shards": {
+            "name": "Shards",
+            "description": "Suite type is shard (only in shading mode)",
+            "value": 0,
+            "id": "shards"
+        },
+        "retries": {
+            "name": "Retries",
+            "value": 0,
+            "id": "retries"
+        },
+        "errors": {
+            "name": "Errors",
+            "value": 0,
+            "id": "errors"
+        },
+        "logs": {
+            "name": "Logs",
+            "value": 0,
+            "id": "logs"
+        },
+        "attachments": {
+            "name": "Attachments",
+            "value": 0,
+            "id": "attachments"
+        }
+    },
+    "pieChart": {
+        "ns": "mcr-pie",
+        "width": 360,
+        "height": 150,
+        "margin": 10,
+        "svg": "<svg viewBox=\"0 0 360 150\" width=\"100%\" height=\"100%\" xmlns=\"http://www.w3.org/2000/svg\"><g class=\"mcr-pie-path-passed\"><path d=\"M75,75 L75,10 A65,65 0 1 1 75,140 A65,65 0 1 1 75,10 z\" fill=\"green\" opacity=\"0.8\" /><animateTransform from=\"0,0\" to=\"0,0\" pos=\"0,10\" attributeName=\"transform\" type=\"translate\" dur=\"0.2s\" fill=\"freeze\" repeatCount=\"1\" restart=\"always\" /></g><g class=\"mcr-pie-path-flaky\"><path d=\"\" fill=\"orange\" opacity=\"0.8\" /><animateTransform from=\"0,0\" to=\"0,0\" pos=\"0,-10\" attributeName=\"transform\" type=\"translate\" dur=\"0.2s\" fill=\"freeze\" repeatCount=\"1\" restart=\"always\" /></g><g class=\"mcr-pie-path-skipped\"><path d=\"\" fill=\"gray\" opacity=\"0.8\" /><animateTransform from=\"0,0\" to=\"0,0\" pos=\"0,-10\" attributeName=\"transform\" type=\"translate\" dur=\"0.2s\" fill=\"freeze\" repeatCount=\"1\" restart=\"always\" /></g><g class=\"mcr-pie-path-failed\"><path d=\"\" fill=\"#d00\" opacity=\"0.8\" /><animateTransform from=\"0,0\" to=\"0,0\" pos=\"0,-10\" attributeName=\"transform\" type=\"translate\" dur=\"0.2s\" fill=\"freeze\" repeatCount=\"1\" restart=\"always\" /></g><g transform=\"translate(160 10)\"><g class=\"mcr-pie-legend-passed\" transform=\"translate(0 0)\"><circle cx=\"10\" cy=\"16\" r=\"10\" fill=\"green\" opacity=\"0.8\" /><text x=\"30\" y=\"16\" alignment-baseline=\"middle\">Passed</text><text x=\"115\" y=\"16\" alignment-baseline=\"middle\" text-anchor=\"middle\">8</text><text x=\"190\" y=\"16\" alignment-baseline=\"middle\" text-anchor=\"end\">100.0%</text></g><g class=\"mcr-pie-legend-flaky\" transform=\"translate(0 32)\"><circle cx=\"10\" cy=\"16\" r=\"10\" fill=\"orange\" opacity=\"0.8\" /><text x=\"30\" y=\"16\" alignment-baseline=\"middle\">Flaky</text><text x=\"115\" y=\"16\" alignment-baseline=\"middle\" text-anchor=\"middle\">0</text><text x=\"190\" y=\"16\" alignment-baseline=\"middle\" text-anchor=\"end\">0.0%</text></g><g class=\"mcr-pie-legend-skipped\" transform=\"translate(0 64)\"><circle cx=\"10\" cy=\"16\" r=\"10\" fill=\"gray\" opacity=\"0.8\" /><text x=\"30\" y=\"16\" alignment-baseline=\"middle\">Skipped</text><text x=\"115\" y=\"16\" alignment-baseline=\"middle\" text-anchor=\"middle\">0</text><text x=\"190\" y=\"16\" alignment-baseline=\"middle\" text-anchor=\"end\">0.0%</text></g><g class=\"mcr-pie-legend-failed\" transform=\"translate(0 96)\"><circle cx=\"10\" cy=\"16\" r=\"10\" fill=\"#d00\" opacity=\"0.8\" /><text x=\"30\" y=\"16\" alignment-baseline=\"middle\">Failed</text><text x=\"115\" y=\"16\" alignment-baseline=\"middle\" text-anchor=\"middle\">0</text><text x=\"190\" y=\"16\" alignment-baseline=\"middle\" text-anchor=\"end\">0.0%</text></g></g></svg>"
+    }
+}
