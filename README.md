@@ -33,6 +33,31 @@ npm run test:ui
 npm run test:api
 ```
 
+## Docker Runner
+
+Docker is optional, but it is useful when you want a repeatable Playwright environment without installing Node.js, Chromium, or browser system dependencies directly on your machine.
+
+Build the image:
+
+```bash
+npm run docker:build
+```
+
+Run the full suite:
+
+```bash
+npm run docker:test
+```
+
+Run by layer:
+
+```bash
+npm run docker:test:ui
+npm run docker:test:api
+```
+
+To run authenticated GoREST CRUD tests in Docker, keep `GOREST_API_TOKEN` in `.env`. If the token is missing, local `npm run test:api` still runs the full API command and the authenticated test will fail, which is intentional for local feedback.
+
 ## Environment
 
 | Variable | Required | Used By | Notes |
@@ -54,6 +79,10 @@ If `GOREST_API_TOKEN` is missing in CI, the workflow still runs token-free API t
 | `npm run security:audit` | Run `npm audit --audit-level=high`. |
 | `npm run report` | Open the Playwright HTML report. |
 | `npm run report:monocart` | Open the Monocart report. |
+| `npm run docker:build` | Build the local Playwright Docker image. |
+| `npm run docker:test` | Run the full suite inside the Playwright Docker image. |
+| `npm run docker:test:ui` | Run UI tests inside Docker. |
+| `npm run docker:test:api` | Run API tests inside Docker. |
 
 Useful tag examples:
 
@@ -68,6 +97,8 @@ npx playwright test --grep-invert @crud
 
 ```text
 .github/workflows/playwright.yml   GitHub Actions quality gates
+Dockerfile                         Playwright-ready container image
+docker-compose.yml                 Local Docker shortcuts for all/UI/API tests
 docs/branch-protection.md          Branch protection setup notes
 docs/monitoring-dashboard.md       CI and report monitoring dashboard
 tests/api/clients                  GoREST API client
@@ -106,6 +137,7 @@ The workflow is split into focused jobs:
 | `Typecheck` | Catches TypeScript errors before tests run. |
 | `Lint` | Enforces code quality and Playwright lint rules. |
 | `Security Audit` | Fails on high-severity npm audit findings. |
+| `Docker Build` | Verifies the Dockerized test runner still builds. |
 | `UI Tests` | Runs SauceDemo Chromium tests after static checks pass. |
 | `API Tests` | Runs GoREST API tests after static checks pass. |
 
@@ -168,6 +200,7 @@ To publish the dashboard, configure GitHub Pages to deploy from the `gh-pages` b
 - **CI job split:** makes failures easier to diagnose.
 - **Monocart reporting:** adds a readable report beside Playwright's native HTML report.
 - **Dependabot:** surfaces dependency updates for review instead of relying on manual checks.
+- **Docker runner:** provides a repeatable local test environment without replacing the simpler GitHub Actions jobs.
 
 ## Troubleshooting
 
@@ -176,6 +209,7 @@ To publish the dashboard, configure GitHub Pages to deploy from the `gh-pages` b
 | Authenticated API CRUD is skipped in CI | `GOREST_API_TOKEN` secret is missing | Add repository secret `GOREST_API_TOKEN`. |
 | Local API CRUD fails with 401 | `.env` token is missing or invalid | Update `.env` with a valid GoREST token. |
 | Browser tests fail before launching | Chromium is not installed | Run `npx playwright install chromium`. |
+| Docker API CRUD fails with 401 | Docker did not receive `GOREST_API_TOKEN` | Add the token to `.env` before `docker compose run`. |
 | Reports do not open | No test run has generated reports yet | Run `npm test`, then `npm run report`. |
 | CI shows duplicate checks | Workflow may include feature-branch `push` triggers | Keep CI limited to `pull_request` into `main` and `push` to `main`. |
 

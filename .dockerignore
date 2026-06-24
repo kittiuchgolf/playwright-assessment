@@ -1,0 +1,10 @@
+.git
+.env
+.DS_Store
+node_modules
+playwright-report
+monocart-report
+test-results
+dashboard-artifacts
+pages
+interview-notes

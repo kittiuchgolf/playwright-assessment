@@ -12,6 +12,10 @@
     "report": "playwright show-report",
     "report:monocart": "monocart show-report monocart-report/index.html",
     "dashboard:build": "node scripts/build-pages-dashboard.mjs",
+    "docker:build": "docker compose build",
+    "docker:test": "docker compose run --rm tests",
+    "docker:test:ui": "docker compose run --rm ui",
+    "docker:test:api": "docker compose run --rm api",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "security:audit": "npm audit --audit-level=high"

@@ -1,0 +1,23 @@
+x-playwright-service: &playwright-service
+  build:
+    context: .
+  env_file:
+    - .env
+  environment:
+    CI: "true"
+  volumes:
+    - .:/app
+    - /app/node_modules
+
+services:
+  tests:
+    <<: *playwright-service
+    command: npm test
+
+  ui:
+    <<: *playwright-service
+    command: npm run test:ui
+
+  api:
+    <<: *playwright-service
+    command: npm run test:api
