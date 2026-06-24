@@ -17,10 +17,10 @@ This matrix maps the assessment requirements to the implemented tests and suppor
 | Use GoREST API | API project base URL points to GoREST `/public/v2` | `playwright.config.ts` |
 | Cover CRUD operations | Create, update, delete, and verify deleted user | `creates, updates, and deletes a user with bearer token auth` |
 | Cover API error handling | Unauthenticated create and unknown user 404 | `rejects unauthenticated user creation`, `returns not found for an unknown user id` |
-| Use reusable API client classes | `GoRestClient` wraps all API requests, auth headers, and validation | `tests/api/clients/gorest-client.ts` |
+| Use reusable API client classes | `GoRestClient` wraps all API requests, auth headers, validation, and retries | `tests/api/clients/gorest-client.ts` |
 | Use TypeScript API types | User payload and response types are defined from schemas | `tests/api/types/user.ts` |
 | Validate API responses | Zod runtime schemas parse user and error responses | `tests/api/schemas/user.schema.ts` |
-| Handle authentication securely | GoREST token loaded from `.env` (via dotenv) or GitHub secret; CRUD test skips when absent | `.env.example`, `playwright.config.ts`, `tests/fixtures/test.ts`, `.github/workflows/playwright.yml` |
+| Handle authentication securely | GoREST token is loaded from `.env` or GitHub secret | `.env.example`, `tests/support/env.ts`, `.github/workflows/playwright.yml` |
 | Never commit credentials | `.env` ignored by git | `.gitignore` |
 | Demonstrate maintainable UI architecture | Page Object Model plus Playwright fixtures | `tests/ui/pages/*`, `tests/fixtures/test.ts` |
 | Demonstrate scalable test execution | Tagged tests and split CI jobs | `@smoke`, `@ui`, `@api`, `.github/workflows/playwright.yml` |

@@ -40,7 +40,7 @@ npm run test:api
 | --- | --- | --- | --- |
 | `GOREST_API_TOKEN` | Required for authenticated CRUD | `tests/api/users.spec.ts` | Stored locally in `.env` and in GitHub as a repository secret. |
 
-`GOREST_API_TOKEN` is optional for a green run. When it is absent, the authenticated CRUD test skips (rather than fails), so a fresh `npm install && npm test` passes out of the box. Set the token locally in `.env`, or as a GitHub repository secret in CI, to run the full CRUD scenario.
+If `GOREST_API_TOKEN` is missing in CI, the workflow still runs token-free API tests and skips only the authenticated CRUD scenario.
 
 ## Test Commands
 
@@ -175,8 +175,8 @@ To publish the dashboard, configure GitHub Pages to deploy from the `gh-pages` b
 
 | Symptom | Likely Cause | Fix |
 | --- | --- | --- |
-| Authenticated API CRUD is skipped | `GOREST_API_TOKEN` is not set (local `.env` or CI secret) | Add the token to run it; skipping keeps the suite green. |
-| API CRUD fails with 401 | `.env` token is present but invalid or expired | Update `.env` (or the CI secret) with a valid GoREST token. |
+| Authenticated API CRUD is skipped in CI | `GOREST_API_TOKEN` secret is missing | Add repository secret `GOREST_API_TOKEN`. |
+| Local API CRUD fails with 401 | `.env` token is missing or invalid | Update `.env` with a valid GoREST token. |
 | Browser tests fail before launching | Chromium install was interrupted or the browser cache was removed | Run `npx playwright install chromium`. |
 | Reports do not open | No test run has generated reports yet | Run `npm test`, then `npm run report`. |
 | CI shows duplicate checks | Workflow may include feature-branch `push` triggers | Keep CI limited to `pull_request` into `main` and `push` to `main`. |
