@@ -1,5 +1,41 @@
 [
   {
+    "id": "28106215850",
+    "number": "46",
+    "attempt": "1",
+    "branch": "main",
+    "sha": "9272467",
+    "createdAt": "2026-06-24T14:34:43.117Z",
+    "actionUrl": "https://github.com/kittiuchgolf/playwright-assessment/actions/runs/28106215850",
+    "monocart": "runs/28106215850/monocart/",
+    "playwright": "runs/28106215850/playwright/",
+    "reports": {
+      "ui": {
+        "tests": 8,
+        "passed": 8,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "duration": "7.3s"
+      },
+      "api": {
+        "tests": 5,
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "duration": "4.9s"
+      }
+    },
+    "totals": {
+      "tests": 13,
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0
+    }
+  },
+  {
     "id": "28103703646",
     "number": "43",
     "attempt": "1",
@@ -8,7 +44,32 @@
     "createdAt": "2026-06-24T13:56:10.477Z",
     "actionUrl": "https://github.com/kittiuchgolf/playwright-assessment/actions/runs/28103703646",
     "monocart": "runs/28103703646/monocart/",
-    "playwright": "runs/28103703646/playwright/"
+    "playwright": "runs/28103703646/playwright/",
+    "reports": {
+      "ui": {
+        "tests": 8,
+        "passed": 8,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "duration": "8.2s"
+      },
+      "api": {
+        "tests": 5,
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "duration": "4.6s"
+      }
+    },
+    "totals": {
+      "tests": 13,
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0
+    }
   },
   {
     "id": "28074412484",
@@ -19,6 +80,31 @@
     "createdAt": "2026-06-24T04:07:57.906Z",
     "actionUrl": "https://github.com/kittiuchgolf/playwright-assessment/actions/runs/28074412484",
     "monocart": "runs/28074412484/monocart/",
-    "playwright": "runs/28074412484/playwright/"
+    "playwright": "runs/28074412484/playwright/",
+    "reports": {
+      "ui": {
+        "tests": 8,
+        "passed": 8,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "duration": "12.1s"
+      },
+      "api": {
+        "tests": 5,
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "duration": "4.5s"
+      }
+    },
+    "totals": {
+      "tests": 13,
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0
+    }
   }
 ]
