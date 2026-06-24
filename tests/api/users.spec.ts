@@ -23,6 +23,9 @@ test.describe('GoREST users API', () => {
   test('creates, updates, and deletes a user with bearer token auth @smoke @api @crud', async ({
     authenticatedGoRestClient
   }) => {
+    // eslint-disable-next-line playwright/no-skipped-test -- intentional conditional skip when no API token is configured
+    test.skip(!process.env.GOREST_API_TOKEN, 'Set GOREST_API_TOKEN to run authenticated CRUD');
+
     const createPayload = uniqueUser();
     let createdUserId: number | undefined;
     let deletedByTest = false;
