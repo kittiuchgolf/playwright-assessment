@@ -156,6 +156,19 @@ p {
   margin-top: 20px;
 }
 
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.summary-card {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
 .run-list {
   display: grid;
   gap: 12px;
@@ -175,6 +188,40 @@ p {
 .run-title {
   margin: 0;
   font-weight: 850;
+}
+
+.run-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-weight: 850;
+}
+
+.status-badge.passed {
+  color: #046c4e;
+  background: #dff7ed;
+}
+
+.status-badge.failed {
+  color: #9f1239;
+  background: #ffe4e6;
+}
+
+.status-badge.unknown {
+  color: var(--muted);
+  background: var(--paper);
 }
 
 .run-links {
@@ -227,7 +274,8 @@ p {
 @media (max-width: 760px) {
   .hero,
   .run-item,
-  .report-grid {
+  .report-grid,
+  .summary-grid {
     grid-template-columns: 1fr;
   }
 

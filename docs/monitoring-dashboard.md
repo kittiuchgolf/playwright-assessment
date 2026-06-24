@@ -49,12 +49,12 @@ runs/
       api/
 ```
 
-The dashboard home page has two primary buttons for the latest run:
+The dashboard home page shows a monitoring summary with latest result, runs tracked, green run count, and historical failure count. It also has two primary buttons for the latest run:
 
 - **Open Monocart report**
 - **Open Playwright report**
 
-It also keeps a run history list, so older reports remain available as the project runs over time.
+It also keeps a run history list with pass/fail totals, UI/API durations, and links to each historical report, so older results remain visible as the project runs over time.
 
 To make the dashboard public, configure GitHub Pages to deploy from the `gh-pages` branch at the repository root. For private repositories, confirm the repository plan and visibility settings before publishing reports.
 
@@ -78,6 +78,8 @@ To make the dashboard public, configure GitHub Pages to deploy from the `gh-page
 | `test-results-api` | `API Tests` | API test traces and failure artifacts when retained | 7 days |
 
 The Pages dashboard stores Playwright and Monocart HTML reports by workflow run. The downloadable artifacts remain useful for traces, screenshots, videos, and short-term debugging.
+
+The dashboard builder reads Monocart `index.json` files for each published run and stores summarized UI/API metrics in `runs.json`. When a new run publishes, it also backfills metrics for older runs that already have Monocart JSON files on `gh-pages`.
 
 Local report commands:
 
@@ -105,6 +107,7 @@ Run these before opening or updating a PR:
 npm run typecheck
 npm run lint
 npm run security:audit
+npm run dashboard:test
 npm run test:ui
 npm run test:api
 ```

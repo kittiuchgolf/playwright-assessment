@@ -1,10 +1,12 @@
 export function buildRootPage(runs) {
   const latest = runs[0];
+  const summarizedRuns = runs.filter((run) => run.totals);
   const history = runs.map((run) => `
     <article class="run-item">
       <div>
         <p class="run-title">Run #${escapeHtml(run.number)} · ${escapeHtml(formatDate(run.createdAt))}</p>
         <p>${escapeHtml(run.branch)} · ${escapeHtml(run.sha)} · attempt ${escapeHtml(run.attempt)}</p>
+        ${buildRunMetrics(run)}
       </div>
       <div class="run-links">
         <a class="pill" href="${escapeHtml(run.monocart)}">Monocart</a>
@@ -35,6 +37,10 @@ export function buildRootPage(runs) {
           <span class="label">Commit</span>
           <span class="value">${escapeHtml(latest.sha)}</span>
         </div>
+        ${latest.totals ? `<div class="metric">
+          <span class="label">Latest result</span>
+          <span class="value">${escapeHtml(formatPassed(latest.totals))}</span>
+        </div>` : ''}
       </div>`
     : '<p>No run metadata is available yet.</p>';
 
@@ -48,6 +54,10 @@ export function buildRootPage(runs) {
         ${latestActions}`,
       side,
       sections: `<section class="section">
+          <h2>Monitoring summary</h2>
+          ${buildSummaryCards(summarizedRuns)}
+        </section>
+        <section class="section">
           <h2>Run history</h2>
           <div class="run-list">${history || '<div class="empty">No runs have been published.</div>'}</div>
         </section>`
@@ -131,6 +141,56 @@ function escapeHtml(value) {
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#39;');
+}
+
+function buildSummaryCards(runs) {
+  if (runs.length === 0) {
+    return '<div class="empty">No report metrics have been published yet.</div>';
+  }
+
+  const latest = runs[0];
+  const successfulRuns = runs.filter((run) => run.totals.failed === 0).length;
+  const totalTests = runs.reduce((sum, run) => sum + run.totals.tests, 0);
+  const totalFailures = runs.reduce((sum, run) => sum + run.totals.failed, 0);
+
+  return `<div class="summary-grid">
+    <div class="summary-card">
+      <span class="label">Latest result</span>
+      <span class="value">${escapeHtml(formatPassed(latest.totals))}</span>
+    </div>
+    <div class="summary-card">
+      <span class="label">Runs tracked</span>
+      <span class="value">${escapeHtml(runs.length)}</span>
+    </div>
+    <div class="summary-card">
+      <span class="label">Green runs</span>
+      <span class="value">${escapeHtml(`${successfulRuns}/${runs.length}`)}</span>
+    </div>
+    <div class="summary-card">
+      <span class="label">Historical failures</span>
+      <span class="value">${escapeHtml(`${totalFailures}/${totalTests}`)}</span>
+    </div>
+  </div>`;
+}
+
+function buildRunMetrics(run) {
+  if (!run.totals) {
+    return '<div class="run-metrics"><span class="status-badge unknown">Metrics unavailable</span></div>';
+  }
+
+  const status = run.totals.failed > 0 ? 'failed' : 'passed';
+  const ui = run.reports?.ui;
+  const api = run.reports?.api;
+
+  return `<div class="run-metrics">
+    <span class="status-badge ${status}">${escapeHtml(formatPassed(run.totals))}</span>
+    ${ui ? `<span>UI ${escapeHtml(formatPassed(ui))}${ui.duration ? ` · ${escapeHtml(ui.duration)}` : ''}</span>` : ''}
+    ${api ? `<span>API ${escapeHtml(formatPassed(api))}${api.duration ? ` · ${escapeHtml(api.duration)}` : ''}</span>` : ''}
+  </div>`;
+}
+
+function formatPassed(summary) {
+  return `${summary.passed}/${summary.tests} passed`;
 }
 
 function formatDate(value) {
