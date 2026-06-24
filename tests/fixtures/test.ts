@@ -1,6 +1,5 @@
 import { test as base, expect } from '@playwright/test';
 import { GoRestClient } from '../api/clients/gorest-client';
-import { requireEnv } from '../support/env';
 import { sauceUsers } from '../support/users';
 import { CartPage } from '../ui/pages/cart.page';
 import { CheckoutPage } from '../ui/pages/checkout.page';
@@ -47,7 +46,7 @@ export const test = base.extend<AssessmentFixtures>({
   },
 
   authenticatedGoRestClient: async ({ request }, use) => {
-    await use(new GoRestClient(request, requireEnv('GOREST_API_TOKEN')));
+    await use(new GoRestClient(request, process.env.GOREST_API_TOKEN));
   }
 });
 
