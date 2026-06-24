@@ -6,13 +6,14 @@ TypeScript Playwright automation project covering UI and API testing for an e-co
 
 ## Quick Start
 
-Install dependencies and Chromium:
+Install dependencies:
 
 ```bash
-npm ci
-npx playwright install chromium
+npm install
 cp .env.example .env
 ```
+
+Chromium is installed automatically before local UI-capable test commands such as `npm test`, `npm run test:ui`, `npm run test:smoke`, and `npm run test:headed`.
 
 Add a GoREST token to `.env` for authenticated API CRUD tests:
 
@@ -176,7 +177,7 @@ To publish the dashboard, configure GitHub Pages to deploy from the `gh-pages` b
 | --- | --- | --- |
 | Authenticated API CRUD is skipped in CI | `GOREST_API_TOKEN` secret is missing | Add repository secret `GOREST_API_TOKEN`. |
 | Local API CRUD fails with 401 | `.env` token is missing or invalid | Update `.env` with a valid GoREST token. |
-| Browser tests fail before launching | Chromium is not installed | Run `npx playwright install chromium`. |
+| Browser tests fail before launching | Chromium install was interrupted or the browser cache was removed | Run `npx playwright install chromium`. |
 | Reports do not open | No test run has generated reports yet | Run `npm test`, then `npm run report`. |
 | CI shows duplicate checks | Workflow may include feature-branch `push` triggers | Keep CI limited to `pull_request` into `main` and `push` to `main`. |
 
