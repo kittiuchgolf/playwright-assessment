@@ -107,7 +107,6 @@ Run these before opening or updating a PR:
 npm run typecheck
 npm run lint
 npm run security:audit
-npm run dashboard:test
 npm run test:ui
 npm run test:api
 ```
