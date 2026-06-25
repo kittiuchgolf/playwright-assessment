@@ -1,5 +1,10 @@
 import { expect, test } from '@playwright/test';
-import { runStatus } from '../../scripts/dashboard/metrics.mjs';
+import {
+  capRuns,
+  runStatus,
+  summaryValue,
+  totalReports
+} from '../../scripts/dashboard/metrics.mjs';
 
 const makeRun = (number, opts = {}) => {
   const {
@@ -33,5 +38,49 @@ test.describe('runStatus', () => {
   test('returns unknown without totals or with zero tests', () => {
     expect(runStatus(makeRun(4, { withTotals: false }))).toBe('unknown');
     expect(runStatus(makeRun(5, { tests: 0, passed: 0 }))).toBe('unknown');
+  });
+});
+
+test.describe('capRuns', () => {
+  test('keeps the newest N (runs are newest-first)', () => {
+    const result = capRuns([makeRun(3), makeRun(2), makeRun(1)], 2);
+    expect(result.map((r) => r.number)).toEqual(['3', '2']);
+  });
+
+  test('returns a copy when under the cap', () => {
+    expect(capRuns([makeRun(1)], 5)).toHaveLength(1);
+  });
+
+  test('returns all when max is non-positive', () => {
+    expect(capRuns([makeRun(2), makeRun(1)], 0)).toHaveLength(2);
+  });
+});
+
+test.describe('summaryValue', () => {
+  test('reads numeric values', () => {
+    expect(summaryValue({ tests: 5 }, 'tests')).toBe(5);
+  });
+
+  test('reads nested {value} objects', () => {
+    expect(summaryValue({ tests: { value: 7 } }, 'tests')).toBe(7);
+  });
+
+  test('defaults missing keys to 0', () => {
+    expect(summaryValue({}, 'tests')).toBe(0);
+  });
+});
+
+test.describe('totalReports', () => {
+  test('sums report metrics', () => {
+    const totals = totalReports({
+      ui: { tests: 5, passed: 5, failed: 0, skipped: 0, flaky: 0 },
+      api: { tests: 3, passed: 2, failed: 1, skipped: 0, flaky: 0 }
+    });
+    expect(totals).toEqual({ tests: 8, passed: 7, failed: 1, skipped: 0, flaky: 0 });
+  });
+
+  test('returns null when there are no reports', () => {
+    expect(totalReports({})).toBeNull();
+    expect(totalReports({ ui: null })).toBeNull();
   });
 });
