@@ -8,67 +8,87 @@
 </head>
 <body>
   <main class="shell">
-    <section class="hero">
+    <section class="hero hero--solo">
       <div class="hero-main">
         <span class="eyebrow">Playwright report history</span>
-        <h1>Latest test evidence, archived by run.</h1>
-        <p>Use the two report views below to inspect the most recent UI and API automation results, then browse historical runs as the suite evolves.</p>
-        <div class="actions">
-        <a class="button" href="runs/28119744951/monocart/">Open Monocart report</a>
-        <a class="button secondary" href="runs/28119744951/playwright/">Open Playwright report</a>
+        <h1>Test monitoring</h1>
+    <p class="sub">main · last 9 runs · updated Jun 25, 2026, 9:47 AM UTC</p>
+    <div class="actions">
+        <a class="button" href="runs/28161534965/monocart/">Open latest Monocart report</a>
+        <a class="button secondary" href="runs/28161534965/playwright/">Open latest Playwright report</a>
       </div>
+    <div class="kpis">
+    <div class="kpi green">
+      <span class="label">Latest pass rate</span>
+      <span class="num">100%</span>
+    </div>
+    <div class="kpi blue">
+      <span class="label">Tests run</span>
+      <span class="num">13</span>
+    </div>
+    <div class="kpi amber">
+      <span class="label">Flaky (latest)</span>
+      <span class="num">0</span>
+    </div>
+    <div class="kpi green">
+      <span class="label">Green streak</span>
+      <span class="num">9</span>
+    </div></div>
       </div>
-      <aside class="hero-side">
-        <div class="meta-grid">
-        <div class="metric">
-          <span class="label">Latest run</span>
-          <span class="value">#57</span>
-        </div>
-        <div class="metric">
-          <span class="label">Published</span>
-          <span class="value">Jun 24, 2026, 6:13 PM</span>
-        </div>
-        <div class="metric">
-          <span class="label">Commit</span>
-          <span class="value">e6433a8</span>
-        </div>
-        <div class="metric">
-          <span class="label">Latest result</span>
-          <span class="value">13/13 passed</span>
-        </div>
-      </div>
-      </aside>
     </section>
     <section class="section">
-          <h2>Monitoring summary</h2>
-          <div class="summary-grid">
-    <div class="summary-card">
-      <span class="label">Latest result</span>
-      <span class="value">13/13 passed</span>
-    </div>
-    <div class="summary-card">
-      <span class="label">Runs tracked</span>
-      <span class="value">8</span>
-    </div>
-    <div class="summary-card">
-      <span class="label">Green runs</span>
-      <span class="value">8/8</span>
-    </div>
-    <div class="summary-card">
-      <span class="label">Historical failures</span>
-      <span class="value">0/104</span>
-    </div>
+      <h2>Pass rate · last 9 runs</h2>
+      <svg class="chart" viewBox="0 0 1040 190" preserveAspectRatio="none" role="img">
+  <line class="axis" x1="46" y1="20" x2="46" y2="150"/>
+  <line class="axis" x1="46" y1="150" x2="1030" y2="150"/>
+  <line class="axis" x1="46" y1="20" x2="1030" y2="20" stroke-dasharray="3 4" opacity="0.5"/>
+  <line class="axis" x1="46" y1="85" x2="1030" y2="85" stroke-dasharray="3 4" opacity="0.5"/>
+  <text class="axlab" x="6" y="24">100%</text>
+  <text class="axlab" x="14" y="89">75%</text>
+  <text class="axlab" x="14" y="154">50%</text>
+  <polygon fill="rgba(8,127,91,0.10)" points="46,150 46.0,20.0 169.0,20.0 292.0,20.0 415.0,20.0 538.0,20.0 661.0,20.0 784.0,20.0 907.0,20.0 1030.0,20.0 1030,150"/>
+  <polyline fill="none" stroke="var(--green)" stroke-width="2.5" points="46.0,20.0 169.0,20.0 292.0,20.0 415.0,20.0 538.0,20.0 661.0,20.0 784.0,20.0 907.0,20.0 1030.0,20.0"/>
+  <circle cx="46.0" cy="20.0" r="4.5" fill="var(--green)"><title>Run #37 · 13/13 · 100% pass</title></circle><circle cx="169.0" cy="20.0" r="4.5" fill="var(--green)"><title>Run #43 · 13/13 · 100% pass</title></circle><circle cx="292.0" cy="20.0" r="4.5" fill="var(--green)"><title>Run #46 · 13/13 · 100% pass</title></circle><circle cx="415.0" cy="20.0" r="4.5" fill="var(--green)"><title>Run #51 · 13/13 · 100% pass</title></circle><circle cx="538.0" cy="20.0" r="4.5" fill="var(--green)"><title>Run #53 · 13/13 · 100% pass</title></circle><circle cx="661.0" cy="20.0" r="4.5" fill="var(--green)"><title>Run #55 · 13/13 · 100% pass</title></circle><circle cx="784.0" cy="20.0" r="4.5" fill="var(--green)"><title>Run #56 · 13/13 · 100% pass</title></circle><circle cx="907.0" cy="20.0" r="4.5" fill="var(--green)"><title>Run #57 · 13/13 · 100% pass</title></circle><circle cx="1030.0" cy="20.0" r="4.5" fill="var(--green)"><title>Run #62 · 13/13 · 100% pass</title></circle>
+</svg>
+    </section>
+    <section class="section">
+      <h2>Status timeline</h2>
+      <div class="tl"><a class="sq passed" href="runs/28074412484/monocart/" title="Run #37 · 13/13 · passed · Jun 24, 2026, 4:07 AM — open report"></a><a class="sq passed" href="runs/28103703646/monocart/" title="Run #43 · 13/13 · passed · Jun 24, 2026, 1:56 PM — open report"></a><a class="sq passed" href="runs/28106215850/monocart/" title="Run #46 · 13/13 · passed · Jun 24, 2026, 2:34 PM — open report"></a><a class="sq passed" href="runs/28117994811/monocart/" title="Run #51 · 13/13 · passed · Jun 24, 2026, 5:43 PM — open report"></a><a class="sq passed" href="runs/28118391218/monocart/" title="Run #53 · 13/13 · passed · Jun 24, 2026, 5:50 PM — open report"></a><a class="sq passed" href="runs/28118846745/monocart/" title="Run #55 · 13/13 · passed · Jun 24, 2026, 5:58 PM — open report"></a><a class="sq passed" href="runs/28119237497/monocart/" title="Run #56 · 13/13 · passed · Jun 24, 2026, 6:05 PM — open report"></a><a class="sq passed" href="runs/28119744951/monocart/" title="Run #57 · 13/13 · passed · Jun 24, 2026, 6:13 PM — open report"></a><a class="sq passed" href="runs/28161534965/monocart/" title="Run #62 · 13/13 · passed · Jun 25, 2026, 9:47 AM — open report"></a></div>
+<div class="tl-legend">
+  <span><i class="sw pass"></i>passed</span>
+  <span><i class="sw flaky"></i>flaky</span>
+  <span><i class="sw fail"></i>failed</span>
+</div>
+<p class="note">Click a square to open that run's report.</p>
+    </section>
+    <section class="section">
+      <h2>Run history</h2>
+      <div class="run-list">
+    <article class="run-item">
+      <div>
+        <p class="run-title">Run #62 · Jun 25, 2026, 9:47 AM</p>
+        <p>main · 69d0f16 · attempt 1</p>
+        <div class="run-metrics">
+    <span class="status-badge passed">13/13 passed</span>
+    
+    <span>UI 8/8 passed · 8.4s</span>
+    <span>API 5/5 passed · 4.10s</span>
   </div>
-        </section>
-        <section class="section">
-          <h2>Run history</h2>
-          <div class="run-list">
+      </div>
+      <div class="run-links">
+        <a class="pill" href="runs/28161534965/monocart/">Monocart</a>
+        <a class="pill" href="runs/28161534965/playwright/">Playwright</a>
+        <a class="pill" href="https://github.com/kittiuchgolf/playwright-assessment/actions/runs/28161534965">Actions</a>
+      </div>
+    </article>
+  
     <article class="run-item">
       <div>
         <p class="run-title">Run #57 · Jun 24, 2026, 6:13 PM</p>
         <p>main · e6433a8 · attempt 1</p>
         <div class="run-metrics">
     <span class="status-badge passed">13/13 passed</span>
+    
     <span>UI 8/8 passed · 7.6s</span>
     <span>API 5/5 passed · 4.9s</span>
   </div>
@@ -86,6 +106,7 @@
         <p>main · 6ec4aa2 · attempt 1</p>
         <div class="run-metrics">
     <span class="status-badge passed">13/13 passed</span>
+    
     <span>UI 8/8 passed · 9.3s</span>
     <span>API 5/5 passed · 4.6s</span>
   </div>
@@ -103,6 +124,7 @@
         <p>main · 6ec4aa2 · attempt 1</p>
         <div class="run-metrics">
     <span class="status-badge passed">13/13 passed</span>
+    
     <span>UI 8/8 passed · 7.2s</span>
     <span>API 5/5 passed · 4.8s</span>
   </div>
@@ -120,6 +142,7 @@
         <p>main · 54755f3 · attempt 1</p>
         <div class="run-metrics">
     <span class="status-badge passed">13/13 passed</span>
+    
     <span>UI 8/8 passed · 8.1s</span>
     <span>API 5/5 passed · 4.1s</span>
   </div>
@@ -137,6 +160,7 @@
         <p>main · 20b2914 · attempt 1</p>
         <div class="run-metrics">
     <span class="status-badge passed">13/13 passed</span>
+    
     <span>UI 8/8 passed · 6.5s</span>
     <span>API 5/5 passed · 4.4s</span>
   </div>
@@ -154,6 +178,7 @@
         <p>main · 9272467 · attempt 1</p>
         <div class="run-metrics">
     <span class="status-badge passed">13/13 passed</span>
+    
     <span>UI 8/8 passed · 7.3s</span>
     <span>API 5/5 passed · 4.9s</span>
   </div>
@@ -171,6 +196,7 @@
         <p>main · b684a86 · attempt 1</p>
         <div class="run-metrics">
     <span class="status-badge passed">13/13 passed</span>
+    
     <span>UI 8/8 passed · 8.2s</span>
     <span>API 5/5 passed · 4.6s</span>
   </div>
@@ -188,6 +214,7 @@
         <p>main · 4bd92ac · attempt 1</p>
         <div class="run-metrics">
     <span class="status-badge passed">13/13 passed</span>
+    
     <span>UI 8/8 passed · 12.1s</span>
     <span>API 5/5 passed · 4.5s</span>
   </div>
@@ -199,7 +226,7 @@
       </div>
     </article>
   </div>
-        </section>
+    </section>
   </main>
 </body>
 </html>

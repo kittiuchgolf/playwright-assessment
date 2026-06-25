@@ -8,6 +8,7 @@
   --blue: #0b5fff;
   --green: #087f5b;
   --amber: #b45309;
+  --red: #9f1239;
   --shadow: 0 18px 45px rgba(26, 34, 51, 0.10);
 }
 
@@ -156,19 +157,6 @@ p {
   margin-top: 20px;
 }
 
-.summary-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.summary-card {
-  padding: 16px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: #fff;
-}
-
 .run-list {
   display: grid;
   gap: 12px;
@@ -271,11 +259,109 @@ p {
   background: #fff;
 }
 
+.hero--solo {
+  grid-template-columns: 1fr;
+}
+
+.sub {
+  margin: 6px 0 22px;
+  color: var(--muted);
+}
+
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.kpi {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.kpi .num {
+  display: block;
+  margin-top: 6px;
+  font-size: 34px;
+  font-weight: 850;
+  line-height: 1;
+}
+
+.kpi.green .num { color: var(--green); }
+.kpi.blue .num { color: var(--blue); }
+.kpi.amber .num { color: var(--amber); }
+
+.chart {
+  width: 100%;
+  height: 190px;
+}
+
+.axis { stroke: var(--line); }
+
+.axlab {
+  fill: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.tl {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.sq {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  text-decoration: none;
+}
+
+.sq.passed { background: #1faf73; }
+.sq.flaky { background: var(--amber); }
+.sq.failed { background: var(--red); }
+.sq.unknown { background: var(--line); }
+
+.tl-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.tl-legend .sw {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+  border-radius: 3px;
+  vertical-align: -1px;
+}
+
+.sw.pass { background: #1faf73; }
+.sw.flaky { background: var(--amber); }
+.sw.fail { background: var(--red); }
+
+.flaky-note { color: var(--amber); }
+
+.note {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
 @media (max-width: 760px) {
   .hero,
+  .kpis,
   .run-item,
-  .report-grid,
-  .summary-grid {
+  .report-grid {
     grid-template-columns: 1fr;
   }
 
