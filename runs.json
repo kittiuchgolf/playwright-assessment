@@ -1,5 +1,41 @@
 [
   {
+    "id": "28167196370",
+    "number": "77",
+    "attempt": "1",
+    "branch": "main",
+    "sha": "11acb27",
+    "createdAt": "2026-06-25T11:35:51.584Z",
+    "actionUrl": "https://github.com/kittiuchgolf/playwright-assessment/actions/runs/28167196370",
+    "monocart": "runs/28167196370/monocart/",
+    "playwright": "runs/28167196370/playwright/",
+    "reports": {
+      "ui": {
+        "tests": 9,
+        "passed": 9,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "duration": "7.2s"
+      },
+      "api": {
+        "tests": 6,
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "duration": "3.9s"
+      }
+    },
+    "totals": {
+      "tests": 15,
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0
+    }
+  },
+  {
     "id": "28166539422",
     "number": "75",
     "attempt": "1",
