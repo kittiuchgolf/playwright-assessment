@@ -6,3 +6,5 @@ test-results/
 .DS_Store
 dist/
 coverage/
+.superpowers/
+docs/
