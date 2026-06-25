@@ -2,191 +2,98 @@
 
 [![Playwright Tests](https://github.com/kittiuchgolf/playwright-assessment/actions/workflows/playwright.yml/badge.svg)](https://github.com/kittiuchgolf/playwright-assessment/actions/workflows/playwright.yml)
 
-TypeScript Playwright automation project covering UI and API testing for an e-commerce assessment. The suite validates SauceDemo user journeys and GoREST API behavior with CI, reporting, fixtures, page objects, typed clients, and runtime schema validation.
+End-to-end UI and API test automation in TypeScript with Playwright. UI scenarios run against [SauceDemo](https://www.saucedemo.com/); API scenarios run against the [GoREST](https://gorest.co.in/) REST API. The suite uses Page Objects, a typed API client, runtime schema validation (Zod), tagged tests, and a CI pipeline with quality gates.
 
 ## Quick Start
 
-Install dependencies:
-
 ```bash
 npm install
-cp .env.example .env
-```
-
-Chromium is installed automatically before local UI-capable test commands such as `npm test`, `npm run test:ui`, `npm run test:smoke`, and `npm run test:headed`.
-
-Add a GoREST token to `.env` for authenticated API CRUD tests:
-
-```bash
-GOREST_API_TOKEN=replace_with_your_token
-```
-
-Run the full suite:
-
-```bash
+cp .env.example .env   # optional: add a GoREST token for authenticated API tests
 npm test
 ```
 
-Run by layer:
-
-```bash
-npm run test:ui
-npm run test:api
-```
-
-## Environment
-
-| Variable | Required | Used By | Notes |
-| --- | --- | --- | --- |
-| `GOREST_API_TOKEN` | Required for authenticated CRUD | `tests/api/users.spec.ts` | Stored locally in `.env` and in GitHub as a repository secret. |
-
-`GOREST_API_TOKEN` is optional for a green run. When it is absent, the authenticated CRUD test skips (rather than fails), so a fresh `npm install && npm test` passes out of the box. Set the token locally in `.env`, or as a GitHub repository secret in CI, to run the full CRUD scenario.
+Chromium installs automatically before UI test commands. The authenticated CRUD and invalid-email (422) tests require `GOREST_API_TOKEN` in `.env` (or a CI secret); without it they skip, so a fresh `npm test` is green out of the box. Run one layer with `npm run test:ui` or `npm run test:api`.
 
 ## Test Commands
 
 | Command | Purpose |
 | --- | --- |
-| `npm test` | Run all Playwright projects. |
-| `npm run test:ui` | Run SauceDemo UI tests. |
-| `npm run test:api` | Run GoREST API tests. |
-| `npm run test:smoke` | Run tests tagged `@smoke`. |
-| `npm run typecheck` | Run TypeScript validation with `tsc --noEmit`. |
-| `npm run lint` | Run ESLint. |
-| `npm run security:audit` | Run `npm audit --audit-level=high`. |
+| `npm test` | Run all projects (UI + API). |
+| `npm run test:ui` / `npm run test:api` | Run a single layer. |
+| `npm run test:smoke` | Run `@smoke`-tagged tests. |
+| `npm run typecheck` / `npm run lint` | TypeScript and ESLint static checks. |
+| `npm run security:audit` | `npm audit --audit-level=high`. |
 | `npm run report` | Open the Playwright HTML report. |
-| `npm run report:monocart` | Open the Monocart report. |
 
-Useful tag examples:
-
-```bash
-npx playwright test --grep @auth
-npx playwright test --grep @crud
-npx playwright test --grep @negative
-npx playwright test --grep-invert @crud
-```
-
-## Project Structure
-
-```text
-.github/workflows/playwright.yml   GitHub Actions quality gates
-tests/api/clients                  GoREST API client
-tests/api/schemas                  Zod response schemas
-tests/api/types                    API domain types
-tests/api/users.spec.ts            GoREST API scenarios
-tests/fixtures/test.ts             Shared Playwright fixtures
-tests/support                      Shared test data and env helpers
-tests/ui/pages                     Page Object Model classes
-tests/ui/*.spec.ts                 SauceDemo UI scenarios
-```
-
-## Architecture
-
-The project separates UI automation from API automation while sharing Playwright's runner, configuration, reports, traces, screenshots, and videos.
-
-UI tests use Page Object Model classes for login, inventory, cart, and checkout screens. This keeps locators and common user actions centralized while allowing specs to read as business workflows.
-
-API tests use a small typed `GoRestClient`. The client centralizes endpoint calls and authentication headers, while specs stay focused on behavior and assertions.
-
-Zod validates GoREST response shapes at runtime before the tests make business assertions. This catches contract drift that a status-code-only test would miss.
-
-Fixtures in `tests/fixtures/test.ts` provide page objects, logged-in UI state, and API clients so repeated setup stays consistent across specs.
-
-## CI Pipeline
-
-GitHub Actions runs on:
-
-- Pull requests targeting `main`
-- Pushes to `main`
-- Manual runs from the GitHub Actions **Run workflow** button
-
-The workflow is split into focused jobs:
-
-| Job | Purpose |
-| --- | --- |
-| `Typecheck` | Catches TypeScript errors before tests run. |
-| `Lint` | Enforces code quality and Playwright lint rules. |
-| `Security Audit` | Fails on high-severity npm audit findings. |
-| `UI Tests` | Runs SauceDemo Chromium tests after static checks pass. |
-| `API Tests` | Runs GoREST API tests after static checks pass. |
-
-## Reports and Artifacts
-
-On pull requests, CI uploads Playwright and Monocart reports as workflow artifacts. On pushes to `main`, CI also publishes a static historical dashboard to the `gh-pages` branch. After the workflow file is on the default branch, manual runs from the GitHub Actions **Run workflow** button also publish the dashboard for that run.
-
-The dashboard is generated at build time (no client JavaScript) and shows:
-
-- **KPI cards** — latest pass rate, tests run, flaky count, and green streak
-- **Pass-rate trend** — an SVG line chart over the last `DASHBOARD_MAX_RUNS` runs (default 30)
-- **Status timeline** — one colored square per run, each linking to that run's report hub
-- **Run history** — per-run totals plus links to the Monocart, Playwright, and Actions pages
-
-The latest run's Monocart and Playwright HTML reports are one click away from the hero buttons, the timeline squares, and the run-history links.
-
-Local test runs generate:
-
-- `playwright-report/`: Playwright HTML report
-- `monocart-report/`: Monocart report
-- `test-results/`: traces, screenshots, and videos when retained
-
-CI uploads separate artifacts for UI and API jobs:
-
-- `playwright-report-ui`
-- `playwright-report-api`
-- `monocart-report-ui`
-- `monocart-report-api`
-- `test-results-ui`
-- `test-results-api`
-
-To publish the dashboard, configure GitHub Pages to deploy from the `gh-pages` branch at the repository root.
+Filter by tag, e.g. `npx playwright test --grep @negative` or `--grep-invert @crud`.
 
 ## Test Coverage
 
-### UI
+### UI (SauceDemo)
 
 | Scenario | Purpose |
 | --- | --- |
 | Standard login succeeds | Validates the main authenticated entry point. |
-| Locked-out user receives an error | Covers negative authentication behavior. |
+| Locked-out user sees an error | Covers negative authentication behavior. |
 | Unauthenticated deep-link is blocked | Covers session handling — a protected route redirects to login. |
-| Add and remove cart item | Verifies cart badge and cart item state. |
+| Add and remove a cart item | Verifies cart badge and item state. |
 | Checkout completes successfully | Covers the purchase workflow. |
-| Checkout requires customer information | Covers negative checkout validation. |
-| Sort products by low-to-high price | Validates product browsing behavior. |
+| Checkout requires customer information | Covers checkout field validation. |
+| Sort products by price (low to high) | Validates product browsing behavior. |
 
-### API
+### API (GoREST)
 
 | Scenario | Purpose |
 | --- | --- |
-| List users | Validates public read access and list schema. |
-| Get user details | Validates individual resource shape. |
-| Create, update, and delete user | Exercises authenticated CRUD with generated data. |
-| Reject unauthenticated create | Confirms Bearer token enforcement. |
-| Reject create with an invalid email | Validates 422 field-level data validation. |
-| Return 404 for unknown user | Covers missing-resource behavior. |
+| List users | Public read access and list schema. |
+| Get user details | Individual resource shape. |
+| Create, update, and delete a user | Authenticated CRUD with generated data. |
+| Reject unauthenticated create | Bearer token enforcement (401). |
+| Reject create with an invalid email | Field-level validation (422). |
+| Return 404 for an unknown user | Missing-resource behavior. |
 
-## Design Decisions
+## Design & Architecture
 
-- **TypeScript:** catches type errors early and improves refactoring safety.
-- **Page Object Model:** centralizes UI locators and common actions.
-- **Fixtures:** reduces repeated setup while keeping tests readable.
-- **Runtime schemas:** validates API response contracts with Zod.
-- **Generated API data:** avoids email collisions in repeated GoREST runs.
-- **CI job split:** makes failures easier to diagnose.
-- **Monocart reporting:** adds a readable report beside Playwright's native HTML report.
+- **Page Object Model** — `tests/ui/pages/*` centralize locators and actions, so specs read as business workflows.
+- **Typed API client** — `GoRestClient` wraps endpoints, auth headers, and response handling in one place.
+- **Runtime schema validation** — Zod parses GoREST responses, catching contract drift a status-code-only check would miss.
+- **Fixtures** — `tests/fixtures/test.ts` provide page objects, a logged-in UI state, and API clients to keep setup consistent.
+- **Safe test data** — unique generated users plus `try/finally` cleanup avoid collisions and leftover records.
+- **Tagged, split CI** — `@smoke`/`@ui`/`@api`/`@negative` tags and separate CI jobs make runs selective and failures easy to localize.
+- **Secret handling** — the GoREST token comes only from `.env` or a CI secret; `.env` is gitignored.
+
+## Project Structure
+
+```text
+tests/ui/*.spec.ts        SauceDemo UI scenarios
+tests/ui/pages            Page Object Model classes
+tests/api/users.spec.ts   GoREST API scenarios
+tests/api/clients         Typed GoREST client
+tests/api/schemas         Zod response schemas
+tests/api/types           API domain types
+tests/fixtures            Shared Playwright fixtures
+tests/support             Shared test data
+.github/workflows         CI pipeline
+```
+
+## CI
+
+GitHub Actions runs on pull requests to `main` and pushes to `main`. Static gates (Typecheck, Lint, Security Audit) run first; the UI and API test jobs run only after they pass. Reports upload as build artifacts, and a run-history dashboard publishes to GitHub Pages (`gh-pages`).
+
+## Reports
+
+`npm test` generates a Playwright HTML report (`playwright-report/`) and a Monocart report (`monocart-report/`) — open them with `npm run report` and `npm run report:monocart`. Failing tests retain traces, screenshots, and video under `test-results/`.
 
 ## Troubleshooting
 
-| Symptom | Likely Cause | Fix |
-| --- | --- | --- |
-| Authenticated API CRUD is skipped | `GOREST_API_TOKEN` is not set (local `.env` or CI secret) | Add the token to run it; skipping keeps the suite green. |
-| API CRUD fails with 401 | `.env` token is present but invalid or expired | Update `.env` (or the CI secret) with a valid GoREST token. |
-| Browser tests fail before launching | Chromium install was interrupted or the browser cache was removed | Run `npx playwright install chromium`. |
-| Reports do not open | No test run has generated reports yet | Run `npm test`, then `npm run report`. |
-| CI shows duplicate checks | Workflow may include feature-branch `push` triggers | Keep CI limited to `pull_request` into `main` and `push` to `main`. |
+| Symptom | Fix |
+| --- | --- |
+| Authenticated API tests skipped | Set `GOREST_API_TOKEN` in `.env` (skipping is expected without it). |
+| API returns 401 | Token missing or expired — update `.env` or the CI secret. |
+| Browser fails to launch | Run `npx playwright install chromium`. |
 
-## Roadmap
+## Possible Extensions
 
-- Add cross-browser smoke coverage after Chromium coverage is stable.
-- Add richer Monocart metadata for requirement IDs and severity.
-- Enable branch protection when the GitHub plan supports it for this private repo.
-- Consider CodeQL for deeper static security analysis.
+- Cross-browser smoke coverage (Firefox, WebKit).
+- Requirement-ID and severity metadata in reports.
+- CodeQL for deeper static analysis.
