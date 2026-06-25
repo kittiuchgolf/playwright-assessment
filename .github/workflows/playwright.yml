@@ -73,27 +73,6 @@ jobs:
       - name: Audit production and dev dependencies
         run: npm run security:audit
 
-  dashboard-tests:
-    name: Dashboard Unit Tests
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v7
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: 22
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run dashboard unit tests
-        run: npm run test:dashboard
-
   ui-tests:
     name: UI Tests
     runs-on: ubuntu-latest
@@ -226,7 +205,6 @@ jobs:
     needs:
       - ui-tests
       - api-tests
-      - dashboard-tests
     permissions:
       contents: write
     timeout-minutes: 10

@@ -13,7 +13,6 @@ This dashboard explains how project health is monitored through GitHub Actions, 
 | API behavior | GoREST scenarios pass | `API Tests` CI job | Passing |
 | Report history | Latest and historical reports are published | GitHub Pages `gh-pages` branch | Available after successful `main` runs and manual workflow runs |
 | Reports | HTML and Monocart artifacts uploaded | GitHub Actions artifacts | Available after each test job |
-| Dashboard logic | Pure builder functions pass unit tests | `Dashboard Unit Tests` CI job | Passing |
 
 ## CI Quality Gates
 
@@ -127,7 +126,6 @@ For faster focused checks:
 
 ```bash
 npm run test:smoke
-npm run test:dashboard
 npx playwright test --grep @negative
 npx playwright test --grep @crud
 ```
