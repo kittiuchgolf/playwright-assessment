@@ -115,10 +115,16 @@ See [Monitoring Dashboard](docs/monitoring-dashboard.md) for CI health, GitHub P
 
 ## Reports and Artifacts
 
-On pull requests, CI uploads Playwright and Monocart reports as workflow artifacts. On pushes to `main`, CI also publishes a static historical dashboard to the `gh-pages` branch. After the workflow file is on the default branch, manual runs from the GitHub Actions **Run workflow** button also publish the dashboard for that run. The dashboard summarizes historical pass/fail totals across runs and opens with two primary choices:
+On pull requests, CI uploads Playwright and Monocart reports as workflow artifacts. On pushes to `main`, CI also publishes a static historical dashboard to the `gh-pages` branch. After the workflow file is on the default branch, manual runs from the GitHub Actions **Run workflow** button also publish the dashboard for that run.
 
-- **Open Monocart report**
-- **Open Playwright report**
+The dashboard is generated at build time (no client JavaScript) and shows:
+
+- **KPI cards** — latest pass rate, tests run, flaky count, and green streak
+- **Pass-rate trend** — an SVG line chart over the last `DASHBOARD_MAX_RUNS` runs (default 30)
+- **Status timeline** — one colored square per run, each linking to that run's report hub
+- **Run history** — per-run totals plus links to the Monocart, Playwright, and Actions pages
+
+The latest run's Monocart and Playwright HTML reports are one click away from the hero buttons, the timeline squares, and the run-history links. See [Monitoring Dashboard](docs/monitoring-dashboard.md) for details.
 
 Local test runs generate:
 

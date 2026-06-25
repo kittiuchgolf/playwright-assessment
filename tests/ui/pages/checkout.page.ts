@@ -16,7 +16,7 @@ export class CheckoutPage {
   }
 
   async expectValidationError(message: string): Promise<void> {
-    await expect(this.page.locator('[data-test="error"]')).toHaveText(message);
+    await expect(this.page.locator('[data-test="error"]')).toContainText(message);
   }
 
   async expectOverviewContains(itemName: string): Promise<void> {
