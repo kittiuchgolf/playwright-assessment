@@ -1,3 +1,5 @@
+import { buildPage, escapeHtml, formatDate, formatPassed } from './html.mjs';
+
 export function buildRootPage(runs) {
   const latest = runs[0];
   const summarizedRuns = runs.filter((run) => run.totals);
@@ -108,41 +110,6 @@ export function buildReportHub({ title, eyebrow, run, reportType }) {
   });
 }
 
-function buildPage({ title, stylesheetHref, eyebrow, body }) {
-  return `<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>${escapeHtml(title)}</title>
-  <link rel="stylesheet" href="${escapeHtml(stylesheetHref)}">
-</head>
-<body>
-  <main class="shell">
-    <section class="hero">
-      <div class="hero-main">
-        <span class="eyebrow">${escapeHtml(eyebrow)}</span>
-        ${body.hero}
-      </div>
-      <aside class="hero-side">
-        ${body.side}
-      </aside>
-    </section>
-    ${body.sections}
-  </main>
-</body>
-</html>`;
-}
-
-function escapeHtml(value) {
-  return String(value)
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;')
-    .replaceAll("'", '&#39;');
-}
-
 function buildSummaryCards(runs) {
   if (runs.length === 0) {
     return '<div class="empty">No report metrics have been published yet.</div>';
@@ -187,16 +154,4 @@ function buildRunMetrics(run) {
     ${ui ? `<span>UI ${escapeHtml(formatPassed(ui))}${ui.duration ? ` · ${escapeHtml(ui.duration)}` : ''}</span>` : ''}
     ${api ? `<span>API ${escapeHtml(formatPassed(api))}${api.duration ? ` · ${escapeHtml(api.duration)}` : ''}</span>` : ''}
   </div>`;
-}
-
-function formatPassed(summary) {
-  return `${summary.passed}/${summary.tests} passed`;
-}
-
-function formatDate(value) {
-  return new Intl.DateTimeFormat('en', {
-    dateStyle: 'medium',
-    timeStyle: 'short',
-    timeZone: 'UTC'
-  }).format(new Date(value));
 }
