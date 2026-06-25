@@ -1,9 +1,79 @@
 import { buildPage, escapeHtml, formatDate, formatPassed } from './html.mjs';
+import { buildPassRateSeries, capRuns, computeKpis } from './metrics.mjs';
+import { passRateChartSvg, statusTimelineHtml } from './charts.mjs';
 
-export function buildRootPage(runs) {
-  const latest = runs[0];
-  const summarizedRuns = runs.filter((run) => run.totals);
-  const history = runs.map((run) => `
+const DEFAULT_MAX_RUNS = 30;
+
+export function buildRootPage(runs, options = {}) {
+  const maxRuns = options.maxRuns ?? DEFAULT_MAX_RUNS;
+  const visibleRuns = capRuns(runs, maxRuns);
+  const latest = visibleRuns[0];
+  const kpis = computeKpis(visibleRuns);
+  const series = buildPassRateSeries(visibleRuns, maxRuns);
+  const runCount = visibleRuns.length;
+
+  const reportButtons = latest
+    ? `<div class="actions">
+        <a class="button" href="${escapeHtml(latest.monocart)}">Open latest Monocart report</a>
+        <a class="button secondary" href="${escapeHtml(latest.playwright)}">Open latest Playwright report</a>
+      </div>`
+    : '<div class="empty">No published runs yet.</div>';
+
+  const subtitle = latest
+    ? `${escapeHtml(latest.branch)} · last ${runCount} run${runCount === 1 ? '' : 's'} · updated ${escapeHtml(formatDate(latest.createdAt))} UTC`
+    : 'No runs published yet.';
+
+  const hero = `<h1>Test monitoring</h1>
+    <p class="sub">${subtitle}</p>
+    ${reportButtons}
+    ${buildKpiCards(kpis)}`;
+
+  const sections = `<section class="section">
+      <h2>Pass rate · last ${runCount} run${runCount === 1 ? '' : 's'}</h2>
+      ${passRateChartSvg(series)}
+    </section>
+    <section class="section">
+      <h2>Status timeline</h2>
+      ${statusTimelineHtml(visibleRuns)}
+    </section>
+    <section class="section">
+      <h2>Run history</h2>
+      <div class="run-list">${buildRunHistory(visibleRuns)}</div>
+    </section>`;
+
+  return buildPage({
+    title: 'Playwright Monitoring Dashboard',
+    stylesheetHref: 'dashboard.css',
+    eyebrow: 'Playwright report history',
+    body: { hero, sections }
+  });
+}
+
+function buildKpiCards(kpis) {
+  if (!kpis) {
+    return '<div class="empty">No report metrics have been published yet.</div>';
+  }
+
+  const cards = [
+    { tone: 'green', label: 'Latest pass rate', value: `${kpis.passRate}%` },
+    { tone: 'blue', label: 'Tests run', value: kpis.tests },
+    { tone: 'amber', label: 'Flaky (latest)', value: kpis.flaky },
+    { tone: 'green', label: 'Green streak', value: kpis.greenStreak }
+  ];
+
+  return `<div class="kpis">${cards.map((card) => `
+    <div class="kpi ${card.tone}">
+      <span class="label">${escapeHtml(card.label)}</span>
+      <span class="num">${escapeHtml(card.value)}</span>
+    </div>`).join('')}</div>`;
+}
+
+function buildRunHistory(runs) {
+  if (runs.length === 0) {
+    return '<div class="empty">No runs have been published.</div>';
+  }
+
+  return runs.map((run) => `
     <article class="run-item">
       <div>
         <p class="run-title">Run #${escapeHtml(run.number)} · ${escapeHtml(formatDate(run.createdAt))}</p>
@@ -17,54 +87,6 @@ export function buildRootPage(runs) {
       </div>
     </article>
   `).join('');
-
-  const latestActions = latest
-    ? `<div class="actions">
-        <a class="button" href="${escapeHtml(latest.monocart)}">Open Monocart report</a>
-        <a class="button secondary" href="${escapeHtml(latest.playwright)}">Open Playwright report</a>
-      </div>`
-    : '<div class="empty">No published runs yet.</div>';
-
-  const side = latest
-    ? `<div class="meta-grid">
-        <div class="metric">
-          <span class="label">Latest run</span>
-          <span class="value">#${escapeHtml(latest.number)}</span>
-        </div>
-        <div class="metric">
-          <span class="label">Published</span>
-          <span class="value">${escapeHtml(formatDate(latest.createdAt))}</span>
-        </div>
-        <div class="metric">
-          <span class="label">Commit</span>
-          <span class="value">${escapeHtml(latest.sha)}</span>
-        </div>
-        ${latest.totals ? `<div class="metric">
-          <span class="label">Latest result</span>
-          <span class="value">${escapeHtml(formatPassed(latest.totals))}</span>
-        </div>` : ''}
-      </div>`
-    : '<p>No run metadata is available yet.</p>';
-
-  return buildPage({
-    title: 'Playwright Monitoring Dashboard',
-    stylesheetHref: 'dashboard.css',
-    eyebrow: 'Playwright report history',
-    body: {
-      hero: `<h1>Latest test evidence, archived by run.</h1>
-        <p>Use the two report views below to inspect the most recent UI and API automation results, then browse historical runs as the suite evolves.</p>
-        ${latestActions}`,
-      side,
-      sections: `<section class="section">
-          <h2>Monitoring summary</h2>
-          ${buildSummaryCards(summarizedRuns)}
-        </section>
-        <section class="section">
-          <h2>Run history</h2>
-          <div class="run-list">${history || '<div class="empty">No runs have been published.</div>'}</div>
-        </section>`
-    }
-  });
 }
 
 export function buildReportHub({ title, eyebrow, run, reportType }) {
@@ -110,36 +132,6 @@ export function buildReportHub({ title, eyebrow, run, reportType }) {
   });
 }
 
-function buildSummaryCards(runs) {
-  if (runs.length === 0) {
-    return '<div class="empty">No report metrics have been published yet.</div>';
-  }
-
-  const latest = runs[0];
-  const successfulRuns = runs.filter((run) => run.totals.failed === 0).length;
-  const totalTests = runs.reduce((sum, run) => sum + run.totals.tests, 0);
-  const totalFailures = runs.reduce((sum, run) => sum + run.totals.failed, 0);
-
-  return `<div class="summary-grid">
-    <div class="summary-card">
-      <span class="label">Latest result</span>
-      <span class="value">${escapeHtml(formatPassed(latest.totals))}</span>
-    </div>
-    <div class="summary-card">
-      <span class="label">Runs tracked</span>
-      <span class="value">${escapeHtml(runs.length)}</span>
-    </div>
-    <div class="summary-card">
-      <span class="label">Green runs</span>
-      <span class="value">${escapeHtml(`${successfulRuns}/${runs.length}`)}</span>
-    </div>
-    <div class="summary-card">
-      <span class="label">Historical failures</span>
-      <span class="value">${escapeHtml(`${totalFailures}/${totalTests}`)}</span>
-    </div>
-  </div>`;
-}
-
 function buildRunMetrics(run) {
   if (!run.totals) {
     return '<div class="run-metrics"><span class="status-badge unknown">Metrics unavailable</span></div>';
@@ -151,6 +143,7 @@ function buildRunMetrics(run) {
 
   return `<div class="run-metrics">
     <span class="status-badge ${status}">${escapeHtml(formatPassed(run.totals))}</span>
+    ${run.totals.flaky > 0 ? `<span class="flaky-note">${escapeHtml(run.totals.flaky)} flaky</span>` : ''}
     ${ui ? `<span>UI ${escapeHtml(formatPassed(ui))}${ui.duration ? ` · ${escapeHtml(ui.duration)}` : ''}</span>` : ''}
     ${api ? `<span>API ${escapeHtml(formatPassed(api))}${api.duration ? ` · ${escapeHtml(api.duration)}` : ''}</span>` : ''}
   </div>`;
