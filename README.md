@@ -18,7 +18,7 @@ Chromium is installed automatically before local UI-capable test commands such a
 Add a GoREST token to `.env` for authenticated API CRUD tests:
 
 ```bash
-GOREST_API_TOKEN=your_token_here
+GOREST_API_TOKEN=replace_with_your_token
 ```
 
 Run the full suite:
@@ -69,8 +69,6 @@ npx playwright test --grep-invert @crud
 
 ```text
 .github/workflows/playwright.yml   GitHub Actions quality gates
-docs/branch-protection.md          Branch protection setup notes
-docs/monitoring-dashboard.md       CI and report monitoring dashboard
 tests/api/clients                  GoREST API client
 tests/api/schemas                  Zod response schemas
 tests/api/types                    API domain types
@@ -111,8 +109,6 @@ The workflow is split into focused jobs:
 | `UI Tests` | Runs SauceDemo Chromium tests after static checks pass. |
 | `API Tests` | Runs GoREST API tests after static checks pass. |
 
-See [Monitoring Dashboard](docs/monitoring-dashboard.md) for CI health, GitHub Pages report history, artifact locations, and failure triage.
-
 ## Reports and Artifacts
 
 On pull requests, CI uploads Playwright and Monocart reports as workflow artifacts. On pushes to `main`, CI also publishes a static historical dashboard to the `gh-pages` branch. After the workflow file is on the default branch, manual runs from the GitHub Actions **Run workflow** button also publish the dashboard for that run.
@@ -124,7 +120,7 @@ The dashboard is generated at build time (no client JavaScript) and shows:
 - **Status timeline** — one colored square per run, each linking to that run's report hub
 - **Run history** — per-run totals plus links to the Monocart, Playwright, and Actions pages
 
-The latest run's Monocart and Playwright HTML reports are one click away from the hero buttons, the timeline squares, and the run-history links. See [Monitoring Dashboard](docs/monitoring-dashboard.md) for details.
+The latest run's Monocart and Playwright HTML reports are one click away from the hero buttons, the timeline squares, and the run-history links.
 
 Local test runs generate:
 
@@ -177,7 +173,6 @@ To publish the dashboard, configure GitHub Pages to deploy from the `gh-pages` b
 - **Generated API data:** avoids email collisions in repeated GoREST runs.
 - **CI job split:** makes failures easier to diagnose.
 - **Monocart reporting:** adds a readable report beside Playwright's native HTML report.
-- **Dependabot:** surfaces dependency updates for review instead of relying on manual checks.
 
 ## Troubleshooting
 
