@@ -216,7 +216,7 @@ jobs:
           fetch-depth: 0
 
       - name: Download report artifacts
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           path: dashboard-artifacts
           pattern: '*-report-*'
