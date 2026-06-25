@@ -45,6 +45,10 @@ export default defineConfig({
       use: {
         baseURL: 'https://gorest.co.in/public/v2/'
       }
+    },
+    {
+      name: 'dashboard',
+      testDir: './tests/dashboard'
     }
   ]
 });
