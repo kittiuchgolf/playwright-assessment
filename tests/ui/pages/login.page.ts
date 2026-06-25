@@ -17,6 +17,10 @@ export class LoginPage {
     await this.page.goto('/');
   }
 
+  async gotoProtectedPath(path: string): Promise<void> {
+    await this.page.goto(path);
+  }
+
   async login(username: string, password: string): Promise<void> {
     await this.usernameInput.fill(username);
     await this.passwordInput.fill(password);
@@ -25,5 +29,10 @@ export class LoginPage {
 
   async expectErrorContains(message: string): Promise<void> {
     await expect(this.errorMessage).toContainText(message);
+  }
+
+  async expectLoginPageShown(): Promise<void> {
+    await expect(this.page).toHaveURL(/saucedemo\.com\/?$/);
+    await expect(this.loginButton).toBeVisible();
   }
 }

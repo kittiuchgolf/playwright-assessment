@@ -70,6 +70,18 @@ test.describe('GoREST users API', () => {
     await goRestClient.expectErrorResponse(response, 401);
   });
 
+  test('rejects user creation with an invalid email @api @negative @crud', async ({
+    authenticatedGoRestClient
+  }) => {
+    // eslint-disable-next-line playwright/no-skipped-test -- intentional conditional skip when no API token is configured
+    test.skip(!process.env.GOREST_API_TOKEN, 'Set GOREST_API_TOKEN to run authenticated CRUD');
+
+    const response = await authenticatedGoRestClient.createUser(uniqueUser({ email: 'not-an-email' }));
+
+    const errors = await authenticatedGoRestClient.expectErrorResponse(response, 422);
+    expect(errors.some((error) => error.field === 'email' && /invalid/i.test(error.message))).toBe(true);
+  });
+
   test('returns not found for an unknown user id @api @negative', async ({ goRestClient }) => {
     const response = await goRestClient.getUser(0);
 
