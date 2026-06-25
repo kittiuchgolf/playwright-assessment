@@ -1,6 +1,8 @@
 import { expect, test } from '@playwright/test';
 import {
+  buildPassRateSeries,
   capRuns,
+  computeKpis,
   runStatus,
   summaryValue,
   totalReports
@@ -82,5 +84,51 @@ test.describe('totalReports', () => {
   test('returns null when there are no reports', () => {
     expect(totalReports({})).toBeNull();
     expect(totalReports({ ui: null })).toBeNull();
+  });
+});
+
+test.describe('computeKpis', () => {
+  test('derives latest pass rate, tests, flaky and green streak', () => {
+    // newest-first: pass, pass, fail
+    const runs = [
+      makeRun(30, { tests: 10, passed: 10 }),
+      makeRun(29, { tests: 10, passed: 10 }),
+      makeRun(28, { tests: 10, passed: 8, failed: 2 })
+    ];
+    expect(computeKpis(runs)).toEqual({ passRate: 100, tests: 10, flaky: 0, greenStreak: 2 });
+  });
+
+  test('flaky runs do not break the green streak', () => {
+    const runs = [
+      makeRun(3, { flaky: 1 }),     // failed: 0 -> counts
+      makeRun(2, { tests: 10, passed: 10 }),
+      makeRun(1, { passed: 9, failed: 1 })
+    ];
+    expect(computeKpis(runs).greenStreak).toBe(2);
+  });
+
+  test('returns null when no run has totals', () => {
+    expect(computeKpis([makeRun(1, { withTotals: false })])).toBeNull();
+  });
+});
+
+test.describe('buildPassRateSeries', () => {
+  test('returns oldest-to-newest points with rounded pct', () => {
+    const runs = [
+      makeRun(3, { tests: 10, passed: 9 }),
+      makeRun(2, { tests: 10, passed: 10 }),
+      makeRun(1, { tests: 10, passed: 8 })
+    ];
+    const series = buildPassRateSeries(runs, 30);
+    expect(series.map((p) => p.number)).toEqual(['1', '2', '3']);
+    expect(series.map((p) => p.pct)).toEqual([80, 100, 90]);
+  });
+
+  test('skips runs without totals or with zero tests', () => {
+    const runs = [
+      makeRun(2, { tests: 10, passed: 10 }),
+      makeRun(1, { withTotals: false })
+    ];
+    expect(buildPassRateSeries(runs, 30)).toHaveLength(1);
   });
 });

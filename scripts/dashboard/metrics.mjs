@@ -24,6 +24,49 @@ export function capRuns(runs, max) {
   return runs.slice(0, max);
 }
 
+export function computeKpis(runs) {
+  const summarized = runs.filter((run) => run.totals);
+
+  if (summarized.length === 0) {
+    return null;
+  }
+
+  const latest = summarized[0];
+  const passRate = latest.totals.tests === 0
+    ? 0
+    : Math.round((latest.totals.passed / latest.totals.tests) * 100);
+
+  let greenStreak = 0;
+  for (const run of summarized) {
+    if (run.totals.failed === 0) {
+      greenStreak += 1;
+    } else {
+      break;
+    }
+  }
+
+  return {
+    passRate,
+    tests: latest.totals.tests,
+    flaky: latest.totals.flaky,
+    greenStreak
+  };
+}
+
+export function buildPassRateSeries(runs, max) {
+  const withTotals = runs.filter((run) => run.totals && run.totals.tests > 0);
+
+  return capRuns(withTotals, max)
+    .slice()
+    .reverse()
+    .map((run) => ({
+      number: run.number,
+      pct: Math.round((run.totals.passed / run.totals.tests) * 100),
+      passed: run.totals.passed,
+      tests: run.totals.tests
+    }));
+}
+
 export function summaryValue(summary, key) {
   const value = summary?.[key];
 
