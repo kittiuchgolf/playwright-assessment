@@ -18,7 +18,7 @@ Chromium is installed automatically before local UI-capable test commands such a
 Add a GoREST token to `.env` for authenticated API CRUD tests:
 
 ```bash
-GOREST_API_TOKEN=your_token_here
+GOREST_API_TOKEN=replace_with_your_token
 ```
 
 Run the full suite:
@@ -177,7 +177,6 @@ To publish the dashboard, configure GitHub Pages to deploy from the `gh-pages` b
 - **Generated API data:** avoids email collisions in repeated GoREST runs.
 - **CI job split:** makes failures easier to diagnose.
 - **Monocart reporting:** adds a readable report beside Playwright's native HTML report.
-- **Dependabot:** surfaces dependency updates for review instead of relying on manual checks.
 
 ## Troubleshooting
 
