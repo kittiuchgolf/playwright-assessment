@@ -1,9 +1,10 @@
-import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { cp, mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
 import { URL } from 'node:url';
 import { buildReportHub, buildRootPage } from './dashboard/template.mjs';
+import { capRuns, summaryValue, totalReports } from './dashboard/metrics.mjs';
 
 const pagesDir = process.env.PAGES_DIR ?? 'pages';
 const artifactsDir = process.env.ARTIFACTS_DIR ?? 'dashboard-artifacts';
@@ -16,6 +17,7 @@ const sha = process.env.GITHUB_SHA ?? 'local';
 const refName = process.env.GITHUB_REF_NAME ?? 'local';
 const createdAt = process.env.DASHBOARD_CREATED_AT ?? new Date().toISOString();
 const actionUrl = `${serverUrl}/${repository}/actions/runs/${runId}`;
+const maxRuns = Number(process.env.DASHBOARD_MAX_RUNS ?? 30);
 
 const reportSources = [
   {
@@ -56,16 +58,6 @@ async function readJsonIfExists(filePath) {
   return JSON.parse(await readFile(filePath, 'utf8'));
 }
 
-function summaryValue(summary, key) {
-  const value = summary?.[key];
-
-  if (typeof value === 'number') {
-    return value;
-  }
-
-  return Number(value?.value ?? 0);
-}
-
 async function readReportMetrics(filePath) {
   const report = await readJsonIfExists(filePath);
 
@@ -83,28 +75,6 @@ async function readReportMetrics(filePath) {
     flaky: summaryValue(summary, 'flaky'),
     duration: report.durationH ?? ''
   };
-}
-
-function totalReports(reports) {
-  const reportList = Object.values(reports).filter(Boolean);
-
-  if (reportList.length === 0) {
-    return null;
-  }
-
-  return reportList.reduce((totals, report) => ({
-    tests: totals.tests + report.tests,
-    passed: totals.passed + report.passed,
-    failed: totals.failed + report.failed,
-    skipped: totals.skipped + report.skipped,
-    flaky: totals.flaky + report.flaky
-  }), {
-    tests: 0,
-    passed: 0,
-    failed: 0,
-    skipped: 0,
-    flaky: 0
-  });
 }
 
 async function enrichRun(run) {
@@ -156,6 +126,22 @@ async function copyReportArtifacts(runDir) {
   return copied;
 }
 
+async function pruneRuns(keepIds) {
+  const runsRoot = path.join(pagesDir, 'runs');
+
+  if (!existsSync(runsRoot)) {
+    return;
+  }
+
+  const entries = await readdir(runsRoot, { withFileTypes: true });
+
+  for (const entry of entries) {
+    if (entry.isDirectory() && !keepIds.has(entry.name)) {
+      await rm(path.join(runsRoot, entry.name), { recursive: true, force: true });
+    }
+  }
+}
+
 async function main() {
   const runPath = `runs/${runId}`;
   const runDir = path.join(pagesDir, runPath);
@@ -183,6 +169,9 @@ async function main() {
     ...(await readRuns(runsPath)).filter((item) => item.id !== runId)
   ].map(enrichRun));
 
+  const visibleRuns = capRuns(runs, maxRuns);
+  await pruneRuns(new Set(visibleRuns.map((item) => item.id)));
+
   await mkdir(path.join(runDir, 'monocart'), { recursive: true });
   await mkdir(path.join(runDir, 'playwright'), { recursive: true });
   await writeFile(path.join(runDir, 'monocart', 'index.html'), buildReportHub({
@@ -197,8 +186,8 @@ async function main() {
     run,
     reportType: 'Playwright'
   }));
-  await writeFile(runsPath, `${JSON.stringify(runs, null, 2)}\n`);
-  await writeFile(path.join(pagesDir, 'index.html'), buildRootPage(runs));
+  await writeFile(runsPath, `${JSON.stringify(visibleRuns, null, 2)}\n`);
+  await writeFile(path.join(pagesDir, 'index.html'), buildRootPage(visibleRuns));
   await writeFile(path.join(pagesDir, '.nojekyll'), '');
 }
 
