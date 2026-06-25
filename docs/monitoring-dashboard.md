@@ -13,6 +13,7 @@ This dashboard explains how project health is monitored through GitHub Actions, 
 | API behavior | GoREST scenarios pass | `API Tests` CI job | Passing |
 | Report history | Latest and historical reports are published | GitHub Pages `gh-pages` branch | Available after successful `main` runs and manual workflow runs |
 | Reports | HTML and Monocart artifacts uploaded | GitHub Actions artifacts | Available after each test job |
+| Dashboard logic | Pure builder functions pass unit tests | `Dashboard Unit Tests` CI job | Passing |
 
 ## CI Quality Gates
 
@@ -49,12 +50,21 @@ runs/
       api/
 ```
 
-The dashboard home page shows a monitoring summary with latest result, runs tracked, green run count, and historical failure count. It also has two primary buttons for the latest run:
+The dashboard home page is a monitoring view built entirely at build time (no
+client JavaScript). It shows:
 
-- **Open Monocart report**
-- **Open Playwright report**
+- **KPI cards** — latest pass rate, tests run, flaky count (latest run), and
+  **green streak** (consecutive most-recent runs with zero failures; flaky runs
+  do not break the streak).
+- **Pass-rate trend** — an inline SVG line chart of pass % across the last
+  `DASHBOARD_MAX_RUNS` runs. Each point exposes a native SVG `<title>` tooltip.
+- **Status timeline** — one colored square per run (passed / flaky / failed),
+  each linking to that run's report hub.
+- **Run history** — per-run totals, UI/API breakdown, and links to the Monocart,
+  Playwright, and Actions pages.
 
-It also keeps a run history list with pass/fail totals, UI/API durations, and links to each historical report, so older results remain visible as the project runs over time.
+Three paths reach the actual Monocart/Playwright HTML reports: the hero buttons
+("Open latest …"), any status-timeline square, and the per-run history links.
 
 To make the dashboard public, configure GitHub Pages to deploy from the `gh-pages` branch at the repository root. For private repositories, confirm the repository plan and visibility settings before publishing reports.
 
@@ -80,6 +90,8 @@ To make the dashboard public, configure GitHub Pages to deploy from the `gh-page
 The Pages dashboard stores Playwright and Monocart HTML reports by workflow run. The downloadable artifacts remain useful for traces, screenshots, videos, and short-term debugging.
 
 The dashboard builder reads Monocart `index.json` files for each published run and stores summarized UI/API metrics in `runs.json`. When a new run publishes, it also backfills metrics for older runs that already have Monocart JSON files on `gh-pages`.
+
+History is capped by the `DASHBOARD_MAX_RUNS` environment variable (default `30`). On each publish, `runs.json` is trimmed to the newest `DASHBOARD_MAX_RUNS` entries and run folders outside that window are pruned from `gh-pages`, keeping the branch bounded.
 
 Local report commands:
 
@@ -115,6 +127,7 @@ For faster focused checks:
 
 ```bash
 npm run test:smoke
+npm run test:dashboard
 npx playwright test --grep @negative
 npx playwright test --grep @crud
 ```
@@ -129,7 +142,6 @@ npx playwright test --grep @crud
 
 ## Improvement Ideas
 
-- Add a retention policy if the `gh-pages` branch grows too large over time.
 - Add CodeQL for deeper static analysis.
 - Add cross-browser smoke coverage for Firefox and WebKit.
 - Add richer report annotations for requirement IDs, severity, and test ownership.
