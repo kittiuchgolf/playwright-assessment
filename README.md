@@ -145,6 +145,7 @@ To publish the dashboard, configure GitHub Pages to deploy from the `gh-pages` b
 | --- | --- |
 | Standard login succeeds | Validates the main authenticated entry point. |
 | Locked-out user receives an error | Covers negative authentication behavior. |
+| Unauthenticated deep-link is blocked | Covers session handling — a protected route redirects to login. |
 | Add and remove cart item | Verifies cart badge and cart item state. |
 | Checkout completes successfully | Covers the purchase workflow. |
 | Checkout requires customer information | Covers negative checkout validation. |
@@ -158,6 +159,7 @@ To publish the dashboard, configure GitHub Pages to deploy from the `gh-pages` b
 | Get user details | Validates individual resource shape. |
 | Create, update, and delete user | Exercises authenticated CRUD with generated data. |
 | Reject unauthenticated create | Confirms Bearer token enforcement. |
+| Reject create with an invalid email | Validates 422 field-level data validation. |
 | Return 404 for unknown user | Covers missing-resource behavior. |
 
 ## Design Decisions

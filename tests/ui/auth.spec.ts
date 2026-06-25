@@ -15,4 +15,11 @@ test.describe('SauceDemo authentication', () => {
 
     await loginPage.expectErrorContains('Sorry, this user has been locked out.');
   });
+
+  test('unauthenticated user cannot deep-link into inventory @ui @auth @negative @session', async ({ loginPage }) => {
+    await loginPage.gotoProtectedPath('/inventory.html');
+
+    await loginPage.expectErrorContains("You can only access '/inventory.html' when you are logged in.");
+    await loginPage.expectLoginPageShown();
+  });
 });
