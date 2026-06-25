@@ -27,7 +27,7 @@
     "dotenv": "^17.4.2",
     "eslint": "^10.5.0",
     "eslint-plugin-playwright": "^2.10.4",
-    "monocart-reporter": "^1.6.36",
+    "monocart-reporter": "^2.12.0",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.62.0",
     "zod": "^4.4.3"
