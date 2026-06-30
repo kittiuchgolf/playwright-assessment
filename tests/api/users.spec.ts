@@ -1,15 +1,15 @@
 import { expect, test } from '../fixtures/test';
 import { uniqueUser } from './user-data';
 
-test.describe('GoREST users API', () => {
-  test('lists users with expected response shape @smoke @api', async ({ goRestClient }) => {
+test.describe('GoREST users API', { tag: ['@api'] }, () => {
+  test('lists users with expected response shape', { tag: ['@smoke'] }, async ({ goRestClient }) => {
     const response = await goRestClient.listUsers();
     const users = await goRestClient.expectUserListResponse(response, 200);
 
     expect(users.length).toBeGreaterThan(0);
   });
 
-  test('gets user details for an existing user @api', async ({ goRestClient }) => {
+  test('gets user details for an existing user', async ({ goRestClient }) => {
     const listResponse = await goRestClient.listUsers();
     const users = await goRestClient.expectUserListResponse(listResponse, 200);
     expect(users.length).toBeGreaterThan(0);
@@ -20,7 +20,7 @@ test.describe('GoREST users API', () => {
     expect(user.id).toBe(users[0].id);
   });
 
-  test('creates, updates, and deletes a user with bearer token auth @smoke @api @crud', async ({
+  test('creates, updates, and deletes a user with bearer token auth', { tag: ['@smoke', '@crud'] }, async ({
     authenticatedGoRestClient
   }) => {
     // eslint-disable-next-line playwright/no-skipped-test -- intentional conditional skip when no API token is configured
@@ -64,13 +64,13 @@ test.describe('GoREST users API', () => {
     }
   });
 
-  test('rejects unauthenticated user creation @api @negative', async ({ goRestClient }) => {
+  test('rejects unauthenticated user creation', { tag: ['@negative'] }, async ({ goRestClient }) => {
     const response = await goRestClient.createUser(uniqueUser(), undefined);
 
     await goRestClient.expectErrorResponse(response, 401);
   });
 
-  test('rejects user creation with an invalid email @api @negative @crud', async ({
+  test('rejects user creation with an invalid email', { tag: ['@negative', '@crud'] }, async ({
     authenticatedGoRestClient
   }) => {
     // eslint-disable-next-line playwright/no-skipped-test -- intentional conditional skip when no API token is configured
@@ -82,7 +82,7 @@ test.describe('GoREST users API', () => {
     expect(errors.some((error) => error.field === 'email' && /invalid/i.test(error.message))).toBe(true);
   });
 
-  test('returns not found for an unknown user id @api @negative', async ({ goRestClient }) => {
+  test('returns not found for an unknown user id', { tag: ['@negative'] }, async ({ goRestClient }) => {
     const response = await goRestClient.getUser(0);
 
     await goRestClient.expectErrorResponse(response, 404);
