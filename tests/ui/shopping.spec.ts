@@ -1,11 +1,11 @@
 import { expect, test } from '../fixtures/test';
-import { checkoutCustomer } from '../support/checkout-data';
+import { checkoutCustomer, checkoutErrors } from '../support/checkout-data';
 import { products } from '../support/products';
 import type { CartPage } from './pages/cart.page';
 import type { CheckoutPage } from './pages/checkout.page';
 import type { InventoryPage } from './pages/inventory.page';
 
-test.describe('SauceDemo shopping workflows', () => {
+test.describe('SauceDemo shopping workflows', { tag: ['@ui'] }, () => {
   async function startCheckout(
     loggedInInventoryPage: InventoryPage,
     cartPage: CartPage,
@@ -18,7 +18,7 @@ test.describe('SauceDemo shopping workflows', () => {
     await checkoutPage.expectInformationStep();
   }
 
-  test('user can add and remove an item from the cart @smoke @ui @cart', async ({
+  test('user can add and remove an item from the cart', { tag: ['@smoke', '@cart'] }, async ({
     loggedInInventoryPage,
     cartPage
   }) => {
@@ -34,7 +34,7 @@ test.describe('SauceDemo shopping workflows', () => {
     await cartPage.expectCartEmpty();
   });
 
-  test('user can complete checkout for selected products @smoke @ui @checkout', async ({
+  test('user can complete checkout for selected products', { tag: ['@smoke', '@checkout'] }, async ({
     loggedInInventoryPage,
     cartPage,
     checkoutPage
@@ -57,43 +57,45 @@ test.describe('SauceDemo shopping workflows', () => {
     await checkoutPage.expectComplete();
   });
 
-  test('checkout requires first name @ui @checkout @negative', async ({
-    loggedInInventoryPage,
-    cartPage,
-    checkoutPage
-  }) => {
-    await startCheckout(loggedInInventoryPage, cartPage, checkoutPage);
+  const requiredFieldCases = [
+    {
+      field: 'first name',
+      firstName: '',
+      lastName: checkoutCustomer.lastName,
+      postalCode: checkoutCustomer.postalCode,
+      error: checkoutErrors.firstNameRequired
+    },
+    {
+      field: 'last name',
+      firstName: checkoutCustomer.firstName,
+      lastName: '',
+      postalCode: checkoutCustomer.postalCode,
+      error: checkoutErrors.lastNameRequired
+    },
+    {
+      field: 'postal code',
+      firstName: checkoutCustomer.firstName,
+      lastName: checkoutCustomer.lastName,
+      postalCode: '',
+      error: checkoutErrors.postalCodeRequired
+    }
+  ];
 
-    await checkoutPage.fillCustomerInformation('', checkoutCustomer.lastName, checkoutCustomer.postalCode);
+  for (const testCase of requiredFieldCases) {
+    test(`checkout requires ${testCase.field}`, { tag: ['@checkout', '@negative'] }, async ({
+      loggedInInventoryPage,
+      cartPage,
+      checkoutPage
+    }) => {
+      await startCheckout(loggedInInventoryPage, cartPage, checkoutPage);
 
-    await checkoutPage.expectValidationError('Error: First Name is required');
-  });
+      await checkoutPage.fillCustomerInformation(testCase.firstName, testCase.lastName, testCase.postalCode);
 
-  test('checkout requires last name @ui @checkout @negative', async ({
-    loggedInInventoryPage,
-    cartPage,
-    checkoutPage
-  }) => {
-    await startCheckout(loggedInInventoryPage, cartPage, checkoutPage);
+      await checkoutPage.expectValidationError(testCase.error);
+    });
+  }
 
-    await checkoutPage.fillCustomerInformation(checkoutCustomer.firstName, '', checkoutCustomer.postalCode);
-
-    await checkoutPage.expectValidationError('Error: Last Name is required');
-  });
-
-  test('checkout requires postal code @ui @checkout @negative', async ({
-    loggedInInventoryPage,
-    cartPage,
-    checkoutPage
-  }) => {
-    await startCheckout(loggedInInventoryPage, cartPage, checkoutPage);
-
-    await checkoutPage.fillCustomerInformation(checkoutCustomer.firstName, checkoutCustomer.lastName, '');
-
-    await checkoutPage.expectValidationError('Error: Postal Code is required');
-  });
-
-  test('user can sort products by price from low to high @ui @catalog', async ({ loggedInInventoryPage }) => {
+  test('user can sort products by price from low to high', { tag: ['@catalog'] }, async ({ loggedInInventoryPage }) => {
     const inventoryPage = loggedInInventoryPage;
     await inventoryPage.sortBy('lohi');
 
